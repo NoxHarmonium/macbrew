@@ -1,0 +1,12 @@
+[package]
+name = "brew-proxy"
+version = "0.1.0"
+authors = ["Sean Dawson <contact@seandawson.info>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+reqwest = { version = "0.10", features = ["json"] }
+tokio = { version = "0.2", features = ["full"] }
+hyper = { version = "0.13.4", default-features = false, features = ["tcp"] }
