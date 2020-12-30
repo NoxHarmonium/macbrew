@@ -8,21 +8,21 @@ struct Config {
 }
 
 #[derive(Deserialize, Debug)]
-struct BrewSession {
-    id: String,
-    phase: String,
-    batchcode: String,
-    recipe_title: String,
+pub struct BrewSession {
+    pub id: String,
+    pub phase: String,
+    pub batchcode: String,
+    pub recipe_title: String,
 }
 
 #[derive(Deserialize, Debug)]
-struct BrewSessionsResponse {
-    message: String,
-    count: String,
-    brewsessions: Vec<BrewSession>,
+pub struct BrewSessionsResponse {
+    pub message: String,
+    pub count: String,
+    pub brewsessions: Vec<BrewSession>,
 }
 
-pub async fn load_sessions() -> Result<(), reqwest::Error> {
+pub async fn load_sessions() -> Result<BrewSessionsResponse, reqwest::Error> {
     let mut headers = HeaderMap::new();
 
     let config = match envy::from_env::<Config>() {
@@ -54,7 +54,5 @@ pub async fn load_sessions() -> Result<(), reqwest::Error> {
         ),
     };
 
-    println!("{:#?}", response);
-
-    Ok(())
+    Ok(response)
 }
