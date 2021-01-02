@@ -1,8 +1,9 @@
-use super::sessions::BrewSession;
+use crate::data::sessions::BrewSession;
+use crate::Result;
 use async_trait::async_trait;
-use std::error;
 
 #[async_trait]
 pub trait DataManager {
-    async fn sessions() -> Result<Vec<BrewSession>, Box<dyn error::Error>>;
+    async fn sessions() -> Result<Vec<BrewSession>>;
+    async fn session(session_id: &str) -> Result<BrewSession>;
 }

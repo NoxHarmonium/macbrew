@@ -43,3 +43,12 @@ impl Encoder<String> for LineCodec {
         };
     }
 }
+
+impl Encoder<Vec<u8>> for LineCodec {
+    type Error = io::Error;
+
+    fn encode(&mut self, item: Vec<u8>, dst: &mut BytesMut) -> Result<(), Self::Error> {
+        dst.extend(item);
+        Ok(())
+    }
+}

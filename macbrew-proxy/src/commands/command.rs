@@ -1,11 +1,20 @@
-use super::super::data::data_manager::DataManager;
+use crate::data::data_manager::DataManager;
+use crate::error::Result;
+use crate::serializers::mac::serialize;
 use async_trait::async_trait;
-use std::error;
+use serde::Serialize;
 
 #[async_trait]
 pub trait Command<DataManagerType: DataManager> {
-    fn new(name: &'static str) -> Self;
+    async fn handle(rid: &str, args: &[&str]) -> Result<Vec<u8>>;
+}
 
-    fn name(&self) -> &'static str;
-    async fn handle(&self, args: Vec<String>) -> Result<&str, Box<dyn error::Error>>;
+pub fn prepare_response<T>(rid: &str, success: bool, response_object: &T) -> Result<Vec<u8>>
+where
+    T: Serialize + ?Sized,
+{
+    let preable_bytes = serialize(&rid)?;
+    let success_bytes = serialize(&success)?;
+    let response_bytes = serialize(&response_object)?;
+    Ok([preable_bytes, success_bytes, response_bytes].concat())
 }

@@ -20,3 +20,4 @@ tokio-util = { version = "0.3.1", features = ["codec"], default-features = false
 futures = "0.3.8"
 bytes = "0.5"
 async-trait = "0.1.42"
+snafu = "0.6.10"

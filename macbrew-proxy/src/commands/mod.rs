@@ -1,2 +1,3 @@
 pub mod command;
-pub mod help;
+pub mod get_sessions;
+pub mod list_sessions;
