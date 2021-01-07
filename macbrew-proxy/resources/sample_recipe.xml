@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RECIPES>
+ <RECIPE>
+  <NAME>Forresty Fruit</NAME>
+  <VERSION>1</VERSION>
+  <TYPE>All Grain</TYPE>
+  <BREWER>Sean Dawson</BREWER>
+  <DISPLAY_BATCH_SIZE>13 L</DISPLAY_BATCH_SIZE>
+  <DISPLAY_BOIL_SIZE>28.5 L</DISPLAY_BOIL_SIZE>
+  <BATCH_SIZE>13</BATCH_SIZE>
+  <BOIL_SIZE>28.5</BOIL_SIZE>
+  <BOIL_TIME>10</BOIL_TIME>
+  <EFFICIENCY>55</EFFICIENCY>
+  <NOTES>Second iteration of trying to make a very citrusy pale ale (hence the pun on the Frosty Fruit) &#13;
+Last time it turned out well, although it seemed to be hoppy enough after the first dry hop charge so I'm moving the second dry hop to a mash hop (to hopefully help with cold side oxidation) and only doing high krausen dry hop. First attempt with mash hopping! I'll see how it goes.&#13;
+&#13;
+Also trying some Mandarina Bravaria this time and Eclipse (HPA-016) which apparently have Mandarin/Tangerine flavours which should complement the lemon/orange flavours</NOTES>
+  <PRIMARY_TEMP>37</PRIMARY_TEMP>
+  <EST_COLOR>5.84</EST_COLOR>
+  <IBU>12.14</IBU>
+  <IBU_METHOD>Tinseth</IBU_METHOD>
+  <EST_ABV>5.77</EST_ABV>
+  <EST_OG>1.06 sg</EST_OG>
+  <EST_FG>1.016 sg</EST_FG>
+  <OG>1.06</OG>
+  <FG>1.016</FG>
+  <PRIMING_SUGAR_NAME></PRIMING_SUGAR_NAME>
+  <CARBONATION_USED></CARBONATION_USED>
+  <CARBONATION>0</CARBONATION>
+  <BF_PRIMING_METHOD></BF_PRIMING_METHOD>
+  <BF_PRIMING_AMOUNT></BF_PRIMING_AMOUNT>
+  <BF_CO2_LEVEL>0</BF_CO2_LEVEL>
+  <BF_CO2_UNIT>Volumes</BF_CO2_UNIT>
+  <URL></URL>
+  <BATCH_SIZE_MODE>f</BATCH_SIZE_MODE>
+  <YEAST_STARTER>false</YEAST_STARTER>
+  <NO_CHILL_EXTRA_MINUTES></NO_CHILL_EXTRA_MINUTES>
+  <PITCH_RATE>0.35</PITCH_RATE>
+  <FERMENTABLES>
+   <FERMENTABLE>
+    <NAME> Maris Otter pale</NAME>
+    <VERSION>1</VERSION>
+    <TYPE>Grain</TYPE>
+    <AMOUNT>4</AMOUNT>
+    <YIELD>82.61</YIELD>
+    <COLOR>2.4</COLOR>
+    <ADD_AFTER_BOIL>false</ADD_AFTER_BOIL>
+    <ORIGIN>United Kingdom</ORIGIN>
+    <DIASTATIC_POWER>62</DIASTATIC_POWER>
+   </FERMENTABLE>
+   <FERMENTABLE>
+    <NAME>BEST Munich</NAME>
+    <VERSION>1</VERSION>
+    <TYPE>Grain</TYPE>
+    <AMOUNT>0.25</AMOUNT>
+    <YIELD>80.43</YIELD>
+    <COLOR>6.3</COLOR>
+    <ADD_AFTER_BOIL>false</ADD_AFTER_BOIL>
+    <ORIGIN>Germany</ORIGIN>
+    <DIASTATIC_POWER>70</DIASTATIC_POWER>
+   </FERMENTABLE>
+   <FERMENTABLE>
+    <NAME>Lactose (Milk Sugar)</NAME>
+    <VERSION>1</VERSION>
+    <TYPE>Sugar</TYPE>
+    <AMOUNT>0.2</AMOUNT>
+    <YIELD>89.13</YIELD>
+    <COLOR>1</COLOR>
+    <ADD_AFTER_BOIL>true</ADD_AFTER_BOIL>
+    <DIASTATIC_POWER>0</DIASTATIC_POWER>
+   </FERMENTABLE>
+  </FERMENTABLES>
+  <HOPS>
+   <HOP>
+    <NAME>Amarillo (8.6 AA)&#13;
+                        / 140 Grams</NAME>
+    <VERSION>1</VERSION>
+    <ALPHA>8.6</ALPHA>
+    <AMOUNT>0.01</AMOUNT>
+    <USE>Mash</USE>
+    <USER_HOP_USE>Mash</USER_HOP_USE>
+    <TIME>0</TIME>
+    <FORM>Pellet</FORM>
+   </HOP>
+   <HOP>
+    <NAME>HPA -  Eclipse (16.9 AA)&#13;
+                        / 100 Grams</NAME>
+    <VERSION>1</VERSION>
+    <ALPHA>16.9</ALPHA>
+    <AMOUNT>0.005</AMOUNT>
+    <USE>Mash</USE>
+    <USER_HOP_USE>Mash</USER_HOP_USE>
+    <TIME>0</TIME>
+    <FORM>Pellet</FORM>
+   </HOP>
+   <HOP>
+    <NAME>Lemondrop (6 AA)&#13;
+                        / 100 Grams</NAME>
+    <VERSION>1</VERSION>
+    <ALPHA>6</ALPHA>
+    <AMOUNT>0.02</AMOUNT>
+    <USE>Mash</USE>
+    <USER_HOP_USE>Mash</USER_HOP_USE>
+    <TIME>0</TIME>
+    <FORM>Pellet</FORM>
+   </HOP>
+   <HOP>
+    <NAME>Mandarina Bavaria (8.5 AA)&#13;
+                        / 100 Grams</NAME>
+    <VERSION>1</VERSION>
+    <ALPHA>8.5</ALPHA>
+    <AMOUNT>0.005</AMOUNT>
+    <USE>Mash</USE>
+    <USER_HOP_USE>Mash</USER_HOP_USE>
+    <TIME>0</TIME>
+    <FORM>Pellet</FORM>
+   </HOP>
+   <HOP>
+    <NAME>Amarillo (8.6 AA)</NAME>
+    <VERSION>1</VERSION>
+    <ALPHA>8.6</ALPHA>
+    <AMOUNT>0.01</AMOUNT>
+    <USE>Aroma</USE>
+    <USER_HOP_USE>Whirlpool</USER_HOP_USE>
+    <TIME>15</TIME>
+    <HOP_TEMP>75</HOP_TEMP>
+    <FORM>Pellet</FORM>
+    <UTILIZATION></UTILIZATION>
+    <TEMPERATURE>75</TEMPERATURE>
+   </HOP>
+   <HOP>
+    <NAME>HPA -  Eclipse (16.9 AA)&#13;
+                        / 100 Grams</NAME>
+    <VERSION>1</VERSION>
+    <ALPHA>16.9</ALPHA>
+    <AMOUNT>0.01</AMOUNT>
+    <USE>Aroma</USE>
+    <USER_HOP_USE>Whirlpool</USER_HOP_USE>
+    <TIME>15</TIME>
+    <HOP_TEMP>75</HOP_TEMP>
+    <FORM>Pellet</FORM>
+    <UTILIZATION></UTILIZATION>
+    <TEMPERATURE>75</TEMPERATURE>
+   </HOP>
+   <HOP>
+    <NAME>Lemondrop (6 AA)</NAME>
+    <VERSION>1</VERSION>
+    <ALPHA>6</ALPHA>
+    <AMOUNT>0.01</AMOUNT>
+    <USE>Aroma</USE>
+    <USER_HOP_USE>Whirlpool</USER_HOP_USE>
+    <TIME>15</TIME>
+    <HOP_TEMP>75</HOP_TEMP>
+    <FORM>Pellet</FORM>
+    <UTILIZATION></UTILIZATION>
+    <TEMPERATURE>75</TEMPERATURE>
+   </HOP>
+   <HOP>
+    <NAME>Mandarina Bavaria (8.5 AA)&#13;
+                        / 100 Grams</NAME>
+    <VERSION>1</VERSION>
+    <ALPHA>8.5</ALPHA>
+    <AMOUNT>0.01</AMOUNT>
+    <USE>Aroma</USE>
+    <USER_HOP_USE>Whirlpool</USER_HOP_USE>
+    <TIME>15</TIME>
+    <HOP_TEMP>75</HOP_TEMP>
+    <FORM>Pellet</FORM>
+    <UTILIZATION></UTILIZATION>
+    <TEMPERATURE>75</TEMPERATURE>
+   </HOP>
+   <HOP>
+    <NAME>Amarillo (8.6 AA)&#13;
+                        / 280 Grams</NAME>
+    <VERSION>1</VERSION>
+    <ALPHA>8.6</ALPHA>
+    <AMOUNT>0.02</AMOUNT>
+    <USE>Dry Hop</USE>
+    <USER_HOP_USE>Dry Hop (High Krausen)</USER_HOP_USE>
+    <TIME>5760</TIME>
+    <FORM>Pellet</FORM>
+   </HOP>
+   <HOP>
+    <NAME>HPA -  Eclipse (16.9 AA)&#13;
+                        / 100 Grams</NAME>
+    <VERSION>1</VERSION>
+    <ALPHA>16.9</ALPHA>
+    <AMOUNT>0.01</AMOUNT>
+    <USE>Dry Hop</USE>
+    <USER_HOP_USE>Dry Hop (High Krausen)</USER_HOP_USE>
+    <TIME>5760</TIME>
+    <FORM>Pellet</FORM>
+   </HOP>
+   <HOP>
+    <NAME>Lemondrop (6 AA)</NAME>
+    <VERSION>1</VERSION>
+    <ALPHA>6</ALPHA>
+    <AMOUNT>0.04</AMOUNT>
+    <USE>Dry Hop</USE>
+    <USER_HOP_USE>Dry Hop (High Krausen)</USER_HOP_USE>
+    <TIME>5760</TIME>
+    <FORM>Pellet</FORM>
+   </HOP>
+   <HOP>
+    <NAME>Mandarina Bavaria (8.5 AA)&#13;
+                        / 100 Grams</NAME>
+    <VERSION>1</VERSION>
+    <ALPHA>8.5</ALPHA>
+    <AMOUNT>0.01</AMOUNT>
+    <USE>Dry Hop</USE>
+    <USER_HOP_USE>Dry Hop (High Krausen)</USER_HOP_USE>
+    <TIME>5760</TIME>
+    <FORM>Pellet</FORM>
+   </HOP>
+  </HOPS>
+  <MISCS>
+   <MISC>
+    <NAME>Calcium Chloride (dihydrate)</NAME>
+    <VERSION>1</VERSION>
+    <TYPE>Water Agent</TYPE>
+    <USE>Mash</USE>
+    <TIME>60</TIME>
+    <AMOUNT>0.0055</AMOUNT>
+    <AMOUNT_IS_WEIGHT>TRUE</AMOUNT_IS_WEIGHT>
+   </MISC>
+   <MISC>
+    <NAME>Epsom Salt</NAME>
+    <VERSION>1</VERSION>
+    <TYPE>Water Agent</TYPE>
+    <USE>Mash</USE>
+    <TIME>60</TIME>
+    <AMOUNT>0.002</AMOUNT>
+    <AMOUNT_IS_WEIGHT>TRUE</AMOUNT_IS_WEIGHT>
+   </MISC>
+   <MISC>
+    <NAME>Gypsum</NAME>
+    <VERSION>1</VERSION>
+    <TYPE>Water Agent</TYPE>
+    <USE>Mash</USE>
+    <TIME>60</TIME>
+    <AMOUNT>0.0015</AMOUNT>
+    <AMOUNT_IS_WEIGHT>TRUE</AMOUNT_IS_WEIGHT>
+   </MISC>
+   <MISC>
+    <NAME>Salt</NAME>
+    <VERSION>1</VERSION>
+    <TYPE>Water Agent</TYPE>
+    <USE>Mash</USE>
+    <TIME>60</TIME>
+    <AMOUNT>0.002</AMOUNT>
+    <AMOUNT_IS_WEIGHT>TRUE</AMOUNT_IS_WEIGHT>
+   </MISC>
+   <MISC>
+    <NAME>Lactic acid</NAME>
+    <VERSION>1</VERSION>
+    <TYPE>Water Agent</TYPE>
+    <USE>Mash</USE>
+    <TIME>60</TIME>
+    <AMOUNT>0.0032</AMOUNT>
+    <AMOUNT_IS_WEIGHT>FALSE</AMOUNT_IS_WEIGHT>
+   </MISC>
+   <MISC>
+    <NAME>Whirlfloc</NAME>
+    <VERSION>1</VERSION>
+    <TYPE>Fining</TYPE>
+    <USE>Boil</USE>
+    <TIME>10</TIME>
+    <AMOUNT>1</AMOUNT>
+    <AMOUNT_IS_WEIGHT>TRUE</AMOUNT_IS_WEIGHT>
+   </MISC>
+  </MISCS>
+  <MASH>
+   <NAME>Mash Steps</NAME>
+   <VERSION>1</VERSION>
+   <GRAIN_TEMP>20</GRAIN_TEMP>
+   <MASH_STEPS>
+    <MASH_STEP>
+     <NAME></NAME>
+     <VERSION>1</VERSION>
+     <TYPE>Strike</TYPE>
+     <STEP_TIME></STEP_TIME>
+     <INFUSE_AMOUNT>16</INFUSE_AMOUNT>
+     <STEP_TEMP>67</STEP_TEMP>
+    </MASH_STEP>
+    <MASH_STEP>
+     <NAME></NAME>
+     <VERSION>1</VERSION>
+     <TYPE>Infusion</TYPE>
+     <STEP_TIME>60</STEP_TIME>
+     <INFUSE_AMOUNT></INFUSE_AMOUNT>
+     <STEP_TEMP>67</STEP_TEMP>
+    </MASH_STEP>
+    <MASH_STEP>
+     <NAME>Mash out</NAME>
+     <VERSION>1</VERSION>
+     <TYPE>Infusion</TYPE>
+     <STEP_TIME>10</STEP_TIME>
+     <INFUSE_AMOUNT></INFUSE_AMOUNT>
+     <STEP_TEMP>75</STEP_TEMP>
+    </MASH_STEP>
+    <MASH_STEP>
+     <NAME></NAME>
+     <VERSION>1</VERSION>
+     <TYPE>Infusion</TYPE>
+     <STEP_TIME></STEP_TIME>
+     <INFUSE_AMOUNT>3</INFUSE_AMOUNT>
+     <STEP_TEMP>75</STEP_TEMP>
+    </MASH_STEP>
+   </MASH_STEPS>
+  </MASH>
+  <YEASTS>
+   <YEAST>
+    <NAME>LALBREW® VOSS KVEIK ALE YEAST</NAME>
+    <VERSION>1</VERSION>
+    <TYPE>Ales</TYPE>
+    <FORM>Dry</FORM>
+    <AMOUNT>0.11</AMOUNT>
+    <AMOUNT_IS_WEIGHT>TRUE</AMOUNT_IS_WEIGHT>
+    <PRODUCT_ID>VOSS</PRODUCT_ID>
+    <LABORATORY>Lallemand</LABORATORY>
+    <ATTENUATION>80</ATTENUATION>
+    <FLOCCULATION>High</FLOCCULATION>
+    <MIN_TEMPERATURE>25</MIN_TEMPERATURE>
+    <MAX_TEMPERATURE>40</MAX_TEMPERATURE>
+   </YEAST>
+  </YEASTS>
+  <WATERS>
+   <WATER>
+    <NAME>31525</NAME>
+    <VERSION>1</VERSION>
+    <AMOUNT>13</AMOUNT>
+    <CALCIUM>125</CALCIUM>
+    <BICARBONATE>0</BICARBONATE>
+    <SULFATE>75</SULFATE>
+    <CHLORIDE>175</CHLORIDE>
+    <SODIUM>25</SODIUM>
+    <MAGNESIUM>30</MAGNESIUM>
+    <NOTES></NOTES>
+   </WATER>
+  </WATERS>
+  <STYLE>
+   <NAME>American Pale Ale</NAME>
+   <VERSION>1</VERSION>
+   <CATEGORY>Pale American Ale</CATEGORY>
+   <CATEGORY_NUMBER>18</CATEGORY_NUMBER>
+   <STYLE_LETTER>B</STYLE_LETTER>
+   <STYLE_GUIDE>BJCP</STYLE_GUIDE>
+   <TYPE>Ale</TYPE>
+   <OG_MIN>1.045</OG_MIN>
+   <OG_MAX>1.06</OG_MAX>
+   <FG_MIN>1.01</FG_MIN>
+   <FG_MAX>1.015</FG_MAX>
+   <ABV_MIN>4.5</ABV_MIN>
+   <ABV_MAX>6.2</ABV_MAX>
+   <IBU_MIN>30</IBU_MIN>
+   <IBU_MAX>50</IBU_MAX>
+   <COLOR_MIN>5</COLOR_MIN>
+   <COLOR_MAX>10</COLOR_MAX>
+  </STYLE>
+ </RECIPE>
+</RECIPES>

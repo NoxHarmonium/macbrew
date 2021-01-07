@@ -1,3 +1,4 @@
+use quick_xml::de::DeError;
 use reqwest::Error as ReqwestError;
 use serde::{ser, Serialize};
 use snafu::Snafu;
@@ -12,6 +13,12 @@ pub enum Error {
     ApiError {
         #[serde(skip_serializing)]
         inner_error: ReqwestError,
+    },
+
+    #[snafu(display("Error derserializing XML: {}", inner_error))]
+    XMLError {
+        #[serde(skip_serializing)]
+        inner_error: DeError,
     },
 
     #[snafu(display("API response failed validation: {}", message))]
@@ -49,6 +56,14 @@ impl From<ReqwestError> for Error {
 impl From<std::io::Error> for Error {
     fn from(inner_error: std::io::Error) -> Self {
         Error::SerialIoError {
+            inner_error: inner_error,
+        }
+    }
+}
+
+impl From<quick_xml::de::DeError> for Error {
+    fn from(inner_error: DeError) -> Self {
+        Error::XMLError {
             inner_error: inner_error,
         }
     }

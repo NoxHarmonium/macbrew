@@ -19,7 +19,7 @@ const DEFAULT_TTY: &str = "COM1";
 
 use codecs::line_codec::LineCodec;
 use commands::command::{prepare_response, Command};
-use data::api_data_manager::ApiDataManager;
+use data::brewers_friend::bf_api_data_manager::BFApiDataManager;
 
 async fn handle_line(line: &str) -> Result<Vec<u8>> {
     let components = line.split(" ").collect::<Vec<_>>();
@@ -27,11 +27,15 @@ async fn handle_line(line: &str) -> Result<Vec<u8>> {
         [] => Err(Error::InvalidCommandInput {
             message: String::from(line),
         }),
-        [rid, "LIST", "SESSIONS", args @ ..] => {
-            commands::list_sessions::ListSessionsCommand::<ApiDataManager>::handle(rid, args).await
+        [rid, "LIST", "SESSION", args @ ..] => {
+            commands::list_sessions::ListSessionsCommand::<BFApiDataManager>::handle(rid, args)
+                .await
         }
-        [rid, "GET", "SESSIONS", args @ ..] => {
-            commands::get_sessions::GetSessionsCommand::<ApiDataManager>::handle(rid, args).await
+        [rid, "GET", "SESSION", args @ ..] => {
+            commands::get_sessions::GetSessionsCommand::<BFApiDataManager>::handle(rid, args).await
+        }
+        [rid, "GET", "RECIPE", args @ ..] => {
+            commands::get_recipes::GetRecipesCommand::<BFApiDataManager>::handle(rid, args).await
         }
         [_, _args @ ..] => Err(Error::InvalidCommandInput {
             message: String::from(line),
@@ -64,4 +68,36 @@ async fn main() -> Result<()> {
     }
 
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+
+    use hexplay::HexViewBuilder;
+    use mockito::mock;
+
+    use super::*;
+
+    fn format_binary_for_snap(binary: Vec<u8>) -> Vec<String> {
+        let view = HexViewBuilder::new(&binary.as_slice())
+            .row_width(16)
+            .finish();
+        // Split on new lines to make the snapshots easier to read
+        view.to_string().split("\n").map(String::from).collect()
+    }
+
+    #[tokio::test]
+    async fn test_get_recipe() {
+        let recipe_xml = include_str!("../resources/sample_recipe.xml");
+        let _m = mock("GET", "/v1/recipes/123456.xml")
+            .with_status(200)
+            .with_header("content-type", "application/xml")
+            .with_header("x-api-key", "1234")
+            .with_body(recipe_xml)
+            .create();
+
+        let result = handle_line("99 GET RECIPE 123456").await.unwrap();
+
+        insta::assert_debug_snapshot!(format_binary_for_snap(result));
+    }
 }

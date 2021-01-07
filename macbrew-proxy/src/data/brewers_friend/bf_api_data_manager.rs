@@ -1,17 +1,28 @@
-use crate::data::data_manager::DataManager;
-use crate::data::sessions::{BrewSession, BrewSessionsResponse};
+use crate::data::brewers_friend::bf_data_manager::BFDataManager;
+use crate::data::brewers_friend::recipes::BeerXml;
+use crate::data::brewers_friend::sessions::{BrewSession, BrewSessionsResponse};
 use crate::error::{Error, Result};
 use async_trait::async_trait;
 use reqwest;
 use reqwest::header::HeaderMap;
 use serde::Deserialize;
 
+#[cfg(test)]
+use mockito;
+
 #[derive(Deserialize, Debug)]
 struct Config {
     brewers_friend_api_key: String,
 }
 
-pub struct ApiDataManager;
+pub struct BFApiDataManager;
+
+fn get_base_url() -> String {
+    #[cfg(test)]
+    return mockito::server_url();
+    #[cfg(not(test))]
+    return String::from("https://api.brewersfriend.com");
+}
 
 fn create_client() -> Result<reqwest::Client> {
     let mut headers = HeaderMap::new();
@@ -31,14 +42,14 @@ fn create_client() -> Result<reqwest::Client> {
 }
 
 #[async_trait]
-impl DataManager for ApiDataManager {
+impl BFDataManager for BFApiDataManager {
     async fn sessions() -> Result<Vec<BrewSession>> {
         println!("Fetching sessions...");
         let client = create_client()?;
 
-        let brew_sessions_url = "https://api.brewersfriend.com/v1/brewsessions";
+        let brew_sessions_url = format!("${}/v1/brewsessions", get_base_url());
 
-        let res = client.get(brew_sessions_url).send().await?;
+        let res = client.get(&brew_sessions_url).send().await?;
 
         let body = res.text().await?;
 
@@ -59,7 +70,7 @@ impl DataManager for ApiDataManager {
         println!("Fetching session with id [{}]...", id);
         let client = create_client()?;
 
-        let brew_session_url = format!("https://api.brewersfriend.com/v1/brewsessions/{}", id);
+        let brew_session_url = format!("{}/v1/brewsessions/{}", get_base_url(), id);
 
         let res = client.get(&brew_session_url).send().await?;
 
@@ -86,5 +97,28 @@ impl DataManager for ApiDataManager {
         println!("Fetched session");
 
         session
+    }
+
+    async fn recipe(recipe_id: &str) -> Result<BeerXml> {
+        println!("Fetching recipe with id [{}]...", recipe_id);
+        let client = create_client()?;
+
+        let brew_session_url = format!("{}/v1/recipes/{}.xml", get_base_url(), recipe_id);
+
+        let res = client.get(&brew_session_url).send().await?;
+
+        let body = res.text().await?;
+
+        let response = match quick_xml::de::from_str(&body) {
+            Ok(response) => response,
+            Err(error) => panic!(
+                "Could not decode response from Brewers Friend API: {:#?}",
+                error
+            ),
+        };
+
+        println!("Fetched recipe {:#?}", response);
+
+        Ok(response)
     }
 }

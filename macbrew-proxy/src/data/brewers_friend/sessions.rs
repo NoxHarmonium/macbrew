@@ -1,7 +1,3 @@
-use crate::error::Error;
-use crate::error::Result;
-use reqwest;
-use reqwest::header::HeaderMap;
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -13,7 +9,7 @@ pub struct BrewSession {
     pub recipeid: String,
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct BrewSessionsResponse {
     pub message: String,
     pub count: String,
