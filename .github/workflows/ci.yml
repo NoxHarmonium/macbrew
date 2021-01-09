@@ -9,10 +9,6 @@ on:
       - main
   pull_request:
 
-defaults:
-  run:
-    working-directory: ./macbrew-proxy
-
 jobs:
   unit_tests:
     name: Unit tests
@@ -62,7 +58,7 @@ jobs:
           profile: minimal
           override: true
       - name: Unit tests
-        uses: marcopolo/cargo@master
+        uses: actions-rs/cargo@v1
         with:
           command: test
           use-cross: ${{ matrix.job.use-cross }}
@@ -82,7 +78,7 @@ jobs:
           override: true
           components: rustfmt
       - name: Check formatting
-        uses: marcopolo/cargo@master
+        uses: actions-rs/cargo@v1
         with:
           command: fmt
           args: --all -- --check
@@ -101,7 +97,7 @@ jobs:
           override: true
           components: clippy
       - name: Clippy Check
-        uses: marcopolo/cargo@master
+        uses: actions-rs/cargo@v1
         with:
           command: clippy
           args: -- -D warnings
