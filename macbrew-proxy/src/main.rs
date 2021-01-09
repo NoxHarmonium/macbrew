@@ -1,6 +1,7 @@
+use clap::Clap;
 use error::{Error, Result};
 use futures::sink::SinkExt;
-use std::{env, str};
+use std::str;
 use tokio;
 use tokio::stream::StreamExt;
 use tokio_serial::{Serial, SerialPortSettings};
@@ -20,6 +21,13 @@ const DEFAULT_TTY: &str = "COM1";
 use codecs::line_codec::LineCodec;
 use commands::command::{prepare_response, Command};
 use data::brewers_friend::bf_api_data_manager::BFApiDataManager;
+
+#[derive(Clap)]
+#[clap(version = "0.1", author = "Sean Dawson <contact@seandawson.info>")]
+struct Opts {
+    #[clap(default_value = DEFAULT_TTY)]
+    serial_device: String,
+}
 
 async fn handle_line(line: &str) -> Result<Vec<u8>> {
     let components = line.split(" ").collect::<Vec<_>>();
@@ -49,11 +57,12 @@ async fn handle_line(line: &str) -> Result<Vec<u8>> {
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let mut args = env::args();
-    let tty_path = args.nth(1).unwrap_or_else(|| DEFAULT_TTY.into());
+    let opts: Opts = Opts::parse();
+
+    println!("Starting MacBrew on port {}", opts.serial_device);
 
     let settings = SerialPortSettings::default();
-    let mut port = Serial::from_path(tty_path, &settings).unwrap();
+    let mut port = Serial::from_path(opts.serial_device, &settings).unwrap();
 
     #[cfg(unix)]
     port.set_exclusive(false)
