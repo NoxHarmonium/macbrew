@@ -15,7 +15,7 @@ mod error;
 mod serializers;
 
 #[cfg(unix)]
-const DEFAULT_TTY: &str = "/dev/pts/1";
+const DEFAULT_TTY: &str = "/dev/ttyUSB0";
 #[cfg(windows)]
 const DEFAULT_TTY: &str = "COM1";
 

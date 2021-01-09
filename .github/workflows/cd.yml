@@ -73,7 +73,8 @@ jobs:
       - name: Rename binary
         shell: bash
         run: |
-          mv target/release/macbrew-proxy ./macbrew-proxy-${{ matrix.job.target }}
+          ls target
+          mv target/${{ matrix.job.target }}/release/macbrew-proxy ./macbrew-proxy-${{ matrix.job.target }}
 
       - name: Releasing assets
         uses: softprops/action-gh-release@v1
