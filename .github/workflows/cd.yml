@@ -8,6 +8,9 @@ on:
     tags:
       - "[0-9]+.[0-9]+.[0-9]+"
 
+env:
+  BREWERS_FRIEND_API_KEY: DUMMY_KEY_FOR_TESTS
+
 jobs:
   publish:
     name: Publishing for ${{ matrix.job.os }}

@@ -3,6 +3,9 @@
 
 name: Continuous Integration
 
+env:
+  BREWERS_FRIEND_API_KEY: DUMMY_KEY_FOR_TESTS
+
 on:
   push:
     branches:
