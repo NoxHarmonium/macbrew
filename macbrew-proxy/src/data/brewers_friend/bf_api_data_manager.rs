@@ -47,7 +47,7 @@ impl BFDataManager for BFApiDataManager {
         println!("Fetching sessions...");
         let client = create_client()?;
 
-        let brew_sessions_url = format!("${}/v1/brewsessions", get_base_url());
+        let brew_sessions_url = format!("{}/v1/brewsessions", get_base_url());
 
         let res = client.get(&brew_sessions_url).send().await?;
 
@@ -93,8 +93,7 @@ impl BFDataManager for BFApiDataManager {
                 message: String::from("Multiple sessions for ID found. This should not happen"),
             }),
         };
-
-        println!("Fetched session");
+        println!("Fetched session with id [{}]...", id);
 
         session
     }
@@ -117,7 +116,7 @@ impl BFDataManager for BFApiDataManager {
             ),
         };
 
-        println!("Fetched recipe {:#?}", response);
+        println!("Fetched recipe with id [{}]...", recipe_id);
 
         Ok(response)
     }

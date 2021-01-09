@@ -43,7 +43,7 @@ async fn handle_line(line: &str) -> Result<Vec<u8>> {
     };
     match response {
         Ok(response) => Ok(response),
-        Err(error) => prepare_response("0", false, &error),
+        Err(error) => prepare_response("ERROR", false, &error.to_string()),
     }
 }
 
@@ -73,13 +73,25 @@ async fn main() -> Result<()> {
 #[cfg(test)]
 mod tests {
 
+    use encoding::all::MAC_ROMAN;
+    use encoding::{EncoderTrap, Encoding};
     use hexplay::HexViewBuilder;
     use mockito::mock;
 
     use super::*;
 
-    fn format_binary_for_snap(binary: Vec<u8>) -> Vec<String> {
-        let view = HexViewBuilder::new(&binary.as_slice())
+    fn assert_request_id(binary: &Vec<u8>, request_id: &'static str) -> () {
+        assert_eq!(
+            &binary[4..6],
+            MAC_ROMAN
+                .encode(request_id, EncoderTrap::Replace)
+                .unwrap()
+                .as_slice()
+        );
+    }
+
+    fn format_binary_for_snap(binary: &Vec<u8>) -> Vec<String> {
+        let view = HexViewBuilder::new(binary.as_slice())
             .row_width(16)
             .finish();
         // Split on new lines to make the snapshots easier to read
@@ -96,8 +108,41 @@ mod tests {
             .with_body(recipe_xml)
             .create();
 
-        let result = handle_line("99 GET RECIPE 123456").await.unwrap();
+        let result = handle_line("11 GET RECIPE 123456").await.unwrap();
 
-        insta::assert_debug_snapshot!(format_binary_for_snap(result));
+        insta::assert_debug_snapshot!(format_binary_for_snap(&result));
+        assert_request_id(&result, "11");
+    }
+
+    #[tokio::test]
+    async fn test_list_sessions() {
+        let sessions_json = include_str!("../resources/sample_sessions.json");
+        let _m = mock("GET", "/v1/brewsessions")
+            .with_status(200)
+            .with_header("content-type", "application/xml")
+            .with_header("x-api-key", "1234")
+            .with_body(sessions_json)
+            .create();
+
+        let result = handle_line("22 LIST SESSION").await.unwrap();
+
+        insta::assert_debug_snapshot!(format_binary_for_snap(&result));
+        assert_request_id(&result, "22");
+    }
+
+    #[tokio::test]
+    async fn test_get_sessions() {
+        let session_json = include_str!("../resources/sample_session.json");
+        let _m = mock("GET", "/v1/brewsessions/363597")
+            .with_status(200)
+            .with_header("content-type", "application/xml")
+            .with_header("x-api-key", "1234")
+            .with_body(session_json)
+            .create();
+
+        let result = handle_line("33 GET SESSION 363597").await.unwrap();
+
+        insta::assert_debug_snapshot!(format_binary_for_snap(&result));
+        assert_request_id(&result, "33");
     }
 }

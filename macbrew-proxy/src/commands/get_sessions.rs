@@ -1,6 +1,6 @@
 use crate::commands::command::{prepare_response, Command};
 use crate::data::brewers_friend::bf_data_manager::BFDataManager;
-use crate::data::brewers_friend::sessions::BrewSession;
+use crate::data::macbrew::sessions::BrewSession;
 use crate::error::Error::InvalidCommandInput;
 use crate::error::Result;
 use async_trait::async_trait;
@@ -15,7 +15,8 @@ impl<T: BFDataManager + 'static> Command<T> for GetSessionsCommand<T> {
     async fn handle(rid: &str, args: &[&str]) -> Result<Vec<u8>> {
         match args {
             [session_id] => {
-                let session: BrewSession = T::session(session_id).await?;
+                let bf_session = T::session(session_id).await?;
+                let session = BrewSession::from_bf_session(&bf_session);
                 prepare_response(rid, true, &session)
             }
             [_args @ ..] => Err(InvalidCommandInput {
