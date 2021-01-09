@@ -1,6 +1,6 @@
 use crate::data::brewers_friend::bf_data_manager::BFDataManager;
 use crate::data::brewers_friend::recipes::BeerXml;
-use crate::data::brewers_friend::sessions::{BrewSession, BrewSessionsResponse};
+use crate::data::brewers_friend::sessions::{BFBrewSession, BFBrewSessionsResponse};
 use crate::error::{Error, Result};
 use async_trait::async_trait;
 use reqwest;
@@ -43,7 +43,7 @@ fn create_client() -> Result<reqwest::Client> {
 
 #[async_trait]
 impl BFDataManager for BFApiDataManager {
-    async fn sessions() -> Result<Vec<BrewSession>> {
+    async fn sessions() -> Result<Vec<BFBrewSession>> {
         println!("Fetching sessions...");
         let client = create_client()?;
 
@@ -53,7 +53,7 @@ impl BFDataManager for BFApiDataManager {
 
         let body = res.text().await?;
 
-        let response: BrewSessionsResponse = match serde_json::from_str(&body) {
+        let response: BFBrewSessionsResponse = match serde_json::from_str(&body) {
             Ok(response) => response,
             Err(error) => panic!(
                 "Could not decode response from Brewers Friend API: {:#?}",
@@ -66,7 +66,7 @@ impl BFDataManager for BFApiDataManager {
         Ok(response.brewsessions)
     }
 
-    async fn session(id: &str) -> Result<BrewSession> {
+    async fn session(id: &str) -> Result<BFBrewSession> {
         println!("Fetching session with id [{}]...", id);
         let client = create_client()?;
 
@@ -76,7 +76,7 @@ impl BFDataManager for BFApiDataManager {
 
         let body = res.text().await?;
 
-        let response: BrewSessionsResponse = match serde_json::from_str(&body) {
+        let response: BFBrewSessionsResponse = match serde_json::from_str(&body) {
             Ok(response) => response,
             Err(error) => panic!(
                 "Could not decode response from Brewers Friend API: {:#?}",

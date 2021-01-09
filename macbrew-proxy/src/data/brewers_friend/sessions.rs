@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct BrewSession {
+pub struct BFBrewSession {
     pub id: String,
     pub phase: String,
     pub batchcode: String,
@@ -10,8 +10,8 @@ pub struct BrewSession {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct BrewSessionsResponse {
+pub struct BFBrewSessionsResponse {
     pub message: String,
     pub count: String,
-    pub brewsessions: Vec<BrewSession>,
+    pub brewsessions: Vec<BFBrewSession>,
 }
