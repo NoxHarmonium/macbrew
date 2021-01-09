@@ -90,7 +90,7 @@ mod tests {
 
     use super::*;
 
-    fn assert_request_id(binary: &Vec<u8>, request_id: &'static str) -> () {
+    fn assert_request_id(binary: &Vec<u8>, request_id: &'static str) {
         assert_eq!(
             &binary[4..6],
             MAC_ROMAN
@@ -120,7 +120,7 @@ mod tests {
 
         let result = handle_line("11 GET RECIPE 123456").await.unwrap();
 
-        insta::assert_debug_snapshot!(format_binary_for_snap(&result));
+        insta::assert_debug_snapshot!("get_recipe", format_binary_for_snap(&result));
         assert_request_id(&result, "11");
     }
 
@@ -136,7 +136,7 @@ mod tests {
 
         let result = handle_line("22 LIST SESSION").await.unwrap();
 
-        insta::assert_debug_snapshot!(format_binary_for_snap(&result));
+        insta::assert_debug_snapshot!("list_sessions", format_binary_for_snap(&result));
         assert_request_id(&result, "22");
     }
 
@@ -152,7 +152,7 @@ mod tests {
 
         let result = handle_line("33 GET SESSION 363597").await.unwrap();
 
-        insta::assert_debug_snapshot!(format_binary_for_snap(&result));
+        insta::assert_debug_snapshot!("get_sessions", format_binary_for_snap(&result));
         assert_request_id(&result, "33");
     }
 }
