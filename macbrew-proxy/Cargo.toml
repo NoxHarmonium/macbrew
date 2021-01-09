@@ -1,5 +1,5 @@
 [package]
-name = "brew-proxy"
+name = "macbrew-proxy"
 version = "0.1.0"
 authors = ["Sean Dawson <contact@seandawson.info>"]
 edition = "2018"
