@@ -7,12 +7,14 @@ use std::marker::PhantomData;
 
 // TODO: Work out why rustc thinks T is unused. Is PhantomData needed? Can I restructure this?
 // Clue: https://github.com/rust-lang/rust/issues/23246
-pub struct ListSessionsCommand<T: BFDataManager>(PhantomData<T>);
+pub struct ListSessionsCommand<DataManager: BFDataManager>(PhantomData<DataManager>);
 
 #[async_trait]
-impl<T: BFDataManager + 'static> Command<T> for ListSessionsCommand<T> {
+impl<DataManager: BFDataManager + 'static> Command<DataManager>
+    for ListSessionsCommand<DataManager>
+{
     async fn handle(rid: &str, _args: &[&str]) -> Result<Vec<u8>> {
-        let sessions = T::sessions().await?;
+        let sessions = DataManager::sessions().await?;
         let session_list = sessions
             .iter()
             .map(|session| BrewSessionReference::from_bf_session(session))
