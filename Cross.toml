@@ -1,0 +1,4 @@
+[build.env]
+passthrough = [
+    "BREWERS_FRIEND_API_KEY",
+]
