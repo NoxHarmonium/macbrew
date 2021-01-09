@@ -1,8 +1,9 @@
+#![warn(clippy::all)]
+
 use clap::Clap;
 use error::{Error, Result};
 use futures::sink::SinkExt;
 use std::str;
-use tokio;
 use tokio::stream::StreamExt;
 use tokio_serial::{Serial, SerialPortSettings};
 use tokio_util::codec::Framed;
@@ -30,7 +31,7 @@ struct Opts {
 }
 
 async fn handle_line(line: &str) -> Result<Vec<u8>> {
-    let components = line.split(" ").collect::<Vec<_>>();
+    let components = line.split(' ').collect::<Vec<_>>();
     let response = match components.as_slice() {
         [] => Err(Error::InvalidCommandInput {
             message: String::from(line),
@@ -104,7 +105,7 @@ mod tests {
             .row_width(16)
             .finish();
         // Split on new lines to make the snapshots easier to read
-        view.to_string().split("\n").map(String::from).collect()
+        view.to_string().split('\n').map(String::from).collect()
     }
 
     #[tokio::test]

@@ -3,7 +3,6 @@ use crate::data::brewers_friend::recipes::BeerXml;
 use crate::data::brewers_friend::sessions::{BFBrewSession, BFBrewSessionsResponse};
 use crate::error::{Error, Result};
 use async_trait::async_trait;
-use reqwest;
 use reqwest::header::HeaderMap;
 use serde::Deserialize;
 

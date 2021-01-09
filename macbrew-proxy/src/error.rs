@@ -47,25 +47,19 @@ pub type Result<T, E = Error> = std::result::Result<T, E>;
 
 impl From<ReqwestError> for Error {
     fn from(inner_error: ReqwestError) -> Self {
-        Error::ApiError {
-            inner_error: inner_error,
-        }
+        Error::ApiError { inner_error }
     }
 }
 
 impl From<std::io::Error> for Error {
     fn from(inner_error: std::io::Error) -> Self {
-        Error::SerialIoError {
-            inner_error: inner_error,
-        }
+        Error::SerialIoError { inner_error }
     }
 }
 
 impl From<quick_xml::de::DeError> for Error {
     fn from(inner_error: DeError) -> Self {
-        Error::XMLError {
-            inner_error: inner_error,
-        }
+        Error::XMLError { inner_error }
     }
 }
 
