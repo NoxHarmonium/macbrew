@@ -3,6 +3,7 @@
 use clap::Clap;
 use error::{Error, Result};
 use futures::sink::SinkExt;
+use std::convert::TryInto;
 use std::str;
 use tokio::stream::StreamExt;
 use tokio_serial::{Serial, SerialPortSettings};
@@ -103,8 +104,11 @@ mod tests {
     use super::*;
 
     fn assert_request_id(binary: &Vec<u8>, request_id: &'static str) {
+        // First 4 bytes are the 32 bit integer that indicates the length of the session ID string
+        let string_len =
+            u32::from_le_bytes(binary[0..4].try_into().expect("expected 4 byte slice"));
         assert_eq!(
-            &binary[4..6],
+            &binary[4..4 + string_len as usize],
             MAC_ROMAN
                 .encode(request_id, EncoderTrap::Replace)
                 .unwrap()
