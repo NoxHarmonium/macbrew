@@ -3,7 +3,6 @@
 use clap::Clap;
 use error::{Error, Result};
 use futures::sink::SinkExt;
-use std::convert::TryInto;
 use std::str;
 use tokio::stream::StreamExt;
 use tokio_serial::{Serial, SerialPortSettings};
@@ -100,6 +99,7 @@ mod tests {
     use encoding::{EncoderTrap, Encoding};
     use hexplay::HexViewBuilder;
     use mockito::mock;
+    use std::convert::TryInto;
 
     use super::*;
 
