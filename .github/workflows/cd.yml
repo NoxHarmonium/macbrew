@@ -73,7 +73,6 @@ jobs:
       - name: Rename binary
         shell: bash
         run: |
-          ls target
           mv target/${{ matrix.job.target }}/release/macbrew-proxy ./macbrew-proxy-${{ matrix.job.target }}
 
       - name: Releasing assets
