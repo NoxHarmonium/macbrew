@@ -49,6 +49,8 @@ impl Encoder<Vec<u8>> for LineCodec {
 
     fn encode(&mut self, item: Vec<u8>, dst: &mut BytesMut) -> Result<(), Self::Error> {
         dst.extend(item);
+        // Finish the line
+        dst.extend(MAC_ROMAN.encode("\r\n", EncoderTrap::Replace).unwrap());
         Ok(())
     }
 }
