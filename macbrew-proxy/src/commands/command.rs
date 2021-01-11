@@ -10,7 +10,7 @@ pub trait Command<DataManagerType: BFDataManager> {
     async fn handle(rid: &str, args: &[&str]) -> Result<Vec<u8>>;
 }
 
-fn checksum(payload: &Vec<u8>) -> Result<Vec<u8>> {
+fn checksum(payload: &[u8]) -> Result<Vec<u8>> {
     let checksum_value = xor_checksum_from_bytes(payload);
     serialize(&checksum_value)
 }
