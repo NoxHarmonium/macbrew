@@ -55,6 +55,9 @@ impl StdVec {
 //     }
 // }
 
+// TODO: Clean this up
+// TODO: Casting from u32 to u16 without a check is probably dangerous. Better check what happens
+
 /// Based on Postcard serializer but simpler and more classic Mac compatible
 /// See: https://github.com/jamesmunns/postcard/blob/master/src/ser/serializer.rs
 pub struct Serializer {
@@ -159,7 +162,7 @@ impl<'a> ser::Serializer for &'a mut Serializer {
 
     fn serialize_str(self, v: &str) -> Result<()> {
         self.output
-            .try_extend(&(v.len() as u32).to_le_bytes())
+            .try_extend(&(v.len() as u16).to_le_bytes())
             .map_err(|_| Error::SerializeBufferFull {})?;
         self.output
             .try_extend(v.as_bytes())
@@ -169,7 +172,7 @@ impl<'a> ser::Serializer for &'a mut Serializer {
 
     fn serialize_bytes(self, v: &[u8]) -> Result<()> {
         self.output
-            .try_extend(&(v.len() as u32).to_le_bytes())
+            .try_extend(&(v.len() as u16).to_le_bytes())
             .map_err(|_| Error::SerializeBufferFull {})?;
         self.output
             .try_extend(v)
@@ -203,7 +206,7 @@ impl<'a> ser::Serializer for &'a mut Serializer {
         _variant: &'static str,
     ) -> Result<()> {
         self.output
-            .try_extend(&(variant_index as u32).to_le_bytes())
+            .try_extend(&(variant_index as u16).to_le_bytes())
             .map_err(|_| Error::SerializeBufferFull {})
     }
 
@@ -225,14 +228,14 @@ impl<'a> ser::Serializer for &'a mut Serializer {
         T: ?Sized + Serialize,
     {
         self.output
-            .try_extend(&(variant_index as u32).to_le_bytes())
+            .try_extend(&(variant_index as u16).to_le_bytes())
             .map_err(|_| Error::SerializeBufferFull {})?;
         value.serialize(self)
     }
 
     fn serialize_seq(self, len: Option<usize>) -> Result<Self::SerializeSeq> {
         self.output
-            .try_extend(&(len.ok_or(Error::SerializeSeqLengthUnknown {})? as u32).to_le_bytes())
+            .try_extend(&(len.ok_or(Error::SerializeSeqLengthUnknown {})? as u16).to_le_bytes())
             .map_err(|_| Error::SerializeBufferFull {})?;
         Ok(self)
     }
@@ -257,14 +260,14 @@ impl<'a> ser::Serializer for &'a mut Serializer {
         _len: usize,
     ) -> Result<Self::SerializeTupleVariant> {
         self.output
-            .try_extend(&(variant_index as u32).to_le_bytes())
+            .try_extend(&(variant_index as u16).to_le_bytes())
             .map_err(|_| Error::SerializeBufferFull {})?;
         Ok(self)
     }
 
     fn serialize_map(self, len: Option<usize>) -> Result<Self::SerializeMap> {
         self.output
-            .try_extend(&(len.ok_or(Error::SerializeSeqLengthUnknown {})? as u32).to_le_bytes())
+            .try_extend(&(len.ok_or(Error::SerializeSeqLengthUnknown {})? as u16).to_le_bytes())
             .map_err(|_| Error::SerializeBufferFull {})?;
         Ok(self)
     }
@@ -281,7 +284,7 @@ impl<'a> ser::Serializer for &'a mut Serializer {
         _len: usize,
     ) -> Result<Self::SerializeStructVariant> {
         self.output
-            .try_extend(&(variant_index as u32).to_le_bytes())
+            .try_extend(&(variant_index as u16).to_le_bytes())
             .map_err(|_| Error::SerializeBufferFull {})?;
         Ok(self)
     }

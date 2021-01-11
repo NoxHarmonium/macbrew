@@ -3,6 +3,6 @@ source: macbrew-proxy/src/main.rs
 expression: format_binary_for_snap(&result)
 ---
 [
-    "00000000  05 00 00 00 45 52 52 4F 52 00 0D 00 00 00 45 6D  | ♣...ERROR.♪...Em |",
-    "00000010  70 74 79 20 52 65 71 75 65 73 74                 | pty Request      |",
+    "00000000  05 00 45 52 52 4F 52 00 0D 00 45 6D 70 74 79 20  | ♣.ERROR.♪.Empty  |",
+    "00000010  52 65 71 75 65 73 74                             | Request          |",
 ]

@@ -3,7 +3,7 @@ source: macbrew-proxy/src/main.rs
 expression: format_binary_for_snap(&result)
 ---
 [
-    "00000000  03 00 00 00 46 4F 4F 00 1E 00 00 00 49 6E 76 61  | ♥...FOO.▲...Inva |",
-    "00000010  6C 69 64 20 63 6F 6D 6D 61 6E 64 20 69 6E 70 75  | lid command inpu |",
-    "00000020  74 3A 20 46 4F 4F 20 42 41 52                    | t: FOO BAR       |",
+    "00000000  03 00 46 4F 4F 00 1E 00 49 6E 76 61 6C 69 64 20  | ♥.FOO.▲.Invalid  |",
+    "00000010  63 6F 6D 6D 61 6E 64 20 69 6E 70 75 74 3A 20 46  | command input: F |",
+    "00000020  4F 4F 20 42 41 52                                | OO BAR           |",
 ]
