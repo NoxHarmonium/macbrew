@@ -155,4 +155,11 @@ mod tests {
         insta::assert_debug_snapshot!("get_sessions", format_binary_for_snap(&result));
         assert_request_id(&result, "33");
     }
+
+    #[tokio::test]
+    async fn test_invalid_command() {
+        let result = handle_line("FOO BAR").await.unwrap();
+
+        insta::assert_debug_snapshot!("invalid_command", format_binary_for_snap(&result));
+    }
 }
