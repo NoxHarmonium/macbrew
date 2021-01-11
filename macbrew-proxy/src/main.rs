@@ -31,28 +31,40 @@ struct Opts {
 }
 
 async fn handle_line(line: &str) -> Result<Vec<u8>> {
-    let components = line.split(' ').collect::<Vec<_>>();
-    let response = match components.as_slice() {
-        [] => Err(Error::InvalidCommandInput {
-            message: String::from(line),
-        }),
-        [rid, "LIST", "SESSION", args @ ..] => {
-            commands::list_sessions::ListSessionsCommand::<BFApiDataManager>::handle(rid, args)
+    let components = line.split_terminator(' ').collect::<Vec<_>>();
+    if let Some((request_id, rest)) = components.split_first() {
+        let response = match rest {
+            [] => Err(Error::InvalidCommandInput {
+                message: String::from(line),
+            }),
+            ["LIST", "SESSION", args @ ..] => {
+                commands::list_sessions::ListSessionsCommand::<BFApiDataManager>::handle(
+                    request_id, args,
+                )
                 .await
+            }
+            ["GET", "SESSION", args @ ..] => {
+                commands::get_sessions::GetSessionsCommand::<BFApiDataManager>::handle(
+                    request_id, args,
+                )
+                .await
+            }
+            ["GET", "RECIPE", args @ ..] => {
+                commands::get_recipes::GetRecipesCommand::<BFApiDataManager>::handle(
+                    request_id, args,
+                )
+                .await
+            }
+            [_args @ ..] => Err(Error::InvalidCommandInput {
+                message: String::from(line),
+            }),
+        };
+        match response {
+            Ok(response) => Ok(response),
+            Err(error) => prepare_response(request_id, false, &error.to_string()),
         }
-        [rid, "GET", "SESSION", args @ ..] => {
-            commands::get_sessions::GetSessionsCommand::<BFApiDataManager>::handle(rid, args).await
-        }
-        [rid, "GET", "RECIPE", args @ ..] => {
-            commands::get_recipes::GetRecipesCommand::<BFApiDataManager>::handle(rid, args).await
-        }
-        [_, _args @ ..] => Err(Error::InvalidCommandInput {
-            message: String::from(line),
-        }),
-    };
-    match response {
-        Ok(response) => Ok(response),
-        Err(error) => prepare_response("ERROR", false, &error.to_string()),
+    } else {
+        prepare_response("ERROR", false, &"Empty Request")
     }
 }
 
@@ -161,5 +173,13 @@ mod tests {
         let result = handle_line("FOO BAR").await.unwrap();
 
         insta::assert_debug_snapshot!("invalid_command", format_binary_for_snap(&result));
+        assert_request_id(&result, "FOO");
+    }
+
+    #[tokio::test]
+    async fn test_empty_command() {
+        let result = handle_line("").await.unwrap();
+
+        insta::assert_debug_snapshot!("empty_command", format_binary_for_snap(&result));
     }
 }
