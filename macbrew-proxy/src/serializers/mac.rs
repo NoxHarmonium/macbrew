@@ -92,24 +92,24 @@ impl<'a> ser::Serializer for &'a mut Serializer {
     }
 
     fn serialize_i8(self, v: i8) -> Result<()> {
-        self.serialize_u8(v.to_le_bytes()[0])
+        self.serialize_u8(v.to_be_bytes()[0])
     }
 
     fn serialize_i16(self, v: i16) -> Result<()> {
         self.output
-            .try_extend(&v.to_le_bytes())
+            .try_extend(&v.to_be_bytes())
             .map_err(|_| Error::SerializeBufferFull {})
     }
 
     fn serialize_i32(self, v: i32) -> Result<()> {
         self.output
-            .try_extend(&v.to_le_bytes())
+            .try_extend(&v.to_be_bytes())
             .map_err(|_| Error::SerializeBufferFull {})
     }
 
     fn serialize_i64(self, v: i64) -> Result<()> {
         self.output
-            .try_extend(&v.to_le_bytes())
+            .try_extend(&v.to_be_bytes())
             .map_err(|_| Error::SerializeBufferFull {})
     }
 
@@ -121,31 +121,31 @@ impl<'a> ser::Serializer for &'a mut Serializer {
 
     fn serialize_u16(self, v: u16) -> Result<()> {
         self.output
-            .try_extend(&v.to_le_bytes())
+            .try_extend(&v.to_be_bytes())
             .map_err(|_| Error::SerializeBufferFull {})
     }
 
     fn serialize_u32(self, v: u32) -> Result<()> {
         self.output
-            .try_extend(&v.to_le_bytes())
+            .try_extend(&v.to_be_bytes())
             .map_err(|_| Error::SerializeBufferFull {})
     }
 
     fn serialize_u64(self, v: u64) -> Result<()> {
         self.output
-            .try_extend(&v.to_le_bytes())
+            .try_extend(&v.to_be_bytes())
             .map_err(|_| Error::SerializeBufferFull {})
     }
 
     fn serialize_f32(self, v: f32) -> Result<()> {
-        let buf = v.to_bits().to_le_bytes();
+        let buf = v.to_bits().to_be_bytes();
         self.output
             .try_extend(&buf)
             .map_err(|_| Error::SerializeBufferFull {})
     }
 
     fn serialize_f64(self, v: f64) -> Result<()> {
-        let buf = v.to_bits().to_le_bytes();
+        let buf = v.to_bits().to_be_bytes();
         self.output
             .try_extend(&buf)
             .map_err(|_| Error::SerializeBufferFull {})
@@ -162,7 +162,7 @@ impl<'a> ser::Serializer for &'a mut Serializer {
 
     fn serialize_str(self, v: &str) -> Result<()> {
         self.output
-            .try_extend(&(v.len() as u16).to_le_bytes())
+            .try_extend(&(v.len() as u16).to_be_bytes())
             .map_err(|_| Error::SerializeBufferFull {})?;
         self.output
             .try_extend(v.as_bytes())
@@ -172,7 +172,7 @@ impl<'a> ser::Serializer for &'a mut Serializer {
 
     fn serialize_bytes(self, v: &[u8]) -> Result<()> {
         self.output
-            .try_extend(&(v.len() as u16).to_le_bytes())
+            .try_extend(&(v.len() as u16).to_be_bytes())
             .map_err(|_| Error::SerializeBufferFull {})?;
         self.output
             .try_extend(v)
@@ -206,7 +206,7 @@ impl<'a> ser::Serializer for &'a mut Serializer {
         _variant: &'static str,
     ) -> Result<()> {
         self.output
-            .try_extend(&(variant_index as u16).to_le_bytes())
+            .try_extend(&(variant_index as u16).to_be_bytes())
             .map_err(|_| Error::SerializeBufferFull {})
     }
 
@@ -228,14 +228,14 @@ impl<'a> ser::Serializer for &'a mut Serializer {
         T: ?Sized + Serialize,
     {
         self.output
-            .try_extend(&(variant_index as u16).to_le_bytes())
+            .try_extend(&(variant_index as u16).to_be_bytes())
             .map_err(|_| Error::SerializeBufferFull {})?;
         value.serialize(self)
     }
 
     fn serialize_seq(self, len: Option<usize>) -> Result<Self::SerializeSeq> {
         self.output
-            .try_extend(&(len.ok_or(Error::SerializeSeqLengthUnknown {})? as u16).to_le_bytes())
+            .try_extend(&(len.ok_or(Error::SerializeSeqLengthUnknown {})? as u16).to_be_bytes())
             .map_err(|_| Error::SerializeBufferFull {})?;
         Ok(self)
     }
@@ -260,14 +260,14 @@ impl<'a> ser::Serializer for &'a mut Serializer {
         _len: usize,
     ) -> Result<Self::SerializeTupleVariant> {
         self.output
-            .try_extend(&(variant_index as u16).to_le_bytes())
+            .try_extend(&(variant_index as u16).to_be_bytes())
             .map_err(|_| Error::SerializeBufferFull {})?;
         Ok(self)
     }
 
     fn serialize_map(self, len: Option<usize>) -> Result<Self::SerializeMap> {
         self.output
-            .try_extend(&(len.ok_or(Error::SerializeSeqLengthUnknown {})? as u16).to_le_bytes())
+            .try_extend(&(len.ok_or(Error::SerializeSeqLengthUnknown {})? as u16).to_be_bytes())
             .map_err(|_| Error::SerializeBufferFull {})?;
         Ok(self)
     }
@@ -284,7 +284,7 @@ impl<'a> ser::Serializer for &'a mut Serializer {
         _len: usize,
     ) -> Result<Self::SerializeStructVariant> {
         self.output
-            .try_extend(&(variant_index as u16).to_le_bytes())
+            .try_extend(&(variant_index as u16).to_be_bytes())
             .map_err(|_| Error::SerializeBufferFull {})?;
         Ok(self)
     }
