@@ -13,6 +13,7 @@ mod commands;
 mod data;
 mod error;
 mod serializers;
+mod utils;
 
 #[cfg(unix)]
 const DEFAULT_TTY: &str = "/dev/ttyUSB0";
@@ -95,6 +96,7 @@ async fn main() -> Result<()> {
 #[cfg(test)]
 mod tests {
 
+    use crate::utils::xor_checksum_from_bytes;
     use encoding::all::MAC_ROMAN;
     use encoding::{EncoderTrap, Encoding};
     use hexplay::HexViewBuilder;
@@ -104,19 +106,54 @@ mod tests {
     use super::*;
 
     fn assert_request_id(binary: &Vec<u8>, request_id: &'static str) {
-        // First 2 bytes are the 16 bit integer that indicates the length of the session ID string
-        let string_len = u16::from_le_bytes(
-            binary[0..2]
+        // The first two bytes after the message length are the 16 bit integer that indicates the length of the session ID string
+        let string_len = u16::from_be_bytes(
+            binary[2..4]
                 .try_into()
                 .expect("expected 2 byte (u16) slice"),
         );
+        println!("string_len: {}", string_len);
         assert_eq!(
-            &binary[2..2 + string_len as usize],
+            &binary[4..4 + string_len as usize],
             MAC_ROMAN
                 .encode(request_id, EncoderTrap::Replace)
                 .unwrap()
                 .as_slice()
         );
+    }
+
+    fn assert_length(binary: &Vec<u8>) {
+        // First 2 bytes are the 16 bit integer that indicates the length of the entire message (minus checksum)
+        let length_size = 2;
+        // Checksum is 32 bit
+        let checksum_size = 4;
+        let expected_length = u16::from_be_bytes(
+            binary[0..2]
+                .try_into()
+                .expect("expected 2 byte (u16) slice"),
+        );
+        assert_eq!(
+            expected_length,
+            // Test only the length of the payload, not the envelope
+            (binary.len() - length_size - checksum_size) as u16
+        );
+    }
+
+    fn assert_checksum(binary: &Vec<u8>) {
+        // First 2 bytes are the 16 bit integer that indicates the length of the entire message. Discard that.
+        let mut payload_without_length = binary.clone().split_off(2);
+        let checksum_bytes = payload_without_length.split_off(payload_without_length.len() - 4);
+        let checksum_value = u32::from_be_bytes(
+            checksum_bytes
+                .try_into()
+                .expect("expected 4 byte (u32) slice"),
+        );
+
+        let payload_checksum = xor_checksum_from_bytes(&payload_without_length);
+        let result = checksum_value ^ payload_checksum;
+
+        // XOR of all bytes and checksum should be zero
+        assert_eq!(result, 0);
     }
 
     fn format_binary_for_snap(binary: &Vec<u8>) -> Vec<String> {
@@ -139,8 +176,10 @@ mod tests {
 
         let result = handle_line("11 GET RECIPE 123456").await.unwrap();
 
-        insta::assert_debug_snapshot!("get_recipe", format_binary_for_snap(&result));
+        assert_length(&result);
+        assert_checksum(&result);
         assert_request_id(&result, "11");
+        insta::assert_debug_snapshot!("get_recipe", format_binary_for_snap(&result));
     }
 
     #[tokio::test]
@@ -155,8 +194,10 @@ mod tests {
 
         let result = handle_line("22 LIST SESSION").await.unwrap();
 
-        insta::assert_debug_snapshot!("list_sessions", format_binary_for_snap(&result));
+        assert_length(&result);
+        assert_checksum(&result);
         assert_request_id(&result, "22");
+        insta::assert_debug_snapshot!("list_sessions", format_binary_for_snap(&result));
     }
 
     #[tokio::test]
@@ -171,8 +212,10 @@ mod tests {
 
         let result = handle_line("33 GET SESSION 363597").await.unwrap();
 
-        insta::assert_debug_snapshot!("get_sessions", format_binary_for_snap(&result));
+        assert_length(&result);
+        assert_checksum(&result);
         assert_request_id(&result, "33");
+        insta::assert_debug_snapshot!("get_sessions", format_binary_for_snap(&result));
     }
 
     #[tokio::test]
@@ -180,6 +223,8 @@ mod tests {
         let result = handle_line("FOO BAR").await.unwrap();
 
         insta::assert_debug_snapshot!("invalid_command", format_binary_for_snap(&result));
+        assert_length(&result);
+        assert_checksum(&result);
         assert_request_id(&result, "FOO");
     }
 
@@ -188,5 +233,7 @@ mod tests {
         let result = handle_line("").await.unwrap();
 
         insta::assert_debug_snapshot!("empty_command", format_binary_for_snap(&result));
+        assert_length(&result);
+        assert_checksum(&result);
     }
 }
