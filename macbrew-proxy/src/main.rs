@@ -104,11 +104,14 @@ mod tests {
     use super::*;
 
     fn assert_request_id(binary: &Vec<u8>, request_id: &'static str) {
-        // First 4 bytes are the 32 bit integer that indicates the length of the session ID string
-        let string_len =
-            u32::from_le_bytes(binary[0..4].try_into().expect("expected 4 byte slice"));
+        // First 2 bytes are the 16 bit integer that indicates the length of the session ID string
+        let string_len = u16::from_le_bytes(
+            binary[0..2]
+                .try_into()
+                .expect("expected 2 byte (u16) slice"),
+        );
         assert_eq!(
-            &binary[4..4 + string_len as usize],
+            &binary[2..2 + string_len as usize],
             MAC_ROMAN
                 .encode(request_id, EncoderTrap::Replace)
                 .unwrap()
