@@ -25,7 +25,7 @@ use commands::command::{prepare_response, Command};
 use data::brewers_friend::bf_api_data_manager::BFApiDataManager;
 
 #[derive(Clap)]
-#[clap(version = "0.1", author = "Sean Dawson <contact@seandawson.info>")]
+#[clap(version = "0.1.4", author = "Sean Dawson <contact@seandawson.info>")]
 struct Opts {
     #[clap(default_value = DEFAULT_TTY)]
     serial_device: String,
