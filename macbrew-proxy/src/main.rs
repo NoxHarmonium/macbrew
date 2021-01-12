@@ -230,6 +230,22 @@ mod tests {
     }
 
     #[tokio::test]
+    async fn test_command_error() {
+        let _m = mock("GET", "/v1/brewsessions/363597")
+            .with_status(500)
+            .with_header("x-api-key", "1234")
+            .with_body("something bad happened")
+            .create();
+
+        let result = handle_line("33 GET SESSION 363597").await.unwrap();
+
+        assert_length(&result);
+        assert_checksum(&result);
+        assert_request_id(&result, "33");
+        insta::assert_debug_snapshot!("command_error", format_binary_for_snap(&result));
+    }
+
+    #[tokio::test]
     async fn test_empty_command() {
         let result = handle_line("").await.unwrap();
 

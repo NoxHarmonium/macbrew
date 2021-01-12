@@ -21,6 +21,12 @@ pub enum Error {
         inner_error: DeError,
     },
 
+    #[snafu(display("Error derserializing JSON: {}", inner_error))]
+    JsonError {
+        #[serde(skip_serializing)]
+        inner_error: serde_json::Error,
+    },
+
     #[snafu(display("API response failed validation: {}", message))]
     ApiResponseValidationError { message: String },
 
@@ -60,6 +66,12 @@ impl From<std::io::Error> for Error {
 impl From<quick_xml::de::DeError> for Error {
     fn from(inner_error: DeError) -> Self {
         Error::XMLError { inner_error }
+    }
+}
+
+impl From<serde_json::Error> for Error {
+    fn from(inner_error: serde_json::Error) -> Self {
+        Error::JsonError { inner_error }
     }
 }
 

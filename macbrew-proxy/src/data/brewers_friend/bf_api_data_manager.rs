@@ -52,13 +52,7 @@ impl BFDataManager for BFApiDataManager {
 
         let body = res.text().await?;
 
-        let response: BFBrewSessionsResponse = match serde_json::from_str(&body) {
-            Ok(response) => response,
-            Err(error) => panic!(
-                "Could not decode response from Brewers Friend API: {:#?}",
-                error
-            ),
-        };
+        let response: BFBrewSessionsResponse = serde_json::from_str(&body)?;
 
         println!("Fetched [{:#?}] sessions", response.brewsessions.len());
 
@@ -75,13 +69,7 @@ impl BFDataManager for BFApiDataManager {
 
         let body = res.text().await?;
 
-        let response: BFBrewSessionsResponse = match serde_json::from_str(&body) {
-            Ok(response) => response,
-            Err(error) => panic!(
-                "Could not decode response from Brewers Friend API: {:#?}",
-                error
-            ),
-        };
+        let response: BFBrewSessionsResponse = serde_json::from_str(&body)?;
 
         let session = match response.brewsessions.as_slice() {
             [] => Err(Error::ApiResponseValidationError {
@@ -107,13 +95,7 @@ impl BFDataManager for BFApiDataManager {
 
         let body = res.text().await?;
 
-        let response = match quick_xml::de::from_str(&body) {
-            Ok(response) => response,
-            Err(error) => panic!(
-                "Could not decode response from Brewers Friend API: {:#?}",
-                error
-            ),
-        };
+        let response = quick_xml::de::from_str(&body)?;
 
         println!("Fetched recipe with id [{}]...", recipe_id);
 
