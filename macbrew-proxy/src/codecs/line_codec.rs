@@ -1,10 +1,9 @@
-use std::io;
-use tokio_util::codec::{Decoder, Encoder};
-
 use bytes::BytesMut;
-
 use encoding::all::MAC_ROMAN;
 use encoding::{DecoderTrap, EncoderTrap, Encoding};
+use hexplay::HexViewBuilder;
+use std::io;
+use tokio_util::codec::{Decoder, Encoder};
 
 ///
 /// A codec that just encodes/decodes text over a serial device
@@ -51,6 +50,12 @@ impl Encoder<Vec<u8>> for LineCodec {
         dst.extend(item);
         // Finish the line
         dst.extend(MAC_ROMAN.encode("\r\n", EncoderTrap::Replace).unwrap());
+
+        // TODO: Remove this, or put behind configurable log level
+        // Temporary logs to help debug serial interop with the Mac
+        let view = HexViewBuilder::new(dst).row_width(16).finish();
+        println!("Encoded [{}] bytes:\n{}", dst.len(), view);
+
         Ok(())
     }
 }

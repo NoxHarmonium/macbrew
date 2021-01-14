@@ -21,9 +21,9 @@ bytes = "0.5"
 async-trait = "0.1.42"
 snafu = "0.6.10"
 quick-xml = { version = "0.20", features = [ "serialize" ] }
+hexplay = "0.2.1"
 
 [dev-dependencies]
 mockito = "0.28.0"
 insta = "1.5.2"
 tokio-test = "0.4.0"
-hexplay = "0.2.1"
