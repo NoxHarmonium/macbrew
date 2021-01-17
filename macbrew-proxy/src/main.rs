@@ -57,6 +57,9 @@ async fn handle_line(line: &str) -> Result<Vec<u8>> {
                 )
                 .await
             }
+            ["PING", args @ ..] => {
+                commands::ping::PingCommand::<BFApiDataManager>::handle(request_id, args).await
+            }
             [_args @ ..] => Err(Error::InvalidCommandInput {
                 message: String::from(line),
             }),
@@ -216,6 +219,16 @@ mod tests {
         assert_checksum(&result);
         assert_request_id(&result, "33");
         insta::assert_debug_snapshot!("get_sessions", format_binary_for_snap(&result));
+    }
+
+    #[tokio::test]
+    async fn test_ping() {
+        let result = handle_line("1 PING").await.unwrap();
+
+        assert_length(&result);
+        assert_checksum(&result);
+        assert_request_id(&result, "1");
+        insta::assert_debug_snapshot!("ping", format_binary_for_snap(&result));
     }
 
     #[tokio::test]
