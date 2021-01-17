@@ -1,6 +1,7 @@
 #include <serial.h>
 #include "mbSerial.h"
 #include "mbConstants.h"
+#include "mbUtil.h"
 
 // For some reason my serial setup echos every byte
 // sent back to the receive buffer. It seems to be a problem
@@ -8,19 +9,21 @@
 // If set to 1, the SendCommand function will read 
 // as many bytes as it sends to cancel out the echo
 #define SUPRESS_ECHO 1
+#define kChecksumBytes 4
+// Accounts for \r\n on every response
+#define kSuffixSize 2
 
 short VerifyChecksum(char* buffer, int length);
 OSErr ReadBytes(Ptr outBuffer, int count);
 OSErr ReadBytesSkip(int count);
 OSErr ReadLength(unsigned int* outLength);
-void ShowAlert(char* message);
+void ShowAlert(Str255 message);
 
 // Output driver reference number
 int gOutputRefNum;
 // Input driver reference number
 int gInputRefNum;
 Handle gSerialBuffer;
-
 
 OSErr TearDownSerial() {
 	OSErr result;
@@ -51,6 +54,7 @@ OSErr TearDownSerial() {
 
 OSErr SetUpSerial() {
 	OSErr result;
+	SerShk serialHandshake;
 
 	// Always open output first
 	result = OpenDriver("\p.AOut", &gOutputRefNum);
@@ -65,15 +69,30 @@ OSErr SetUpSerial() {
 		return result;
 	}
 	
-	result = SerReset(gOutputRefNum, baud9600 + data8 + stop10 + noParity);
+	gSerialBuffer = NewHandle(8 * 1024);
+	HLock(gSerialBuffer);
+	result = SerSetBuf(gInputRefNum, *gSerialBuffer, 8 * 1024);
 	
 	if (result != noErr) {
 		return result;
 	}
 	
-	gSerialBuffer = NewHandle(32 * 1024);
-	HLock(gSerialBuffer);
-	result = SerSetBuf(gInputRefNum, *gSerialBuffer, 32 * 1024);
+	serialHandshake.fXOn = 1;
+	serialHandshake.xOn = 17;
+	serialHandshake.xOff = 19;
+	serialHandshake.fCTS = 0;
+	serialHandshake.errs = 0;
+	serialHandshake.evts = 0;
+	serialHandshake.fInX = 1;
+	
+	// control call 14 is better than SerHShake because it allows control of DTR
+	result = SerHShake(gOutputRefNum, &serialHandshake);
+	
+	if (result != noErr) {
+		return result;
+	}
+	
+	result = SerReset(gOutputRefNum, baud9600 + data8 + stop10 + noParity);
 	
 	return result;
 }
@@ -107,21 +126,34 @@ OSErr SendCommand(char* command) {
 	return result;
 }
 
+
 short VerifyChecksum(char* buffer, int length) {
 	int checksumOffset;
-	long accum;
+	long accum, nextWord;
 	int i;
+	Str255 temp;
 
-	checksumOffset = length - 4;
+	accum = 0;
+	checksumOffset = length - kChecksumBytes;
+
 	// Checksum is last 4 bytes
-	accum = *((unsigned long*)buffer[checksumOffset]);
+	accum = GetLongFromBuffer(buffer, checksumOffset);
 	
 	// Çlear the checksum so that if the payload does not
 	// align with 4 bytes, the remaining space will be padded with zeros
-	memset(buffer, checksumOffset, 4);
+	// TODO: Why does memset freeze the machine?
+	//memset(buffer + checksumOffset, 0, kChecksumBytes);
+	buffer[checksumOffset] = 0;
+	buffer[checksumOffset+1] = 0;
+	buffer[checksumOffset+2] = 0;
+	buffer[checksumOffset+3] = 0;
 	
-	for (i = 0; i < checksumOffset; i += 4) {
-		accum = accum ^ *((unsigned long*)buffer[i]);
+	for (i = 0; i < checksumOffset; i += kChecksumBytes) {
+		nextWord = GetLongFromBuffer(buffer, i);
+		//sprintf((char*)temp, "%lx", nextWord);
+		//c2pstr((char*)temp);
+		//ShowAlert(temp);
+		accum = accum ^ nextWord;
 	}
 	
 	return accum == 0;
@@ -148,69 +180,65 @@ OSErr ReadBytes(Ptr outBuffer, int count) {
  */
 OSErr ReadBytesSkip(int count) {
 	OSErr result;
-	Ptr skipBuffer;
-	int comp;
-	char temp[20];
+	Handle skipBuffer = NewHandle(count);
 	
-	skipBuffer = NewPtrClear(count);
-	result = ReadBytes(skipBuffer, count + 1);
-	// TODO: Remove this
-	comp = strcmp(result, "1 LIST SESSION\r");
+	HLock(skipBuffer);
+	result = ReadBytes((char*)*skipBuffer, count);
+	HUnlock(skipBuffer);
 	
-	//sprintf(temp, "result %d");
-	//ShowAlert(temp);
-	ShowAlert((char*)skipBuffer);
+	if (result != noErr) {
+		return result;
+	}
 	
-	DisposePtr(skipBuffer);
+	DisposeHandle(skipBuffer);
+	
 	return result;
 }
 
 
 
-void ShowAlert(char* message) {
+void ShowAlert(Str255 message) {
 	int myAlertItem;
+	
 	ParamText(message, "", "", "");
 	myAlertItem = NoteAlert(kAlertId, NULL);
 }
 
 OSErr ReadLength(unsigned int* outLength) {
 	OSErr result;
-	Ptr lengthBuffer;
-	unsigned int messageLength;
-	long tempBufferLength;
-	unsigned char a;
-	unsigned char b;
-	unsigned char c;
-	unsigned char d;
 	
-	SerGetBuf(gInputRefNum, &tempBufferLength);
+	result = ReadBytes((char*)outLength, sizeof(unsigned int));
 	
-	lengthBuffer = NewPtrClear(tempBufferLength + 1);
-	result = ReadBytes(lengthBuffer, tempBufferLength);
-	
-	if (result != noErr) {
-		return result;
-	}
-	
-	// Read in 16 bit BE integer;
-	a = *lengthBuffer; 
-	b = *(lengthBuffer+1);
-	c = *(lengthBuffer+2);
-	d = *(lengthBuffer+3);
-	
-	
-	DisposePtr(lengthBuffer);
-	
-	return noErr;
+	return result;
 }
 
-OSErr ReadResponse(char** outBuffer) {
+OSErr ReadResponse(Handle* outBuffer) {
 	// TODO: Is there some pattern to handle all these error code checks
 	// E.g. like finally in a try catch block?
 	OSErr result;
 	unsigned int messageLength;
+	Handle buffer;
+	Str255 temp;
+	int i;
+	int csResult;
+	int bufferSize;
 	
 	result = ReadLength(&messageLength);
+	bufferSize = messageLength + kChecksumBytes + kSuffixSize;
+	
+	buffer = NewHandleClear(bufferSize);
+	
+	HLock(buffer);
+	ReadBytes(*buffer, bufferSize);
+	csResult = VerifyChecksum(*buffer, messageLength + kChecksumBytes);
+	HUnlock(buffer);
+	
+	if (csResult == true) {
+		*outBuffer = buffer;
+	} else {
+		DisposeHandle(buffer);
+		*outBuffer = 0;
+	}
 	
 	return result;
 }

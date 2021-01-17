@@ -6,6 +6,6 @@
  ****/
 
 OSErr SendCommand(char* command);
-OSErr ReadResponse(char** outBuffer);
+OSErr ReadResponse(Handle* outBuffer);
 OSErr SetUpSerial();
 OSErr TearDownSerial();

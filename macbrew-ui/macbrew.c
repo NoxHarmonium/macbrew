@@ -108,12 +108,16 @@ void HandleEvent(void)
 
 
 main() {
-	OSErr serialResult;
-	char** responseData;
+	Handle* responseData;
 	
 	InitMacintosh();
 	SetUpMenus();
 	SetUpWindow();
+	
+	SetUpSerial();
+	SendCommand("1 PING\r");
+	ReadResponse(responseData);
+	TearDownSerial();
 	
 	for (;;)
 		HandleEvent();

@@ -37,7 +37,7 @@ void HandleMenu (long mSelect)
 	Str255		name;
 	GrafPtr		savePort;
 	WindowPeek	frontWindow;
-	char** 		responseData;
+	Handle* 	responseData;
 	char* 		command;
 	
 	
