@@ -113,7 +113,6 @@ mod tests {
                 .try_into()
                 .expect("expected 2 byte (u16) slice"),
         );
-        println!("string_len: {}", string_len);
         assert_eq!(
             &binary[4..4 + string_len as usize],
             MAC_ROMAN
@@ -252,5 +251,18 @@ mod tests {
         insta::assert_debug_snapshot!("empty_command", format_binary_for_snap(&result));
         assert_length(&result);
         assert_checksum(&result);
+    }
+
+    #[tokio::test]
+    async fn test_checksum_padding() {
+        // Check that the passing works by checking that all these values get the same checksum
+        let checksum1 = xor_checksum_from_bytes(&[1, 2, 3, 4, 5]);
+        let checksum2 = xor_checksum_from_bytes(&[1, 2, 3, 4, 5, 0]);
+        let checksum3 = xor_checksum_from_bytes(&[1, 2, 3, 4, 5, 0, 0]);
+        let checksum4 = xor_checksum_from_bytes(&[1, 2, 3, 4, 5, 0, 0, 0]);
+
+        assert_eq!(checksum4, checksum1);
+        assert_eq!(checksum4, checksum2);
+        assert_eq!(checksum4, checksum3);
     }
 }

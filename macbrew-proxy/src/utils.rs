@@ -6,7 +6,7 @@ pub fn xor_checksum_from_bytes(bytes: &[u8]) -> u32 {
     // Can be reduced to 16 bit if needed
     let word_size = 4; // bytes
     let payload_size = bytes.len();
-    let padding = 4 - (payload_size % word_size);
+    let padding = word_size - (payload_size % word_size);
 
     // TODO: Does clone copy the payload? Is this a cheap operation?
     let mut padded_payload = bytes.to_vec();
@@ -18,7 +18,7 @@ pub fn xor_checksum_from_bytes(bytes: &[u8]) -> u32 {
     padded_payload
         .chunks_exact(word_size)
         .map(|word| {
-            u32::from_le_bytes(
+            u32::from_be_bytes(
                 word.try_into()
                     .expect("chunks_exact should always pass the correct length"),
             )
