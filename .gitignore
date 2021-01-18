@@ -20,3 +20,5 @@ Cargo.lock
 # Don't check this in because it can have secrets in it
 devcontainer.env
 .history
+
+/include/CIncludes

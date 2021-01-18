@@ -1,4 +1,13 @@
 {
     "remote.containers.copyGitConfig": false,
-    "remote.containers.gitCredentialHelperConfigLocation": "none"
+    "remote.containers.gitCredentialHelperConfigLocation": "none",
+    "[c]": {
+        "files.encoding": "macroman",
+        "editor.tabSize": 4,
+        "editor.insertSpaces": false,
+        "files.eol": "auto",
+    },
+    "files.associations": {
+        "functional": "c"
+    }
 }

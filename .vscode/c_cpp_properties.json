@@ -1,0 +1,26 @@
+{
+    "env": {
+        "myDefaultIncludePath": [
+            "${workspaceFolder}",
+            "${workspaceFolder}/include/CIncludes",
+            "${workspaceFolder}/include/ThinkCIncludes"
+        ]
+    },
+    "configurations": [
+        {
+            "name": "Mac68k",
+            "includePath": [
+                "${myDefaultIncludePath}"
+            ],
+            "defines": [
+                "FOO",
+                "BAR=100"
+            ],
+            "forcedInclude": [
+                "${workspaceFolder}/include/MacIncludes.h"
+            ],
+            "cStandard": "c89"
+        }
+    ],
+    "version": 4
+}
