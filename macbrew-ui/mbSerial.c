@@ -217,10 +217,11 @@ OSErr ReadLength(unsigned short *outLength)
 {
 	OSErr result;
 	Handle lengthBuffer;
+	int bufferSize = sizeof(unsigned short);
 	
-	lengthBuffer = NewHandle(sizeof(outLength));
+	lengthBuffer = NewHandle(bufferSize);
 
-	result = ReadBytes(lengthBuffer, sizeof(outLength));
+	result = ReadBytes(lengthBuffer, bufferSize);
 	
 	*outLength = GetShortFromBuffer(*lengthBuffer, 0);
 	
