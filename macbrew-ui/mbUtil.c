@@ -1,9 +1,9 @@
 #include "mbUtil.h"
 #include "mbConstants.h"
 
-long GetLongFromBuffer(char *buffer, int offset)
+unsigned long GetLongFromBuffer(char *buffer, int offset)
 {
-	char b0, b1, b2, b3;
+	unsigned char b0, b1, b2, b3;
 	b0 = buffer[offset];
 	b1 = buffer[offset + 1];
 	b2 = buffer[offset + 2];
@@ -11,9 +11,9 @@ long GetLongFromBuffer(char *buffer, int offset)
 	return (b0 << 24) | (b1 << 16) | (b2 << 8) | b3;
 }
 
-short GetShortFromBuffer(char *buffer, int offset)
+unsigned short GetShortFromBuffer(char *buffer, int offset)
 {
-	char b0, b1;
+	unsigned char b0, b1;
 	b0 = buffer[offset];
 	b1 = buffer[offset + 1];
 	return (b0 << 8) | b1;
