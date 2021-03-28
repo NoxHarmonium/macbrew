@@ -53,3 +53,37 @@ Before shutting down the image,
 make sure that all the windows are closed
 and the desktop icons haven't been moved
 to facilitate automated testing.
+
+## Running
+
+Make sure the image has the latest code:
+
+```
+$ ./build-code-image.sh -f
+```
+
+Start the fake serial loopback devices:
+
+```
+$ socat -d -d pty,raw,echo=0 pty,raw,echo=0
+```
+
+Start macbrew-proxy:
+
+```
+$ cargo run /dev/pts/0
+```
+
+Start the emulator:
+
+```
+$ ./start.sh
+```
+
+## Troubleshooting
+
+### Emualtor freezes while debugging during serial read/write
+
+Not sure if this is a bug with Think C or Basilisk but it seems like the debugger freezes during serial IO/
+The "solution" is to not use the debugger.
+It doesn't seem to be as much of an issue on the real Mac
