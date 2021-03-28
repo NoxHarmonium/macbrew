@@ -27,7 +27,8 @@
 		"bungcip.better-toml",
 		"vadimcn.vscode-lldb",
 		"mutantdino.resourcemonitor",
-		"ms-vscode.cpptools"
+		"ms-vscode.cpptools",
+		"timonwong.shellcheck"
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
