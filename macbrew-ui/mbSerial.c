@@ -8,6 +8,8 @@
 // with the cable or my serial/USB converter.
 // If set to 1, the SendCommand function will read
 // as many bytes as it sends to cancel out the echo
+//
+// Note: This needs to be set to zero when emulating in Basilisk II because there is no fake echo there
 #define SUPRESS_ECHO 1
 #define kChecksumBytes 4
 // Accounts for \r\n on every response
@@ -301,14 +303,14 @@ OSErr SendCommand(char *command)
 {
 	OSErr result;
 	IOParam paramBlock;
-	unsigned int commandLength;
+	long commandLength;
 
-	commandLength = strlen(command);
+	commandLength = (long)strlen(command);
 
 	paramBlock.ioRefNum = gOutputRefNum;
 	paramBlock.ioBuffer = command;
 	paramBlock.ioReqCount = commandLength;
-	paramBlock.ioCompletion = 0;
+	paramBlock.ioCompletion = NULL;
 	paramBlock.ioVRefNum = 0;
 	paramBlock.ioPosMode = 0;
 
