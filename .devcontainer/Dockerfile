@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/rust:1
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     # Required native headers/libraries
-    && apt-get -y install --no-install-recommends socat tio libatk1.0-0 libgtk2.0-0 libtinyxml2-6a libsdl1.2debian \
+    && apt-get -y install --no-install-recommends socat tio shellcheck hfsutils libatk1.0-0 libgtk2.0-0 libtinyxml2-6a libsdl1.2debian  \
     && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts
 
 # TODO: I'm not sure why I can't just install this with apt-get

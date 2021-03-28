@@ -1,5 +1,5 @@
 displaycolordepth 0
-disk ./system710-macbrew-dev.image
+disk ./system710-macbrew-dev-with-code.image
 extfs /
 screen win/512/384
 seriala /dev/ttyS0
