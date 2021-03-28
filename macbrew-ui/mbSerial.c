@@ -28,16 +28,15 @@ OSErr ReadBytesSkip(int count);
 OSErr ReadLength(unsigned short *outLength);
 
 // Output driver reference number
-int gOutputRefNum;
+short gOutputRefNum;
 // Input driver reference number
-int gInputRefNum;
+short gInputRefNum;
 Handle gSerialBuffer;
-
 
 /**
  * Serial setup/teardown steps
  */
- 
+
 OSErr OpenSerialDriver()
 {
 	OSErr result;
@@ -218,15 +217,15 @@ OSErr ReadLength(unsigned short *outLength)
 	OSErr result;
 	Handle lengthBuffer;
 	int bufferSize = sizeof(unsigned short);
-	
+
 	lengthBuffer = NewHandle(bufferSize);
 
 	result = ReadBytes(lengthBuffer, bufferSize);
-	
+
 	*outLength = GetShortFromBuffer(*lengthBuffer, 0);
-	
+
 	DisposeHandle(lengthBuffer);
-	
+
 	return result;
 }
 

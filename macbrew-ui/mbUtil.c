@@ -27,14 +27,14 @@ void Panic(Str255 message)
 
 void ShowAlert(Str255 message)
 {
-	ParamText(message, "", "", "");
+	ParamText(message, "\p", "\p", "\p");
 	NoteAlert(kAlertId, NULL);
 }
 
 void CShowAlert(char *message)
 {
 	Str255 pString;
-	strcpy((char*)pString, message);
-	c2pstr((char*)pString);
+	strcpy((char *)pString, message);
+	c2pstr((char *)pString);
 	ShowAlert(pString);
 }
