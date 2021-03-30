@@ -3,8 +3,8 @@
 #include "mbWindow.h"
 #include "mbSerial.h"
 
-extern WindowPtr mbWindow;
-extern Rect dragRect;
+extern WindowPtr splashWindow;
+// extern Rect dragRect;
 
 void InitMacintosh(void);
 void HandleMouseDown(EventRecord *theEvent);
@@ -40,24 +40,21 @@ void HandleMouseDown(EventRecord *theEvent)
 		break;
 
 	case inDrag:
-		if (theWindow == mbWindow)
-			DragWindow(mbWindow, theEvent->where, &dragRect);
+		// if (theWindow == mbWindow)
+		// DragWindow(mbWindow, theEvent->where, &dragRect);
 		break;
 
 	case inContent:
-		if (theWindow == mbWindow)
+		if (theWindow == splashWindow)
 		{
-			if (theWindow != FrontWindow())
-				SelectWindow(mbWindow);
-			else
-				InvalRect(&mbWindow->portRect);
+			DestroySplashWindow();
 		}
 		break;
 
 	case inGoAway:
-		if (theWindow == mbWindow &&
-			TrackGoAway(mbWindow, theEvent->where))
-			HideWindow(mbWindow);
+		if (theWindow == splashWindow &&
+			TrackGoAway(splashWindow, theEvent->where))
+			HideWindow(splashWindow);
 		break;
 	}
 }
@@ -87,13 +84,16 @@ void HandleEvent(void)
 			break;
 
 		case updateEvt:
-			BeginUpdate(mbWindow);
+			// BeginUpdate(splashWindow);
 			//Draw stuff here
-			EndUpdate(mbWindow);
+			// EndUpdate(splashWindow);
 			break;
 
 		case activateEvt:
-			InvalRect(&mbWindow->portRect);
+			if (splashWindow != NULL)
+			{
+				InvalRect(&splashWindow->portRect);
+			}
 			break;
 		}
 }
@@ -105,7 +105,7 @@ main()
 
 	InitMacintosh();
 	SetUpMenus();
-	SetUpWindow();
+	SetUpSplashWindow();
 
 	SetUpSerial();
 	SendCommand("1 PING\r");
