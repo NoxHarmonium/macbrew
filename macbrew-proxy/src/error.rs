@@ -16,7 +16,7 @@ pub enum Error {
     },
 
     #[snafu(display("Error derserializing XML: {}", inner_error))]
-    XMLError {
+    XmlError {
         #[serde(skip_serializing)]
         inner_error: DeError,
     },
@@ -65,7 +65,7 @@ impl From<std::io::Error> for Error {
 
 impl From<quick_xml::de::DeError> for Error {
     fn from(inner_error: DeError) -> Self {
-        Error::XMLError { inner_error }
+        Error::XmlError { inner_error }
     }
 }
 

@@ -22,7 +22,7 @@ const DEFAULT_TTY: &str = "COM1";
 
 use codecs::line_codec::LineCodec;
 use commands::command::{prepare_response, Command};
-use data::brewers_friend::bf_api_data_manager::BFApiDataManager;
+use data::brewers_friend::bf_api_data_manager::BfApiDataManager;
 
 #[derive(Clap)]
 #[clap(version = "0.1.4", author = "Sean Dawson <contact@seandawson.info>")]
@@ -40,25 +40,25 @@ async fn handle_line(line: &str) -> Result<Vec<u8>> {
                 message: String::from(line),
             }),
             ["LIST", "SESSION", args @ ..] => {
-                commands::list_sessions::ListSessionsCommand::<BFApiDataManager>::handle(
+                commands::list_sessions::ListSessionsCommand::<BfApiDataManager>::handle(
                     request_id, args,
                 )
                 .await
             }
             ["GET", "SESSION", args @ ..] => {
-                commands::get_sessions::GetSessionsCommand::<BFApiDataManager>::handle(
+                commands::get_sessions::GetSessionsCommand::<BfApiDataManager>::handle(
                     request_id, args,
                 )
                 .await
             }
             ["GET", "RECIPE", args @ ..] => {
-                commands::get_recipes::GetRecipesCommand::<BFApiDataManager>::handle(
+                commands::get_recipes::GetRecipesCommand::<BfApiDataManager>::handle(
                     request_id, args,
                 )
                 .await
             }
             ["PING", args @ ..] => {
-                commands::ping::PingCommand::<BFApiDataManager>::handle(request_id, args).await
+                commands::ping::PingCommand::<BfApiDataManager>::handle(request_id, args).await
             }
             [_args @ ..] => Err(Error::InvalidCommandInput {
                 message: String::from(line),
