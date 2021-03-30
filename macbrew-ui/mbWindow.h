@@ -1,3 +1,4 @@
 
 
-void SetUpWindow(void);
+void SetUpSplashWindow(void);
+void DestroySplashWindow(void);

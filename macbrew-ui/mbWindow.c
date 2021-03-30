@@ -1,34 +1,33 @@
 
 
+#include "mbConstants.h"
 #include "mbWindow.h"
 
-WindowPtr mbWindow;
-Rect dragRect;
-Rect windowBounds = {40, 40, 150, 150};
-Rect circleStart = {10, 10, 100, 100};
-int width = 5;
+WindowPtr splashWindow = NULL;
+PicHandle splashPicture = NULL;
 
-void SetUpWindow(void)
+void SetUpSplashWindow(void)
 {
-	dragRect = screenBits.bounds;
-
-	mbWindow = NewWindow(0L, &windowBounds, "\pMacBrew", true, noGrowDocProc, (WindowPtr)-1L, true, 0);
-	SetPort(mbWindow);
+	splashWindow = GetNewWindow(kSplashWindowId, splashWindow, (WindowPtr)-1L);
+	splashPicture = GetPicture(kSplashImageId);
+	SetWindowPic(splashWindow, splashPicture);
+	SetPort(splashWindow);
 }
 
-void DrawBullseye(short active)
+void DestroySplashWindow(void)
 {
-	Rect myRect;
-	int color = 1;
-
-	SetPort(mbWindow);
-	EraseRect(&circleStart);
-	myRect = circleStart;
-
-	while (myRect.left < myRect.right)
+	if (splashPicture != NULL)
 	{
-		FillOval(&myRect, color ? (active ? black : gray) : white);
-		InsetRect(&myRect, width, width);
-		color = !color;
+		if (splashWindow != NULL)
+		{
+			SetWindowPic(splashWindow, NULL);
+		}
+		ReleaseResource((Handle)splashPicture);
+		splashPicture = NULL;
+	}
+	if (splashWindow != NULL)
+	{
+		DisposeWindow(splashWindow);
+		splashWindow = NULL;
 	}
 }
