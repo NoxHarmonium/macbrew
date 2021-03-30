@@ -1,4 +1,4 @@
-use crate::data::brewers_friend::bf_data_manager::BFDataManager;
+use crate::data::brewers_friend::bf_data_manager::BfDataManager;
 use crate::error::Result;
 use crate::serializers::mac::serialize;
 use crate::utils::xor_checksum_from_bytes;
@@ -6,7 +6,7 @@ use async_trait::async_trait;
 use serde::Serialize;
 
 #[async_trait]
-pub trait Command<DataManagerType: BFDataManager> {
+pub trait Command<DataManagerType: BfDataManager> {
     async fn handle(rid: &str, args: &[&str]) -> Result<Vec<u8>>;
 }
 

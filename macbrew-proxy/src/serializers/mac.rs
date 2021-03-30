@@ -23,6 +23,7 @@ where
 /// The `StdVec` flavor is a wrapper type around a `std::vec::Vec`.
 pub struct StdVec(pub Vec<u8>);
 
+#[allow(clippy::unnecessary_wraps)]
 impl StdVec {
     #[inline(always)]
     fn try_extend(&mut self, data: &[u8]) -> core::result::Result<(), ()> {

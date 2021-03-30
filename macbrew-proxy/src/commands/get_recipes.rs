@@ -1,5 +1,5 @@
 use crate::commands::command::{prepare_response, Command};
-use crate::data::brewers_friend::bf_data_manager::BFDataManager;
+use crate::data::brewers_friend::bf_data_manager::BfDataManager;
 use crate::data::macbrew::recipes::Recipe;
 use crate::error::Error::InvalidCommandInput;
 use crate::error::Result;
@@ -8,10 +8,10 @@ use std::marker::PhantomData;
 
 // TODO: Work out why rustc thinks T is unused. Is PhantomData needed? Can I restructure this?
 // Clue: https://github.com/rust-lang/rust/issues/23246
-pub struct GetRecipesCommand<DataManager: BFDataManager>(PhantomData<DataManager>);
+pub struct GetRecipesCommand<DataManager: BfDataManager>(PhantomData<DataManager>);
 
 #[async_trait]
-impl<DataManager: BFDataManager + 'static> Command<DataManager> for GetRecipesCommand<DataManager> {
+impl<DataManager: BfDataManager + 'static> Command<DataManager> for GetRecipesCommand<DataManager> {
     async fn handle(rid: &str, args: &[&str]) -> Result<Vec<u8>> {
         match args {
             [recipe_id] => {

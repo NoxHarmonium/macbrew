@@ -1,6 +1,6 @@
-use crate::data::brewers_friend::bf_data_manager::BFDataManager;
+use crate::data::brewers_friend::bf_data_manager::BfDataManager;
 use crate::data::brewers_friend::recipes::BeerXml;
-use crate::data::brewers_friend::sessions::{BFBrewSession, BFBrewSessionsResponse};
+use crate::data::brewers_friend::sessions::{BfBrewSession, BfBrewSessionsResponse};
 use crate::error::{Error, Result};
 use async_trait::async_trait;
 use reqwest::header::HeaderMap;
@@ -14,7 +14,7 @@ struct Config {
     brewers_friend_api_key: String,
 }
 
-pub struct BFApiDataManager;
+pub struct BfApiDataManager;
 
 fn get_base_url() -> String {
     #[cfg(test)]
@@ -41,8 +41,8 @@ fn create_client() -> Result<reqwest::Client> {
 }
 
 #[async_trait]
-impl BFDataManager for BFApiDataManager {
-    async fn sessions() -> Result<Vec<BFBrewSession>> {
+impl BfDataManager for BfApiDataManager {
+    async fn sessions() -> Result<Vec<BfBrewSession>> {
         println!("Fetching sessions...");
         let client = create_client()?;
 
@@ -52,14 +52,14 @@ impl BFDataManager for BFApiDataManager {
 
         let body = res.text().await?;
 
-        let response: BFBrewSessionsResponse = serde_json::from_str(&body)?;
+        let response: BfBrewSessionsResponse = serde_json::from_str(&body)?;
 
         println!("Fetched [{:#?}] sessions", response.brewsessions.len());
 
         Ok(response.brewsessions)
     }
 
-    async fn session(id: &str) -> Result<BFBrewSession> {
+    async fn session(id: &str) -> Result<BfBrewSession> {
         println!("Fetching session with id [{}]...", id);
         let client = create_client()?;
 
@@ -69,7 +69,7 @@ impl BFDataManager for BFApiDataManager {
 
         let body = res.text().await?;
 
-        let response: BFBrewSessionsResponse = serde_json::from_str(&body)?;
+        let response: BfBrewSessionsResponse = serde_json::from_str(&body)?;
 
         let session = match response.brewsessions.as_slice() {
             [] => Err(Error::ApiResponseValidationError {

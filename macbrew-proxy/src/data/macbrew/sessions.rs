@@ -1,4 +1,4 @@
-use crate::data::brewers_friend::sessions::BFBrewSession;
+use crate::data::brewers_friend::sessions::BfBrewSession;
 use serde::{Deserialize, Serialize};
 
 /// Enough information to decide which session to fetch more info on
@@ -20,7 +20,7 @@ pub struct BrewSession {
 }
 
 impl BrewSessionReference {
-    pub fn from_bf_session(session: &BFBrewSession) -> BrewSessionReference {
+    pub fn from_bf_session(session: &BfBrewSession) -> BrewSessionReference {
         BrewSessionReference {
             id: session.id.clone(),
             batch_code: session.batchcode.clone(),
@@ -30,7 +30,7 @@ impl BrewSessionReference {
 }
 
 impl BrewSession {
-    pub fn from_bf_session(session: &BFBrewSession) -> BrewSession {
+    pub fn from_bf_session(session: &BfBrewSession) -> BrewSession {
         BrewSession {
             id: session.id.clone(),
             phase: session.phase.clone(),
