@@ -15,6 +15,6 @@ typedef struct SerialResponse SerialResponse;
 
 OSErr SendCommand(char *command);
 OSErr ReadResponse(SerialResponse **outResponse);
+void DisposeResponse(SerialResponse **outResponse);
 OSErr SetUpSerial();
 OSErr TearDownSerial();
-

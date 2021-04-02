@@ -1,6 +1,6 @@
 
 #include "mbMenus.h"
-#include "mbWindow.h"
+#include "mbWSplash.h"
 #include "mbSerial.h"
 
 extern WindowPtr splashWindow;
@@ -106,14 +106,6 @@ main()
 	InitMacintosh();
 	SetUpMenus();
 	SetUpSplashWindow();
-
-	SetUpSerial();
-	SendCommand("1 PING\r");
-	ReadResponse(&responseData);
-	TearDownSerial();
-
-	sprintf(message, "Response length: %u", responseData->length);
-	CShowAlert(message);
 
 	for (;;)
 		HandleEvent();

@@ -1,6 +1,7 @@
 
 #include "mbMenus.h"
-#include "mbSerial.h"
+#include "mbDataManager.h"
+#include "mbWSessionList.h"
 
 extern WindowPtr mbWindow;
 extern int width;
@@ -15,8 +16,9 @@ enum
 
 enum
 {
-	listSessionsItem = 1,
-	quitItem = 2
+	pingItem = 1,
+	listSessionsItem = 2,
+	quitItem = 3
 };
 
 void SetUpMenus(void)
@@ -26,6 +28,7 @@ void SetUpMenus(void)
 	AddResMenu(appleMenu, 'DRVR');
 	InsertMenu(fileMenu = NewMenu(fileID, "\pFile"), 0);
 	DrawMenuBar();
+	AppendMenu(fileMenu, "\pPing/S");
 	AppendMenu(fileMenu, "\pList Sessions/S");
 	AppendMenu(fileMenu, "\pQuit/Q");
 }
@@ -37,8 +40,8 @@ void HandleMenu(long mSelect)
 	Str255 name;
 	GrafPtr savePort;
 	WindowPeek frontWindow;
-	SerialResponse *responseData;
 	char *command;
+	Handle sessionReferences;
 
 	switch (menuID)
 	{
@@ -52,11 +55,14 @@ void HandleMenu(long mSelect)
 	case fileID:
 		switch (menuItem)
 		{
+		case pingItem:
+			Ping();
+			break;
 		case listSessionsItem:
-			SetUpSerial();
-			SendCommand("1 LIST SESSION\r");
-			ReadResponse(&responseData);
-			TearDownSerial();
+			SetUpSessionListWindow();
+			
+			FetchBrewSessionReferences(&sessionReferences);
+			
 			break;
 		case quitItem:
 			ExitToShell();

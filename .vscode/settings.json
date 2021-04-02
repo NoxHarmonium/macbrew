@@ -8,6 +8,11 @@
         "files.eol": "auto",
     },
     "files.associations": {
-        "functional": "c"
+        "functional": "c",
+        "mbwindow.h": "c",
+        "mbconstants.h": "c",
+        "mbsessionlist.h": "c",
+        "typeinfo": "cpp",
+        "mbwsplash.h": "c"
     }
 }

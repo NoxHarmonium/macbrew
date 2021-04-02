@@ -1,7 +1,5 @@
-
-
 #include "mbConstants.h"
-#include "mbWindow.h"
+#include "mbWSplash.h"
 
 WindowPtr splashWindow = NULL;
 PicHandle splashPicture = NULL;
