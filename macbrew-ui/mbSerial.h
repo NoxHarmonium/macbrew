@@ -5,16 +5,20 @@
  *
  ****/
 
-struct SerialResponse
+typedef struct SerialResponse
 {
     Handle data;
     unsigned int length;
-};
+} SerialResponse;
 
-typedef struct SerialResponse SerialResponse;
+typedef struct ResponseReader
+{
+    SerialResponse *response;
+    int cursor;
+} ResponseReader;
 
 OSErr SendCommand(char *command);
 OSErr ReadResponse(SerialResponse **outResponse);
+void DisposeResponse(SerialResponse **outResponse);
 OSErr SetUpSerial();
 OSErr TearDownSerial();
-

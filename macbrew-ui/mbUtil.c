@@ -19,6 +19,13 @@ unsigned short GetShortFromBuffer(char *buffer, int offset)
 	return (b0 << 8) | b1;
 }
 
+unsigned char GetCharFromBuffer(char *buffer, int offset)
+{
+	unsigned char b0;
+	b0 = buffer[offset];
+	return b0;
+}
+
 void Panic(Str255 message)
 {
 	ShowAlert(message);

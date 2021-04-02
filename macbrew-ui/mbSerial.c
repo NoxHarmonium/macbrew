@@ -10,7 +10,7 @@
 // as many bytes as it sends to cancel out the echo
 //
 // Note: This needs to be set to zero when emulating in Basilisk II because there is no fake echo there
-#define SUPRESS_ECHO 1
+#define SUPRESS_ECHO 0
 #define kChecksumBytes 4
 // Accounts for \r\n on every response
 #define kSuffixSize 2
@@ -363,4 +363,12 @@ OSErr ReadResponse(SerialResponse **outResponse)
 	}
 
 	return result;
+}
+
+void DisposeResponse(SerialResponse **outResponse)
+{
+	SerialResponse *response = *outResponse;
+	DisposeHandle(response->data);
+	DisposePtr((Ptr)response);
+	*outResponse = 0;
 }

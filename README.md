@@ -47,6 +47,22 @@ $ socat -d -d pty,raw,echo=0 pty,raw,echo=0 &
 Use `/dev/pts/1` as the target serial port for macbrew-proxy and
 you can use the other side of the pair to push data through. E.g `tio /dev/pts/2`
 
+### Architecture
+
+Here is a rough diagram of the components in this system:
+
+![Architecture Diagram](./docs/arch.png "Architecture Diagram")
+
+The MacBrew proxy runs on a Raspberry Pi and bridges the Brewers Friend API and the Mac.
+
+The proxy needs to convert all the JSON (and BeerXML) coming from the Brewers Friend API into a compact binary form in big endian to make it more efficent for the m68k CPU in the Mac, and then pass the data via a serial interface.
+
+### Screenshots
+
+Some screenshots of the work in progress:
+
+![Screenshot of the splash screen](./docs/splash.png "Screenshot of the splash screen")
+![Screenshot of the session list](./docs/session-list.png "Screenshot of the session list")
 
 ## License
 
