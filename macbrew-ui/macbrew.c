@@ -5,6 +5,7 @@
 
 extern WindowPtr splashWindow;
 // extern Rect dragRect;
+extern WindowPtr sessionListWindow;
 
 void InitMacintosh(void);
 void HandleMouseDown(EventRecord *theEvent);
@@ -40,14 +41,29 @@ void HandleMouseDown(EventRecord *theEvent)
 		break;
 
 	case inDrag:
-		// if (theWindow == mbWindow)
-		// DragWindow(mbWindow, theEvent->where, &dragRect);
+		// TODO: Why isn't drag working?
+		if (theWindow == sessionListWindow)
+		{
+			DragWindow(sessionListWindow, theEvent->where, &(*GetGrayRgn())->rgnBBox);
+		}
 		break;
 
 	case inContent:
 		if (theWindow == splashWindow)
 		{
 			DestroySplashWindow();
+		}
+		if (theWindow == sessionListWindow)
+		{
+			if (sessionListWindow != FrontWindow())
+			{
+				SelectWindow(sessionListWindow);
+			}
+			else
+			{
+				InvalRect(&sessionListWindow->portRect);
+			}
+			SessionListMouseDown(*theEvent);
 		}
 		break;
 
@@ -84,15 +100,24 @@ void HandleEvent(void)
 			break;
 
 		case updateEvt:
-			// BeginUpdate(splashWindow);
-			//Draw stuff here
-			// EndUpdate(splashWindow);
+			if (sessionListWindow != NULL)
+			{
+				BeginUpdate(sessionListWindow);
+				SessionListUpdate();
+				EndUpdate(sessionListWindow);
+			}
+
 			break;
 
 		case activateEvt:
 			if (splashWindow != NULL)
 			{
 				InvalRect(&splashWindow->portRect);
+			}
+			if (sessionListWindow != NULL)
+			{
+				SessionListActivate((theEvent.modifiers & activeFlag) != 0);
+				InvalRect(&sessionListWindow->portRect);
 			}
 			break;
 		}

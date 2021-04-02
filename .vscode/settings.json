@@ -13,6 +13,18 @@
         "mbconstants.h": "c",
         "mbsessionlist.h": "c",
         "typeinfo": "cpp",
-        "mbwsplash.h": "c"
+        "mbwsplash.h": "c",
+        "optional": "c",
+        "istream": "c",
+        "ostream": "c",
+        "system_error": "c",
+        "array": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "utility": "c",
+        "mbdatamanager.h": "c",
+        "mbtypes.h": "c",
+        "string": "cpp",
+        "cstring": "c"
     }
 }

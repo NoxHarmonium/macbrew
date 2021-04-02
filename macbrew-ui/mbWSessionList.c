@@ -1,6 +1,7 @@
 #include "mbConstants.h"
 #include "mbUtil.h"
 #include "mbWSessionList.h"
+#include "mbTypes.h"
 
 void SetUpSessionList(WindowPtr parentWindow);
 void DestroySessionList(void);
@@ -26,6 +27,7 @@ void SetUpSessionList(WindowPtr parentWindow)
 
 	Rect visibleRect = sessionListWindow->portRect;
 	visibleRect.right = visibleRect.right - scrollBarWidth;
+	visibleRect.bottom = visibleRect.bottom - 50;
 
 	// start with a list that contains no rows
 	SetRect(&dataBounds, 0, 0, columns, 0);
@@ -54,6 +56,7 @@ void SetUpSessionListWindow(void)
 
 	// Controls
 	SetUpSessionList(sessionListWindow);
+	// TODO: Button to select the brew session
 }
 
 void DestroySessionListWindow(void)
@@ -69,10 +72,58 @@ void DestroySessionListWindow(void)
 	}
 }
 
-void RefreshSessionList(void)
+void UpdateSessionListWindow(Sequence *sessionReferences)
+{
+	short i;
+	Cell cell;
+
+	Handle *elements;
+
+	if (sessionListWindow == NULL || sessionList == NULL)
+	{
+		Panic("\pSession list window not set up. Please call SetUpSessionListWindow()");
+	}
+
+	if ((*sessionList)->dataBounds.bottom > 0)
+	{
+		// TODO: Delete existing rows
+		Panic("\pCan only add rows to an empty list at this time");
+	}
+
+	for (i = 0; i < sessionReferences->size; i++)
+	{
+		Handle sessionHandle = sessionReferences->elements[i];
+		BrewSessionReference *brewSession = (BrewSessionReference *)*sessionHandle;
+
+		LAddRow(1, i, sessionList);
+		SetPt(&cell, 0, i);
+
+		LSetCell((unsigned char *)brewSession->name + 1, (char)*brewSession->name, cell, sessionList);
+	}
+}
+
+// See: http://mirror.informatimago.com/next/developer.apple.com/documentation/mac/MoreToolbox/MoreToolbox-212.html#HEADING212-0
+void SessionListMouseDown(EventRecord theEvent)
 {
 	if (sessionListWindow == NULL || sessionList == NULL)
 	{
 		Panic("\pSession list window not set up. Please call SetUpSessionListWindow()");
 	}
+
+	SetPort((*sessionList)->port);
+	GlobalToLocal(&theEvent.where);
+	if (LClick(theEvent.where, theEvent.modifiers, sessionList))
+	{
+		// Double click
+	}
+}
+void SessionListUpdate()
+{
+	if (sessionListWindow == NULL || sessionList == NULL)
+	{
+		Panic("\pSession list window not set up. Please call SetUpSessionListWindow()");
+	}
+
+	SetPort((*sessionList)->port);
+	LUpdate((*sessionList)->port->visRgn, sessionList);
 }

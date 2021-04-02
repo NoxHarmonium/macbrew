@@ -1,5 +1,6 @@
 
 #include "mbMenus.h"
+#include "mbTypes.h"
 #include "mbDataManager.h"
 #include "mbWSessionList.h"
 
@@ -41,7 +42,7 @@ void HandleMenu(long mSelect)
 	GrafPtr savePort;
 	WindowPeek frontWindow;
 	char *command;
-	Handle sessionReferences;
+	Sequence *sessionReferences;
 
 	switch (menuID)
 	{
@@ -60,9 +61,9 @@ void HandleMenu(long mSelect)
 			break;
 		case listSessionsItem:
 			SetUpSessionListWindow();
-			
 			FetchBrewSessionReferences(&sessionReferences);
-			
+			UpdateSessionListWindow(sessionReferences);
+
 			break;
 		case quitItem:
 			ExitToShell();

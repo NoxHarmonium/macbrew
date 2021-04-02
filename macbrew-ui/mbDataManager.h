@@ -1,9 +1,4 @@
-typedef struct BrewSessionReference
-{
-    Str255 id;
-    Str255 batch_code;
-    Str255 name;
-} BrewSessionReference;
+struct Sequence;
 
 void Ping();
-void FetchBrewSessionReferences(Handle *sessionReferences);
+void FetchBrewSessionReferences(Sequence **outSessionReferences);
