@@ -1,8 +1,13 @@
 // Foreard declarations
 struct Sequence;
 
-void SetUpSessionListWindow(void);
-void DestroySessionListWindow(void);
-void UpdateSessionListWindow(struct Sequence *sessionReferences);
-void SessionListMouseDown(EventRecord theEvent);
-void SessionListUpdate();
+typedef struct SessionListWindowState
+{
+    ListHandle listHandle;
+} SessionListWindowState;
+
+WindowPtr SetUpSessionListWindow(void);
+void DestroySessionListWindow(WindowPtr window);
+void UpdateSessionListWindow(WindowPtr window, struct Sequence *sessionReferences);
+void SessionListMouseDown(WindowPtr window, EventRecord theEvent);
+void SessionListUpdate(WindowPtr window);

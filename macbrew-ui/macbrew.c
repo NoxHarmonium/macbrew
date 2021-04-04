@@ -1,11 +1,10 @@
 
+#include "mbConstants.h"
 #include "mbMenus.h"
 #include "mbWSplash.h"
 #include "mbSerial.h"
 
 extern WindowPtr splashWindow;
-// extern Rect dragRect;
-extern WindowPtr sessionListWindow;
 
 void InitMacintosh(void);
 void HandleMouseDown(EventRecord *theEvent);
@@ -29,6 +28,12 @@ void HandleMouseDown(EventRecord *theEvent)
 {
 	WindowPtr theWindow;
 	int windowCode = FindWindow(theEvent->where, &theWindow);
+	short windowKind = 0;
+
+	if (theWindow != NULL)
+	{
+		windowKind = ((WindowPeek)theWindow)->windowKind;
+	}
 
 	switch (windowCode)
 	{
@@ -42,9 +47,9 @@ void HandleMouseDown(EventRecord *theEvent)
 
 	case inDrag:
 		// TODO: Why isn't drag working?
-		if (theWindow == sessionListWindow)
+		if (windowKind == kSessionListWindowId)
 		{
-			DragWindow(sessionListWindow, theEvent->where, &(*GetGrayRgn())->rgnBBox);
+			DragWindow(theWindow, theEvent->where, &(*GetGrayRgn())->rgnBBox);
 		}
 		break;
 
@@ -52,25 +57,27 @@ void HandleMouseDown(EventRecord *theEvent)
 		if (theWindow == splashWindow)
 		{
 			DestroySplashWindow();
-		}
-		if (theWindow == sessionListWindow)
-		{
-			if (sessionListWindow != FrontWindow())
+		} else {
+			if (theWindow != FrontWindow())
 			{
-				SelectWindow(sessionListWindow);
+				SelectWindow(theWindow);
 			}
 			else
 			{
-				InvalRect(&sessionListWindow->portRect);
+				InvalRect(&theWindow->portRect);
 			}
-			SessionListMouseDown(*theEvent);
+			if (windowKind == kSessionListWindowId) {
+				SessionListMouseDown(theWindow, *theEvent);
+			}
 		}
 		break;
 
 	case inGoAway:
-		if (theWindow == splashWindow &&
-			TrackGoAway(splashWindow, theEvent->where))
-			HideWindow(splashWindow);
+		if (
+			TrackGoAway(theWindow, theEvent->where))
+		{
+			HideWindow(theWindow);
+		}
 		break;
 	}
 }
@@ -79,12 +86,21 @@ void HandleEvent(void)
 {
 	int ok;
 	EventRecord theEvent;
+	WindowPtr theWindow;
+	short windowKind = 0;
 
 	HiliteMenu(0);
 	SystemTask(); /* Handle desk accessories */
 
 	ok = GetNextEvent(everyEvent, &theEvent);
 	if (ok)
+	{
+		theWindow = FrontWindow();
+		if (theWindow != NULL)
+		{
+			windowKind = ((WindowPeek)theWindow)->windowKind;
+		}
+
 		switch (theEvent.what)
 		{
 		case mouseDown:
@@ -100,11 +116,14 @@ void HandleEvent(void)
 			break;
 
 		case updateEvt:
-			if (sessionListWindow != NULL)
+			if (theWindow != NULL)
 			{
-				BeginUpdate(sessionListWindow);
-				SessionListUpdate();
-				EndUpdate(sessionListWindow);
+				BeginUpdate(theWindow);
+				if (windowKind == kSessionListWindowId)
+				{
+					SessionListUpdate(theWindow);
+				}
+				EndUpdate(theWindow);
 			}
 
 			break;
@@ -114,13 +133,15 @@ void HandleEvent(void)
 			{
 				InvalRect(&splashWindow->portRect);
 			}
-			if (sessionListWindow != NULL)
+			if (windowKind == kSessionListWindowId)
 			{
-				SessionListActivate((theEvent.modifiers & activeFlag) != 0);
-				InvalRect(&sessionListWindow->portRect);
+			    // TODO: Where did this go?
+				//SessionListActivate((theEvent.modifiers & activeFlag) != 0);
+				InvalRect(&theWindow->portRect);
 			}
 			break;
 		}
+	}
 }
 
 main()

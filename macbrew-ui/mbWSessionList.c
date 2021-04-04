@@ -4,10 +4,7 @@
 #include "mbTypes.h"
 
 void SetUpSessionList(WindowPtr parentWindow);
-void DestroySessionList(void);
-
-WindowPtr sessionListWindow = NULL;
-ListHandle sessionList = NULL;
+void DestroySessionList(WindowPtr parentWindow);
 
 void SetUpSessionList(WindowPtr parentWindow)
 {
@@ -22,10 +19,16 @@ void SetUpSessionList(WindowPtr parentWindow)
 	const short columns = 1;			   // number of columns in the list
 
 	// Variables
+	Handle sessionListWindowStateHandle = (Handle)GetWRefCon(parentWindow);
+	SessionListWindowState *windowState;
 	Rect dataBounds;
 	Point cellSize;
+	Rect visibleRect;
 
-	Rect visibleRect = sessionListWindow->portRect;
+	HLock(sessionListWindowStateHandle);
+	windowState = (SessionListWindowState*)*sessionListWindowStateHandle;
+
+	visibleRect = parentWindow->portRect;
 	visibleRect.right = visibleRect.right - scrollBarWidth;
 	visibleRect.bottom = visibleRect.bottom - 50;
 
@@ -36,55 +39,82 @@ void SetUpSessionList(WindowPtr parentWindow)
 	SetPt(&cellSize, 0, 0);
 
 	// Create the list
-	sessionList = LNew(&visibleRect, &dataBounds, cellSize, 0, sessionListWindow, doDraw, noGrow, !includeScrollBar, includeScrollBar);
+	windowState->listHandle = LNew(&visibleRect, &dataBounds, cellSize, 0, parentWindow, doDraw, noGrow, !includeScrollBar, includeScrollBar);
+
+	HUnlock(sessionListWindowStateHandle);
 }
 
-void DestroySessionList(void)
+void DestroySessionList(WindowPtr parentWindow)
 {
-	if (sessionList != NULL)
+	Handle sessionListWindowStateHandle = (Handle)GetWRefCon(parentWindow);
+	SessionListWindowState *windowState;
+
+	HLock(sessionListWindowStateHandle);
+	windowState = (SessionListWindowState*)*sessionListWindowStateHandle;
+
+	if (windowState->listHandle != NULL)
 	{
-		LDispose(sessionList);
-		sessionList = NULL;
+		LDispose(windowState->listHandle);
+		windowState->listHandle = NULL;
 	}
+
+	HUnlock(sessionListWindowStateHandle);
 }
 
-void SetUpSessionListWindow(void)
+WindowPtr SetUpSessionListWindow(void)
 {
 	// Parent Window
+	Handle sessionListWindowStateHandle;
+	WindowPtr sessionListWindow = NULL;
 	sessionListWindow = GetNewWindow(kSessionListWindowId, sessionListWindow, (WindowPtr)-1L);
+	
 	SetPort(sessionListWindow);
+	((WindowPeek)sessionListWindow)->windowKind = kSessionListWindowId;
+
+	sessionListWindowStateHandle = NewHandle(sizeof(SessionListWindowState));
+	SetWRefCon(sessionListWindow, (long)sessionListWindowStateHandle);
 
 	// Controls
 	SetUpSessionList(sessionListWindow);
 	// TODO: Button to select the brew session
+
+	return sessionListWindow;
 }
 
-void DestroySessionListWindow(void)
+void DestroySessionListWindow(WindowPtr window)
 {
 	// Controls
-	DestroySessionList();
+	DestroySessionList(window);
 
 	// Parent Window
-	if (sessionListWindow != NULL)
+	if (window != NULL)
 	{
-		DisposeWindow(sessionListWindow);
-		sessionListWindow = NULL;
+		DisposeWindow(window);
 	}
 }
 
-void UpdateSessionListWindow(Sequence *sessionReferences)
+void UpdateSessionListWindow(WindowPtr window, Sequence *sessionReferences)
 {
 	short i;
 	Cell cell;
 
 	Handle *elements;
+	Handle sessionListWindowStateHandle = (Handle)GetWRefCon(window);
+	SessionListWindowState *windowState;
+	ListRec *sessionList;
 
-	if (sessionListWindow == NULL || sessionList == NULL)
+	HLock(sessionListWindowStateHandle);
+	windowState = (SessionListWindowState *)*sessionListWindowStateHandle;
+
+	if (windowState->listHandle == NULL)
 	{
 		Panic("\pSession list window not set up. Please call SetUpSessionListWindow()");
 	}
 
-	if ((*sessionList)->dataBounds.bottom > 0)
+	HLock((Handle)windowState->listHandle);
+	sessionList = *windowState->listHandle;
+
+	if (sessionList->dataBounds.bottom > 0)
 	{
 		// TODO: Delete existing rows
 		Panic("\pCan only add rows to an empty list at this time");
@@ -95,35 +125,57 @@ void UpdateSessionListWindow(Sequence *sessionReferences)
 		Handle sessionHandle = sessionReferences->elements[i];
 		BrewSessionReference *brewSession = (BrewSessionReference *)*sessionHandle;
 
-		LAddRow(1, i, sessionList);
+		LAddRow(1, i, windowState->listHandle);
 		SetPt(&cell, 0, i);
 
-		LSetCell((unsigned char *)brewSession->name + 1, (char)*brewSession->name, cell, sessionList);
+		LSetCell((unsigned char *)brewSession->name + 1, (char)*brewSession->name, cell, windowState->listHandle);
 	}
+
+	HUnlock((Handle)windowState->listHandle);
+	HUnlock(sessionListWindowStateHandle);
 }
 
 // See: http://mirror.informatimago.com/next/developer.apple.com/documentation/mac/MoreToolbox/MoreToolbox-212.html#HEADING212-0
-void SessionListMouseDown(EventRecord theEvent)
+void SessionListMouseDown(WindowPtr window, EventRecord theEvent)
 {
-	if (sessionListWindow == NULL || sessionList == NULL)
+	Handle sessionListWindowStateHandle = (Handle)GetWRefCon(window);
+	SessionListWindowState *windowState;
+	ListRec *sessionList;
+
+	HLock(sessionListWindowStateHandle);
+	windowState = (SessionListWindowState *)*sessionListWindowStateHandle;
+
+	if (windowState->listHandle == NULL)
 	{
 		Panic("\pSession list window not set up. Please call SetUpSessionListWindow()");
 	}
 
-	SetPort((*sessionList)->port);
+	HLock((Handle)windowState->listHandle);
+	sessionList = *(windowState->listHandle);
+
+	SetPort(sessionList->port);
 	GlobalToLocal(&theEvent.where);
-	if (LClick(theEvent.where, theEvent.modifiers, sessionList))
+	if (LClick(theEvent.where, theEvent.modifiers, windowState->listHandle))
 	{
 		// Double click
 	}
 }
-void SessionListUpdate()
+void SessionListUpdate(WindowPtr window)
 {
-	if (sessionListWindow == NULL || sessionList == NULL)
+	Handle sessionListWindowStateHandle = (Handle)GetWRefCon(window);
+	SessionListWindowState *windowState;
+	ListRec *sessionList;
+
+	HLock(sessionListWindowStateHandle);
+	windowState = (SessionListWindowState *)*sessionListWindowStateHandle;
+	sessionList = *(windowState->listHandle);
+	
+	if (windowState->listHandle == NULL)
 	{
 		Panic("\pSession list window not set up. Please call SetUpSessionListWindow()");
 	}
 
-	SetPort((*sessionList)->port);
-	LUpdate((*sessionList)->port->visRgn, sessionList);
+	SetPort(sessionList->port);
+	LUpdate(sessionList->port->visRgn, windowState->listHandle);
+	HUnlock(sessionListWindowStateHandle);
 }
