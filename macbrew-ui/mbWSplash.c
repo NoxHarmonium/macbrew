@@ -1,31 +1,66 @@
 #include "mbConstants.h"
 #include "mbWSplash.h"
 
-WindowPtr splashWindow = NULL;
-PicHandle splashPicture = NULL;
+void SetUpSplashPic(WindowPtr parentWindow);
+void DestroySplachPic(WindowPtr parentWindow);
 
-void SetUpSplashWindow(void)
+void SetUpSplashPic(WindowPtr parentWindow)
 {
-	splashWindow = GetNewWindow(kSplashWindowId, splashWindow, (WindowPtr)-1L);
-	splashPicture = GetPicture(kSplashImageId);
-	SetWindowPic(splashWindow, splashPicture);
-	SetPort(splashWindow);
+	// Variables
+	Handle splashWindowStateHandle = (Handle)GetWRefCon(parentWindow);
+	SplashWindowState *windowState;
+
+	HLock(splashWindowStateHandle);
+	windowState = (SplashWindowState *)*splashWindowStateHandle;
+
+	windowState->picHandle = GetPicture(kSplashImageId);
+
+	SetWindowPic(parentWindow, windowState->picHandle);
+
+	HUnlock(splashWindowStateHandle);
 }
 
-void DestroySplashWindow(void)
+void DestroySplachPic(WindowPtr parentWindow)
 {
-	if (splashPicture != NULL)
+	Handle splashWindowStateHandle = (Handle)GetWRefCon(parentWindow);
+	SplashWindowState *windowState;
+
+	HLock(splashWindowStateHandle);
+	windowState = (SplashWindowState *)*splashWindowStateHandle;
+
+	if (windowState->picHandle != NULL)
 	{
-		if (splashWindow != NULL)
-		{
-			SetWindowPic(splashWindow, NULL);
-		}
-		ReleaseResource((Handle)splashPicture);
-		splashPicture = NULL;
+		SetWindowPic(parentWindow, NULL);
+		ReleaseResource((Handle)windowState->picHandle);
+		windowState->picHandle = NULL;
 	}
-	if (splashWindow != NULL)
+
+	HUnlock(splashWindowStateHandle);
+}
+
+WindowPtr SetUpSplashWindow(void)
+{
+	WindowPtr splashWindow = NULL;
+	Handle splashWindowStateHandle = NewHandle(sizeof(SplashWindowState));
+
+	splashWindow = GetNewWindow(kSplashWindowId, splashWindow, (WindowPtr)-1L);
+	SetWRefCon(splashWindow, (long)splashWindowStateHandle);
+
+	((WindowPeek)splashWindow)->windowKind = kSplashWindowId;
+
+	SetPort(splashWindow);
+
+	SetUpSplashPic(splashWindow);
+
+	return splashWindow;
+}
+
+void DestroySplashWindow(WindowPtr window)
+{
+	DestroySplachPic(window);
+	if (window != NULL)
 	{
-		DisposeWindow(splashWindow);
-		splashWindow = NULL;
+		DisposeWindow(window);
+		window = NULL;
 	}
 }

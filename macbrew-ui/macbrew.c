@@ -4,8 +4,6 @@
 #include "mbWSplash.h"
 #include "mbSerial.h"
 
-extern WindowPtr splashWindow;
-
 void InitMacintosh(void);
 void HandleMouseDown(EventRecord *theEvent);
 void HandleEvent(void);
@@ -54,21 +52,23 @@ void HandleMouseDown(EventRecord *theEvent)
 		break;
 
 	case inContent:
-		if (theWindow == splashWindow)
+		if (theWindow != FrontWindow())
 		{
-			DestroySplashWindow();
-		} else {
-			if (theWindow != FrontWindow())
-			{
-				SelectWindow(theWindow);
-			}
-			else
-			{
-				InvalRect(&theWindow->portRect);
-			}
-			if (windowKind == kSessionListWindowId) {
-				SessionListMouseDown(theWindow, *theEvent);
-			}
+			SelectWindow(theWindow);
+		}
+		else
+		{
+			InvalRect(&theWindow->portRect);
+		}
+
+		if (windowKind == kSplashWindowId)
+		{
+			// Close the splash screen if clicked
+			DestroySplashWindow(theWindow);
+		}
+		else if (windowKind == kSessionListWindowId)
+		{
+			SessionListMouseDown(theWindow, *theEvent);
 		}
 		break;
 
@@ -129,13 +129,13 @@ void HandleEvent(void)
 			break;
 
 		case activateEvt:
-			if (splashWindow != NULL)
+			if (theWindow != NULL)
 			{
-				InvalRect(&splashWindow->portRect);
+				InvalRect(&theWindow->portRect);
 			}
 			if (windowKind == kSessionListWindowId)
 			{
-			    // TODO: Where did this go?
+				// TODO: Where did this go?
 				//SessionListActivate((theEvent.modifiers & activeFlag) != 0);
 				InvalRect(&theWindow->portRect);
 			}
