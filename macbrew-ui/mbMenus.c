@@ -30,7 +30,7 @@ void SetUpMenus(void)
 	InsertMenu(fileMenu = NewMenu(fileID, "\pFile"), 0);
 	DrawMenuBar();
 	AppendMenu(fileMenu, "\pPing/S");
-	AppendMenu(fileMenu, "\pList Sessions/S");
+	AppendMenu(fileMenu, "\pOpen Session/S");
 	AppendMenu(fileMenu, "\pQuit/Q");
 }
 
@@ -60,11 +60,13 @@ void HandleMenu(long mSelect)
 			Ping();
 			break;
 		case listSessionsItem:
-			SetUpSessionListWindow();
+		{
+			WindowPtr sessionListWindow = SetUpSessionListWindow();
 			FetchBrewSessionReferences(&sessionReferences);
-			UpdateSessionListWindow(sessionReferences);
+			UpdateSessionListWindow(sessionListWindow, sessionReferences);
 
 			break;
+		}
 		case quitItem:
 			ExitToShell();
 			break;
