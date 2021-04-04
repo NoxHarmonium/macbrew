@@ -76,6 +76,10 @@ void HandleMouseDown(EventRecord *theEvent)
 			TrackGoAway(theWindow, theEvent->where))
 		{
 			HideWindow(theWindow);
+			if (windowKind == kSessionListWindowId)
+			{
+				DestroySessionListWindow(theWindow);
+			}
 		}
 		break;
 	}

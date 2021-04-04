@@ -26,7 +26,7 @@ void SetUpSessionList(WindowPtr parentWindow)
 	Rect visibleRect;
 
 	HLock(sessionListWindowStateHandle);
-	windowState = (SessionListWindowState*)*sessionListWindowStateHandle;
+	windowState = (SessionListWindowState *)*sessionListWindowStateHandle;
 
 	visibleRect = parentWindow->portRect;
 	visibleRect.right = visibleRect.right - scrollBarWidth;
@@ -50,7 +50,7 @@ void DestroySessionList(WindowPtr parentWindow)
 	SessionListWindowState *windowState;
 
 	HLock(sessionListWindowStateHandle);
-	windowState = (SessionListWindowState*)*sessionListWindowStateHandle;
+	windowState = (SessionListWindowState *)*sessionListWindowStateHandle;
 
 	if (windowState->listHandle != NULL)
 	{
@@ -67,7 +67,7 @@ WindowPtr SetUpSessionListWindow(void)
 	Handle sessionListWindowStateHandle;
 	WindowPtr sessionListWindow = NULL;
 	sessionListWindow = GetNewWindow(kSessionListWindowId, sessionListWindow, (WindowPtr)-1L);
-	
+
 	SetPort(sessionListWindow);
 	((WindowPeek)sessionListWindow)->windowKind = kSessionListWindowId;
 
@@ -160,6 +160,7 @@ void SessionListMouseDown(WindowPtr window, EventRecord theEvent)
 		// Double click
 	}
 }
+
 void SessionListUpdate(WindowPtr window)
 {
 	Handle sessionListWindowStateHandle = (Handle)GetWRefCon(window);
@@ -169,7 +170,7 @@ void SessionListUpdate(WindowPtr window)
 	HLock(sessionListWindowStateHandle);
 	windowState = (SessionListWindowState *)*sessionListWindowStateHandle;
 	sessionList = *(windowState->listHandle);
-	
+
 	if (windowState->listHandle == NULL)
 	{
 		Panic("\pSession list window not set up. Please call SetUpSessionListWindow()");
