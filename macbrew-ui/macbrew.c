@@ -44,7 +44,6 @@ void HandleMouseDown(EventRecord *theEvent)
 		break;
 
 	case inDrag:
-		// TODO: Why isn't drag working?
 		if (windowKind == kSessionListWindowId)
 		{
 			DragWindow(theWindow, theEvent->where, &(*GetGrayRgn())->rgnBBox);
@@ -131,12 +130,6 @@ void HandleEvent(void)
 		case activateEvt:
 			if (theWindow != NULL)
 			{
-				InvalRect(&theWindow->portRect);
-			}
-			if (windowKind == kSessionListWindowId)
-			{
-				// TODO: Where did this go?
-				//SessionListActivate((theEvent.modifiers & activeFlag) != 0);
 				InvalRect(&theWindow->portRect);
 			}
 			break;
