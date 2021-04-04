@@ -4,6 +4,8 @@ struct Sequence;
 typedef struct SessionListWindowState
 {
     ListHandle listHandle;
+    ControlHandle cancelButton;
+    ControlHandle okButton;
 } SessionListWindowState;
 
 WindowPtr SetUpSessionListWindow(void);

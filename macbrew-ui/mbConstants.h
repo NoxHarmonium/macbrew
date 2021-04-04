@@ -8,3 +8,7 @@
 
 // PICT
 #define kSplashImageId 128
+
+// CNTL
+#define kSessionListCancelButtonId 128
+#define kSessionListOkButtonId 129

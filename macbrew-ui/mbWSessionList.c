@@ -3,8 +3,25 @@
 #include "mbWSessionList.h"
 #include "mbTypes.h"
 
+void DrawSessionListBorder(ListHandle listHandle);
 void SetUpSessionList(WindowPtr parentWindow);
 void DestroySessionList(WindowPtr parentWindow);
+void SetUpButtons(WindowPtr parentWindow);
+void DestroyButtons(WindowPtr parentWindow);
+
+void DrawSessionListBorder(ListHandle listHandle) 
+{
+	Rect border;
+	PenState penState;
+	ListPtr list = *listHandle;
+	
+	border = list->rView;
+	GetPenState(&penState);
+	PenSize(1,1);
+	InsetRect(&border, -1, -1);
+	FrameRect(&border);
+	SetPenState(&penState);
+}
 
 void SetUpSessionList(WindowPtr parentWindow)
 {
@@ -17,6 +34,7 @@ void SetUpSessionList(WindowPtr parentWindow)
 	const Boolean includeScrollBar = TRUE; // leave room for scroll bar
 	const short scrollBarWidth = 15;	   // width of vertical scroll bar
 	const short columns = 1;			   // number of columns in the list
+	const short padding = 20;			   // padding around the list view
 
 	// Variables
 	Handle sessionListWindowStateHandle = (Handle)GetWRefCon(parentWindow);
@@ -29,8 +47,10 @@ void SetUpSessionList(WindowPtr parentWindow)
 	windowState = (SessionListWindowState *)*sessionListWindowStateHandle;
 
 	visibleRect = parentWindow->portRect;
-	visibleRect.right = visibleRect.right - scrollBarWidth;
-	visibleRect.bottom = visibleRect.bottom - 50;
+	visibleRect.top = visibleRect.top + padding;
+	visibleRect.left = visibleRect.left + padding;
+	visibleRect.right = visibleRect.right - scrollBarWidth - padding;
+	visibleRect.bottom = visibleRect.bottom - (padding * 2);
 
 	// start with a list that contains no rows
 	SetRect(&dataBounds, 0, 0, columns, 0);
@@ -40,6 +60,8 @@ void SetUpSessionList(WindowPtr parentWindow)
 
 	// Create the list
 	windowState->listHandle = LNew(&visibleRect, &dataBounds, cellSize, 0, parentWindow, doDraw, noGrow, !includeScrollBar, includeScrollBar);
+
+	DrawSessionListBorder(windowState->listHandle);
 
 	HUnlock(sessionListWindowStateHandle);
 }
@@ -61,6 +83,44 @@ void DestroySessionList(WindowPtr parentWindow)
 	HUnlock(sessionListWindowStateHandle);
 }
 
+void SetUpButtons(WindowPtr parentWindow)
+{
+
+	// Variables
+	Handle sessionListWindowStateHandle = (Handle)GetWRefCon(parentWindow);
+	SessionListWindowState *windowState;
+
+	HLock(sessionListWindowStateHandle);
+	windowState = (SessionListWindowState *)*sessionListWindowStateHandle;
+
+	windowState->cancelButton = GetNewControl(kSessionListCancelButtonId, parentWindow);
+	windowState->okButton = GetNewControl(kSessionListOkButtonId, parentWindow);
+
+	HUnlock(sessionListWindowStateHandle);
+}
+
+void DestroyButtons(WindowPtr parentWindow)
+{
+	Handle sessionListWindowStateHandle = (Handle)GetWRefCon(parentWindow);
+	SessionListWindowState *windowState;
+
+	HLock(sessionListWindowStateHandle);
+	windowState = (SessionListWindowState *)*sessionListWindowStateHandle;
+
+	if (windowState->cancelButton != NULL)
+	{
+		DisposeControl(windowState->cancelButton);
+		windowState->cancelButton = NULL;
+	}
+	if (windowState->okButton != NULL)
+	{
+		DisposeControl(windowState->okButton);
+		windowState->okButton = NULL;
+	}
+
+	HUnlock(sessionListWindowStateHandle);
+}
+
 WindowPtr SetUpSessionListWindow(void)
 {
 	// Parent Window
@@ -76,7 +136,7 @@ WindowPtr SetUpSessionListWindow(void)
 
 	// Controls
 	SetUpSessionList(sessionListWindow);
-	// TODO: Button to select the brew session
+	SetUpButtons(sessionListWindow);
 
 	return sessionListWindow;
 }
@@ -85,6 +145,7 @@ void DestroySessionListWindow(WindowPtr window)
 {
 	// Controls
 	DestroySessionList(window);
+	DestroyButtons(window);
 
 	// Parent Window
 	if (window != NULL)
@@ -178,5 +239,6 @@ void SessionListUpdate(WindowPtr window)
 
 	SetPort(sessionList->port);
 	LUpdate(sessionList->port->visRgn, windowState->listHandle);
+	DrawSessionListBorder(windowState->listHandle);
 	HUnlock(sessionListWindowStateHandle);
 }
