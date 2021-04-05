@@ -95,6 +95,18 @@ jobs:
           command: clippy
           args: -- -D warnings
 
+
+  cppcheck:
+    name: cppcheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Install cppcheck
+        run: sudo apt-get install cppcheck
+      - name: Run cppcheck
+        run: cppcheck --std=c89 --enable=all --error-exitcode=1 --inline-suppr macbrew-ui/
+
   coverage:
     name: Code coverage
     runs-on: ubuntu-latest

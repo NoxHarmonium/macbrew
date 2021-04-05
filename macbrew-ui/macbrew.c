@@ -2,13 +2,14 @@
 #include "mbConstants.h"
 #include "mbMenus.h"
 #include "mbWSplash.h"
+#include "mbDSessionList.h"
 #include "mbSerial.h"
 
-void InitMacintosh(void);
-void HandleMouseDown(EventRecord *theEvent);
-void HandleEvent(void);
+static void InitMacintosh(void);
+static void HandleMouseDown(EventRecord *theEvent);
+static void HandleEvent(void);
 
-void InitMacintosh(void)
+static void InitMacintosh(void)
 {
 	MaxApplZone();
 
@@ -22,7 +23,7 @@ void InitMacintosh(void)
 	InitCursor();
 }
 
-void HandleMouseDown(EventRecord *theEvent)
+static void HandleMouseDown(EventRecord *theEvent)
 {
 	WindowPtr theWindow;
 	int windowCode = FindWindow(theEvent->where, &theWindow);
@@ -65,10 +66,6 @@ void HandleMouseDown(EventRecord *theEvent)
 			// Close the splash screen if clicked
 			DestroySplashWindow(theWindow);
 		}
-		else if (windowKind == kSessionListWindowId)
-		{
-			SessionListMouseDown(theWindow, *theEvent);
-		}
 		break;
 
 	case inGoAway:
@@ -78,19 +75,18 @@ void HandleMouseDown(EventRecord *theEvent)
 			HideWindow(theWindow);
 			if (windowKind == kSessionListWindowId)
 			{
-				DestroySessionListWindow(theWindow);
+				SessionListDialogDestroy(theWindow);
 			}
 		}
 		break;
 	}
 }
 
-void HandleEvent(void)
+static void HandleEvent(void)
 {
 	int ok;
 	EventRecord theEvent;
 	WindowPtr theWindow;
-	short windowKind = 0;
 
 	HiliteMenu(0);
 	SystemTask(); /* Handle desk accessories */
@@ -98,11 +94,8 @@ void HandleEvent(void)
 	ok = GetNextEvent(everyEvent, &theEvent);
 	if (ok)
 	{
+
 		theWindow = FrontWindow();
-		if (theWindow != NULL)
-		{
-			windowKind = ((WindowPeek)theWindow)->windowKind;
-		}
 
 		switch (theEvent.what)
 		{
@@ -122,10 +115,7 @@ void HandleEvent(void)
 			if (theWindow != NULL)
 			{
 				BeginUpdate(theWindow);
-				if (windowKind == kSessionListWindowId)
-				{
-					SessionListUpdate(theWindow);
-				}
+				// Update windows
 				EndUpdate(theWindow);
 			}
 
@@ -141,10 +131,8 @@ void HandleEvent(void)
 	}
 }
 
-main()
+void main()
 {
-	SerialResponse *responseData;
-	char message[255];
 
 	InitMacintosh();
 	SetUpMenus();

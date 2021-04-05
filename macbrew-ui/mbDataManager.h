@@ -1,4 +1,5 @@
 struct Sequence;
+struct SerialResponse;
 
-void Ping();
-void FetchBrewSessionReferences(Sequence **outSessionReferences);
+void Ping(void);
+void FetchBrewSessionReferences(struct Sequence **outSessionReferences);

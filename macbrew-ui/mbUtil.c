@@ -1,3 +1,4 @@
+#include <string.h>
 #include "mbUtil.h"
 #include "mbConstants.h"
 
@@ -38,6 +39,7 @@ void ShowAlert(Str255 message)
 	NoteAlert(kAlertId, NULL);
 }
 
+// cppcheck-suppress unusedFunction
 void CShowAlert(char *message)
 {
 	Str255 pString;
