@@ -1,11 +1,8 @@
 
+#include "mbDataManager.h"
 #include "mbMenus.h"
 #include "mbTypes.h"
-#include "mbDataManager.h"
-#include "mbWSessionList.h"
-
-extern WindowPtr mbWindow;
-extern int width;
+#include "mbDSessionList.h"
 
 MenuHandle appleMenu, fileMenu;
 
@@ -23,14 +20,13 @@ enum
 };
 
 void SetUpMenus(void)
-
 {
 	InsertMenu(appleMenu = NewMenu(appleID, "\p\024"), 0);
 	AddResMenu(appleMenu, 'DRVR');
 	InsertMenu(fileMenu = NewMenu(fileID, "\pFile"), 0);
 	DrawMenuBar();
 	AppendMenu(fileMenu, "\pPing/S");
-	AppendMenu(fileMenu, "\pOpen Session/S");
+	AppendMenu(fileMenu, "\pOpen Session/O");
 	AppendMenu(fileMenu, "\pQuit/Q");
 }
 
@@ -55,13 +51,17 @@ void HandleMenu(long mSelect)
 		switch (menuItem)
 		{
 		case pingItem:
+		{
 			Ping();
 			break;
+		}
 		case listSessionsItem:
 		{
-			WindowPtr sessionListWindow = SetUpSessionListWindow();
+			WindowPtr sessionListDialog = SessionListDialogSetUp();
+			// TODO: Set cursor to busy or show modal
 			FetchBrewSessionReferences(&sessionReferences);
-			UpdateSessionListWindow(sessionListWindow, sessionReferences);
+			SessionListDialogSetSessions(sessionListDialog, sessionReferences);
+			SessionListDialogShow(sessionListDialog);
 
 			break;
 		}

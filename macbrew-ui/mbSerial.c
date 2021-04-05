@@ -2,6 +2,7 @@
 #include "mbSerial.h"
 #include "mbConstants.h"
 #include "mbUtil.h"
+#include <string.h>
 
 // For some reason my serial setup echos every byte
 // sent back to the receive buffer. It seems to be a problem
@@ -17,17 +18,17 @@
 #define kSerialBufferSize 8192
 
 // Serial setup/teardown steps
-OSErr OpenSerialDriver();
-OSErr SetUpBuffer();
-OSErr SetUpHandshake();
-OSErr ConfigurePort();
-OSErr TearDownBuffer();
-OSErr CloseSerialDriver();
+static OSErr OpenSerialDriver(void);
+static OSErr SetUpBuffer(void);
+static OSErr SetUpHandshake(void);
+static OSErr ConfigurePort(void);
+static OSErr TearDownBuffer(void);
+static OSErr CloseSerialDriver(void);
 
-short VerifyChecksum(char *buffer, int length);
-OSErr ReadBytes(Handle outBuffer, int count);
-OSErr ReadBytesSkip(int count);
-OSErr ReadLength(unsigned short *outLength);
+static short VerifyChecksum(char *buffer, int length);
+static OSErr ReadBytes(Handle outBuffer, int count);
+static OSErr ReadBytesSkip(int count);
+static OSErr ReadLength(unsigned short *outLength);
 
 // Output driver reference number
 short gOutputRefNum;
@@ -39,7 +40,7 @@ Handle gSerialBuffer;
  * Serial setup/teardown steps
  */
 
-OSErr OpenSerialDriver()
+static OSErr OpenSerialDriver()
 {
 	OSErr result;
 
@@ -56,7 +57,7 @@ OSErr OpenSerialDriver()
 	return result;
 }
 
-OSErr SetUpBuffer()
+static OSErr SetUpBuffer()
 {
 	OSErr result;
 
@@ -67,7 +68,7 @@ OSErr SetUpBuffer()
 	return result;
 }
 
-OSErr SetUpHandshake()
+static OSErr SetUpHandshake()
 {
 	OSErr result;
 	SerShk serialHandshake;
@@ -92,7 +93,7 @@ OSErr SetUpHandshake()
 	return result;
 }
 
-OSErr ConfigurePort()
+static OSErr ConfigurePort()
 {
 	OSErr result;
 
@@ -101,7 +102,7 @@ OSErr ConfigurePort()
 	return result;
 }
 
-OSErr TearDownBuffer()
+static OSErr TearDownBuffer()
 {
 	OSErr result;
 
@@ -114,7 +115,7 @@ OSErr TearDownBuffer()
 	return result;
 }
 
-OSErr CloseSerialDriver()
+static OSErr CloseSerialDriver()
 {
 	OSErr result;
 
@@ -143,7 +144,7 @@ OSErr CloseSerialDriver()
  * Serial interface functions
  */
 
-short VerifyChecksum(char *buffer, int length)
+static short VerifyChecksum(char *buffer, int length)
 {
 	int checksumOffset = length - kChecksumBytes;
 	long accum = 0;
@@ -170,7 +171,7 @@ short VerifyChecksum(char *buffer, int length)
 	return accum == 0;
 }
 
-OSErr ReadBytes(Handle outBuffer, int count)
+static OSErr ReadBytes(Handle outBuffer, int count)
 {
 	OSErr result;
 	IOParam paramBlock;
@@ -194,7 +195,7 @@ OSErr ReadBytes(Handle outBuffer, int count)
 /**
  * Just read n bytes from the serial buffer and discard them
  */
-OSErr ReadBytesSkip(int count)
+static OSErr ReadBytesSkip(int count)
 {
 	OSErr result;
 	Handle skipBuffer = NewHandle(count);
@@ -211,7 +212,7 @@ OSErr ReadBytesSkip(int count)
 	return result;
 }
 
-OSErr ReadLength(unsigned short *outLength)
+static OSErr ReadLength(unsigned short *outLength)
 {
 	OSErr result;
 	Handle lengthBuffer;

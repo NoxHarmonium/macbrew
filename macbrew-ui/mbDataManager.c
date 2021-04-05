@@ -4,6 +4,20 @@
 #include "mbUtil.h"
 #include <string.h>
 
+typedef struct ResponseReader
+{
+	const struct SerialResponse *response;
+	int cursor;
+} ResponseReader;
+
+static void InitReader(ResponseReader *reader, const SerialResponse *responseData);
+static void ReadBool(ResponseReader *reader, Boolean *outBoolean);
+static void ReadUnsignedShort(ResponseReader *reader, unsigned short *outShort);
+static void ReadString(ResponseReader *reader, unsigned char *outString);
+static void ReadSequence(ResponseReader *reader, Sequence *outSequence);
+static void ReadBrewSessionReference(ResponseReader *reader, Handle *outHandle);
+static void ValidateResponse(ResponseReader *reader);
+
 // Response Structure
 // -----------------
 // Note: Response is in big endian to match m68k processor of the Mac
@@ -18,27 +32,27 @@
 // Array: 2 bytes length, then each element packed together
 // String: 2 bytes length, then n characters (no terminator)
 
-void InitReader(ResponseReader *reader, SerialResponse *responseData)
+static void InitReader(ResponseReader *reader, const SerialResponse *responseData)
 {
 	reader->cursor = 0;
 	reader->response = responseData;
 }
 
-void ReadBool(ResponseReader *reader, Boolean *outBoolean)
+static void ReadBool(ResponseReader *reader, Boolean *outBoolean)
 {
 	char value = GetCharFromBuffer(*reader->response->data, reader->cursor);
 	reader->cursor += 1; //sizeof(Boolean);
 	*outBoolean = value;
 }
 
-void ReadUnsignedShort(ResponseReader *reader, unsigned short *outShort)
+static void ReadUnsignedShort(ResponseReader *reader, unsigned short *outShort)
 {
 	unsigned short value = GetShortFromBuffer(*reader->response->data, reader->cursor);
 	reader->cursor += sizeof(unsigned short);
 	*outShort = value;
 }
 
-void ReadString(ResponseReader *reader, unsigned char *outString)
+static void ReadString(ResponseReader *reader, unsigned char *outString)
 {
 	unsigned short length = 0;
 	char *buffer = *(reader->response->data);
@@ -56,7 +70,7 @@ void ReadString(ResponseReader *reader, unsigned char *outString)
 	reader->cursor += length;
 }
 
-void ReadSequence(ResponseReader *reader, Sequence *outSequence)
+static void ReadSequence(ResponseReader *reader, Sequence *outSequence)
 {
 	unsigned short length;
 	ReadUnsignedShort(reader, &length);
@@ -65,7 +79,7 @@ void ReadSequence(ResponseReader *reader, Sequence *outSequence)
 	outSequence->elements = (Handle *)NewPtr(length * sizeof(Handle));
 }
 
-void ReadBrewSessionReference(ResponseReader *reader, Handle *outHandle)
+static void ReadBrewSessionReference(ResponseReader *reader, Handle *outHandle)
 {
 	int s = sizeof(BrewSessionReference);
 	Handle handle = NewHandle(s);
@@ -78,7 +92,7 @@ void ReadBrewSessionReference(ResponseReader *reader, Handle *outHandle)
 	*outHandle = handle;
 }
 
-void ValidateResponse(ResponseReader *reader)
+static void ValidateResponse(ResponseReader *reader)
 {
 	Boolean success;
 	Str255 responseId;

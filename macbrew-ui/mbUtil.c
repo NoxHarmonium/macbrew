@@ -1,3 +1,4 @@
+#include <string.h>
 #include "mbUtil.h"
 #include "mbConstants.h"
 

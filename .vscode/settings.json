@@ -25,7 +25,10 @@
         "mbdatamanager.h": "c",
         "mbtypes.h": "c",
         "string": "cpp",
-        "cstring": "c"
+        "cstring": "c",
+        "mblistutils.h": "c",
+        "string.h": "c",
+        "mbdsessionlist.h": "c"
     },
     "c-cpp-flylint.cppcheck.extraArgs": [
         "--std=c89",
