@@ -90,7 +90,6 @@ void HandleEvent(void)
 	int ok;
 	EventRecord theEvent;
 	WindowPtr theWindow;
-	short windowKind = 0;
 
 	HiliteMenu(0);
 	SystemTask(); /* Handle desk accessories */
@@ -98,6 +97,8 @@ void HandleEvent(void)
 	ok = GetNextEvent(everyEvent, &theEvent);
 	if (ok)
 	{
+		short windowKind = 0;
+
 		theWindow = FrontWindow();
 		if (theWindow != NULL)
 		{
@@ -141,10 +142,8 @@ void HandleEvent(void)
 	}
 }
 
-main()
+void main()
 {
-	SerialResponse *responseData;
-	char message[255];
 
 	InitMacintosh();
 	SetUpMenus();

@@ -9,15 +9,15 @@ void DestroySessionList(WindowPtr parentWindow);
 void SetUpButtons(WindowPtr parentWindow);
 void DestroyButtons(WindowPtr parentWindow);
 
-void DrawSessionListBorder(ListHandle listHandle) 
+void DrawSessionListBorder(ListHandle listHandle)
 {
 	Rect border;
 	PenState penState;
 	ListPtr list = *listHandle;
-	
+
 	border = list->rView;
 	GetPenState(&penState);
-	PenSize(1,1);
+	PenSize(1, 1);
 	InsetRect(&border, -1, -1);
 	FrameRect(&border);
 	SetPenState(&penState);
@@ -89,12 +89,17 @@ void SetUpButtons(WindowPtr parentWindow)
 	// Variables
 	Handle sessionListWindowStateHandle = (Handle)GetWRefCon(parentWindow);
 	SessionListWindowState *windowState;
+	ControlHandle okButtonHandle;
+	ControlHandle cancelButtonHandle;
 
 	HLock(sessionListWindowStateHandle);
 	windowState = (SessionListWindowState *)*sessionListWindowStateHandle;
 
-	windowState->cancelButton = GetNewControl(kSessionListCancelButtonId, parentWindow);
-	windowState->okButton = GetNewControl(kSessionListOkButtonId, parentWindow);
+	cancelButtonHandle = GetNewControl(kSessionListCancelButtonId, parentWindow);
+	okButtonHandle = GetNewControl(kSessionListOkButtonId, parentWindow);
+
+	windowState->okButton = okButtonHandle;
+	windowState->cancelButton = cancelButtonHandle;
 
 	HUnlock(sessionListWindowStateHandle);
 }
@@ -159,7 +164,6 @@ void UpdateSessionListWindow(WindowPtr window, Sequence *sessionReferences)
 	short i;
 	Cell cell;
 
-	Handle *elements;
 	Handle sessionListWindowStateHandle = (Handle)GetWRefCon(window);
 	SessionListWindowState *windowState;
 	ListRec *sessionList;

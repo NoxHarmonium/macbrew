@@ -40,8 +40,6 @@ void HandleMenu(long mSelect)
 	int menuItem = LoWord(mSelect);
 	Str255 name;
 	GrafPtr savePort;
-	WindowPeek frontWindow;
-	char *command;
 	Sequence *sessionReferences;
 
 	switch (menuID)

@@ -105,7 +105,7 @@ jobs:
       - name: Install cppcheck
         run: sudo apt-get install cppcheck
       - name: Run cppcheck
-        run: cppcheck --std=c89 --enable=all --error-exitcode=1 macbrew-ui/
+        run: cppcheck --std=c89 --enable=all --error-exitcode=1 --inline-suppr macbrew-ui/
 
   coverage:
     name: Code coverage

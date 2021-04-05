@@ -28,7 +28,8 @@
 		"vadimcn.vscode-lldb",
 		"mutantdino.resourcemonitor",
 		"ms-vscode.cpptools",
-		"timonwong.shellcheck"
+		"timonwong.shellcheck",
+		"jbenden.c-cpp-flylint"
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],

@@ -38,6 +38,7 @@ void ShowAlert(Str255 message)
 	NoteAlert(kAlertId, NULL);
 }
 
+// cppcheck-suppress unusedFunction
 void CShowAlert(char *message)
 {
 	Str255 pString;

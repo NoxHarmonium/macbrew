@@ -41,7 +41,7 @@ void ReadUnsignedShort(ResponseReader *reader, unsigned short *outShort)
 void ReadString(ResponseReader *reader, unsigned char *outString)
 {
 	unsigned short length = 0;
-	Ptr buffer = *(reader->response->data);
+	char *buffer = *(reader->response->data);
 
 	ReadUnsignedShort(reader, &length);
 
@@ -67,14 +67,9 @@ void ReadSequence(ResponseReader *reader, Sequence *outSequence)
 
 void ReadBrewSessionReference(ResponseReader *reader, Handle *outHandle)
 {
-	Str255 x;
 	int s = sizeof(BrewSessionReference);
 	Handle handle = NewHandle(s);
 	BrewSessionReference *brewSessionReference = (BrewSessionReference *)*handle;
-	char *tmp = NewPtr(255);
-
-	sprintf(tmp, "size: %i", s);
-	//CShowAlert(tmp);
 
 	ReadString(reader, brewSessionReference->id);
 	ReadString(reader, brewSessionReference->batch_code);
