@@ -47,3 +47,14 @@ void CShowAlert(char *message)
 	c2pstr((char *)pString);
 	ShowAlert(pString);
 }
+
+void MakeCursorBusy(void)
+{
+	CursHandle x = GetCursor(watchCursor);
+	SetCursor(*x);
+}
+
+void MakeCursorNormal(void)
+{
+	SetCursor(&arrow);
+}

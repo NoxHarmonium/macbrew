@@ -1,8 +1,9 @@
+#include <string.h>
+
 #include "mbTypes.h"
 #include "mbDataManager.h"
 #include "mbSerial.h"
 #include "mbUtil.h"
-#include <string.h>
 
 typedef struct ResponseReader
 {
