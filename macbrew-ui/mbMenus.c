@@ -3,6 +3,7 @@
 #include "mbMenus.h"
 #include "mbTypes.h"
 #include "mbDSessionList.h"
+#include "mbUtil.h"
 
 MenuHandle appleMenu, fileMenu;
 
@@ -58,8 +59,9 @@ void HandleMenu(long mSelect)
 		case listSessionsItem:
 		{
 			WindowPtr sessionListDialog = SessionListDialogSetUp();
-			// TODO: Set cursor to busy or show modal
+			MakeCursorBusy();
 			FetchBrewSessionReferences(&sessionReferences);
+			MakeCursorNormal();
 			SessionListDialogSetSessions(sessionListDialog, sessionReferences);
 			SessionListDialogShow(sessionListDialog);
 

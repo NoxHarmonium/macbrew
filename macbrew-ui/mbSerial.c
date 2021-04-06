@@ -1,8 +1,9 @@
+#include <string.h>
 #include <Serial.h>
+
 #include "mbSerial.h"
 #include "mbConstants.h"
 #include "mbUtil.h"
-#include <string.h>
 
 // For some reason my serial setup echos every byte
 // sent back to the receive buffer. It seems to be a problem

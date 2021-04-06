@@ -26,24 +26,6 @@
         "mbtypes.h": "c",
         "string": "cpp",
         "cstring": "c",
-        "mblistutils.h": "c",
-        "string.h": "c",
         "mbdsessionlist.h": "c"
-    },
-    "c-cpp-flylint.cppcheck.extraArgs": [
-        "--std=c89",
-        // Don't use --enable=all here because unusedFunction needs the whole project to be scanned and I'm not sure how to do that right now
-        "--enable=warning,style,performance,portability,information",
-    ],
-    "c-cpp-flylint.lizard.enable": false,
-    "c-cpp-flylint.flexelint.enable": false,
-    "c-cpp-flylint.clang.enable": false,
-    "c-cpp-flylint.clang.standard": [
-        "c89"
-    ],
-    "c-cpp-flylint.flawfinder.enable": false,
-    "c-cpp-flylint.cppcheck.includePaths": [
-        "macbrew-ui/"
-    ],
-    "c-cpp-flylint.cppcheck.platform": "unix32"
+    }
 }
