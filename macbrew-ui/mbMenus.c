@@ -64,7 +64,7 @@ void HandleMenu(long mSelect)
 			MakeCursorNormal();
 			SessionListDialogSetSessions(sessionListDialog, sessionReferences);
 			SessionListDialogShow(sessionListDialog);
-
+			SessionListDialogDestroy(sessionListDialog);
 			break;
 		}
 		case quitItem:

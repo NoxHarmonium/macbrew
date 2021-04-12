@@ -4,7 +4,7 @@
 
 // WIND
 #define kSplashWindowId 128
-#define kSessionListWindowId 129
+#define kViewSessionWindowId 129
 
 // PICT
 #define kSplashImageId 128
