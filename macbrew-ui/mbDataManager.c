@@ -14,7 +14,7 @@ typedef struct ResponseReader
 static void InitReader(ResponseReader *reader, const SerialResponse *responseData);
 static void ReadBool(ResponseReader *reader, Boolean *outBoolean);
 static void ReadUnsignedShort(ResponseReader *reader, unsigned short *outShort);
-static void ReadString(ResponseReader *reader, unsigned char *outString);
+static void ReadString(ResponseReader *reader, StringHandle *outString);
 static void ReadSequence(ResponseReader *reader, Sequence *outSequence);
 static void ReadBrewSessionReference(ResponseReader *reader, Handle *outHandle);
 static void ValidateResponse(ResponseReader *reader);
@@ -53,10 +53,11 @@ static void ReadUnsignedShort(ResponseReader *reader, unsigned short *outShort)
 	*outShort = value;
 }
 
-static void ReadString(ResponseReader *reader, unsigned char *outString)
+static void ReadString(ResponseReader *reader, StringHandle *outString)
 {
 	unsigned short length = 0;
 	char *buffer = *(reader->response->data);
+	Str255 pString;
 
 	ReadUnsignedShort(reader, &length);
 
@@ -64,9 +65,11 @@ static void ReadString(ResponseReader *reader, unsigned char *outString)
 	{
 		Panic("\pCannot read strings larger than 254 characters at this time");
 	}
-	outString[0] = (char)length;
+	pString[0] = (char)length;
 
-	memcpy(outString + 1, (char *)buffer + reader->cursor, length);
+	memcpy(&pString[1], (char *)buffer + reader->cursor, length);
+
+	*outString = NewString(pString);
 
 	reader->cursor += length;
 }
@@ -82,13 +85,18 @@ static void ReadSequence(ResponseReader *reader, Sequence *outSequence)
 
 static void ReadBrewSessionReference(ResponseReader *reader, Handle *outHandle)
 {
-	int s = sizeof(BrewSessionReference);
-	Handle handle = NewHandle(s);
-	BrewSessionReference *brewSessionReference = (BrewSessionReference *)*handle;
+	Handle handle = NewHandle(sizeof(BrewSessionReference));
+	BrewSessionReference *brewSessionReference;
 
-	ReadString(reader, brewSessionReference->id);
-	ReadString(reader, brewSessionReference->batch_code);
-	ReadString(reader, brewSessionReference->name);
+	HLock(handle);
+
+	brewSessionReference = (BrewSessionReference *)*handle;
+
+	ReadString(reader, &brewSessionReference->id);
+	ReadString(reader, &brewSessionReference->batch_code);
+	ReadString(reader, &brewSessionReference->name);
+
+	HUnlock(handle);
 
 	*outHandle = handle;
 }
@@ -96,8 +104,8 @@ static void ReadBrewSessionReference(ResponseReader *reader, Handle *outHandle)
 static void ValidateResponse(ResponseReader *reader)
 {
 	Boolean success;
-	Str255 responseId;
-	ReadString(reader, responseId);
+	StringHandle responseId;
+	ReadString(reader, &responseId);
 	ReadBool(reader, &success);
 
 	// TODO: Check that response ID matches request ID
@@ -149,3 +157,4 @@ void FetchBrewSessionReferences(Sequence **outSessionReferences)
 
 	//DisposeResponse(&responseData);
 }
+unsigned short red;

@@ -1,5 +1,10 @@
+
+#include <string.h>
+
 #include "mbConstants.h"
 #include "mbListUtils.h"
+
+static StringPtr CopyStringHandleToPtr(StringHandle sourceString);
 
 void SelectCell(ListHandle listHandle, Cell oldCell, Cell newCell)
 {
@@ -9,8 +14,8 @@ void SelectCell(ListHandle listHandle, Cell oldCell, Cell newCell)
 
 void MakeCellVisible(ListHandle listHandle, Cell newCell)
 {
-	ListRec *sessionList = *listHandle;
-	Rect visibleRect = sessionList->visible;
+	ListRec *list = *listHandle;
+	Rect visibleRect = list->visible;
 	if (!PtInRect(newCell, &visibleRect))
 	{
 		short newCol, newRow = 0;
@@ -65,4 +70,57 @@ void DrawSessionListBorder(ListHandle listHandle)
 	InsetRect(&border, -1, -1);
 	FrameRect(&border);
 	SetPenState(&penState);
+}
+
+static StringPtr CopyStringHandleToPtr(StringHandle sourceString)
+{
+	StringPtr src, dest;
+	unsigned char length;
+
+	HLock((Handle)sourceString);
+	src = *sourceString;
+	length = (unsigned char)*src;
+	dest = (StringPtr)NewPtr(length + 1);
+	memcpy(dest, src, length + 1);
+	HUnlock((Handle)sourceString);
+
+	return dest;
+}
+
+ListItem *NewListItem(StringHandle label, Cell cell)
+{
+	StringPtr copiedString;
+	ListItem *listItem = (ListItem *)NewPtr(sizeof(ListItem));
+
+	listItem->string = NULL;
+	listItem->cell = cell;
+	copiedString = CopyStringHandleToPtr(label);
+	listItem->string = copiedString;
+	listItem->stringData = (unsigned char *)copiedString + 1;
+	listItem->stringLength = (char)*copiedString;
+
+	return listItem;
+}
+
+void DestroyListItem(ListItem *listItem)
+{
+	if (listItem->string != NULL)
+	{
+		DisposePtr((Ptr)listItem->string);
+		listItem->string = NULL;
+		listItem->stringData = NULL;
+		listItem->stringLength = 0;
+	}
+	DisposePtr((Ptr)listItem);
+}
+
+void AddListItem(ListHandle listHandle, ListItem *listItem)
+{
+	LAddRow(1, listItem->cell.v, listHandle);
+
+	LSetCell(listItem->stringData, listItem->stringLength, listItem->cell, listHandle);
+	if (listItem->cell.v == 0)
+	{
+		LSetSelect(TRUE, listItem->cell, listHandle);
+	}
 }

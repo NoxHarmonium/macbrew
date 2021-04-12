@@ -2,8 +2,7 @@
     "env": {
         "myDefaultIncludePath": [
             "${workspaceFolder}",
-            "${workspaceFolder}/include/CIncludes",
-            "${workspaceFolder}/include/ThinkCIncludes"
+            "${workspaceFolder}/include/CIncludes"
         ]
     },
     "configurations": [

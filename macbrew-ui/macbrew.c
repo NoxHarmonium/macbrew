@@ -45,11 +45,10 @@ static void HandleMouseDown(EventRecord *theEvent)
 		break;
 
 	case inDrag:
-		if (windowKind == kSessionListWindowId)
-		{
-			DragWindow(theWindow, theEvent->where, &(*GetGrayRgn())->rgnBBox);
-		}
+	{
+		DragWindow(theWindow, theEvent->where, &(*GetGrayRgn())->rgnBBox);
 		break;
+	}
 
 	case inContent:
 		if (theWindow != FrontWindow())
@@ -73,10 +72,6 @@ static void HandleMouseDown(EventRecord *theEvent)
 			TrackGoAway(theWindow, theEvent->where))
 		{
 			HideWindow(theWindow);
-			if (windowKind == kSessionListWindowId)
-			{
-				SessionListDialogDestroy(theWindow);
-			}
 		}
 		break;
 	}

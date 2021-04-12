@@ -1,3 +1,4 @@
+#include <string.h>
 #include <Events.h>
 #include "mbConstants.h"
 #include "mbUtil.h"
@@ -11,6 +12,8 @@ typedef struct SessionListDialogState
 	ListHandle listHandle;
 	ControlHandle cancelButton;
 	ControlHandle okButton;
+	ListItem **sessionListItems;
+	short sessionListItemCount;
 } SessionListDialogState;
 
 pascal Boolean SessionListEventFilterProc(DialogPtr theDialog, EventRecord *theEvent, short *itemHit);
@@ -116,6 +119,7 @@ static void SetUpSessionListControl(DialogPtr parentDialog)
 
 	// Create the list
 	dialogState->listHandle = LNew(&visibleRect, &dataBounds, cellSize, 0, parentDialog, doDraw, noGrow, !includeScrollBar, includeScrollBar);
+	dialogState->sessionListItemCount = 0;
 
 	SessionListDialogUnlockState(parentDialog);
 }
@@ -193,6 +197,17 @@ DialogPtr SessionListDialogSetUp(void)
 
 void SessionListDialogDestroy(DialogPtr theDialog)
 {
+	// Clean up item data
+	short i;
+	SessionListDialogState *dialogState = SessionListDialogLockState(theDialog);
+
+	for (i = 0; i < dialogState->sessionListItemCount; i++)
+	{
+		DisposePtr((Ptr)dialogState->sessionListItems[i]);
+	}
+
+	SessionListDialogUnlockState(theDialog);
+
 	// Controls
 	DestroySessionListControl(theDialog);
 
@@ -206,8 +221,7 @@ void SessionListDialogDestroy(DialogPtr theDialog)
 void SessionListDialogSetSessions(DialogPtr theDialog, Sequence *sessionReferences)
 {
 	short i;
-	Cell cell = {0};
-	const SessionListDialogState *dialogState = SessionListDialogLockState(theDialog);
+	SessionListDialogState *dialogState = SessionListDialogLockState(theDialog);
 	const ListRec *sessionList = SessionListControlLock(dialogState);
 
 	if (sessionList->dataBounds.bottom > 0)
@@ -216,19 +230,24 @@ void SessionListDialogSetSessions(DialogPtr theDialog, Sequence *sessionReferenc
 		Panic("\pCan only add rows to an empty list at this time");
 	}
 
+	dialogState->sessionListItems = (ListItem **)NewPtr(sessionReferences->size * sizeof(ListItem *));
+	dialogState->sessionListItemCount = sessionReferences->size;
+
 	for (i = 0; i < sessionReferences->size; i++)
 	{
 		Handle sessionHandle = sessionReferences->elements[i];
-		BrewSessionReference *brewSession = (BrewSessionReference *)*sessionHandle;
+		BrewSessionReference *brewSession;
+		ListItem *item;
+		Cell cell;
 
-		LAddRow(1, i, dialogState->listHandle);
 		SetPt(&cell, 0, i);
+		HLock(sessionHandle);
+		brewSession = (BrewSessionReference *)*sessionHandle;
+		item = NewListItem(brewSession->name, cell);
+		HUnlock(sessionHandle);
 
-		LSetCell((unsigned char *)brewSession->name + 1, (char)*brewSession->name, cell, dialogState->listHandle);
-		if (i == 0)
-		{
-			LSetSelect(TRUE, cell, dialogState->listHandle);
-		}
+		AddListItem(dialogState->listHandle, item);
+		dialogState->sessionListItems[i] = item;
 	}
 
 	SessionListControlUnlock(dialogState);
@@ -239,13 +258,10 @@ void SessionListDialogShow(DialogPtr theDialog)
 {
 	short itemHit;
 	ShowWindow(theDialog);
-
 	do
 	{
 		ModalDialog(&SessionListEventFilterProc, &itemHit);
 	} while (itemHit != ok && itemHit != cancel);
-
-	SessionListDialogDestroy(theDialog);
 }
 
 void SessionListControlHandleKeyboard(DialogPtr theDialog, char key)
