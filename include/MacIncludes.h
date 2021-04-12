@@ -114,7 +114,7 @@
 #endif
 
 // BDC
-#if 1
+#if 0
 #include <BDC.h>
 #endif
 
@@ -489,22 +489,22 @@
 #endif
 
 // pascal.h
-#if 1
+#if 0
 #include <pascal.h>
 #endif
 
 // asm.h
-#if 1
+#if 0
 #include <asm.h>
 #endif
 
 // LoMem
-#if 1
+#if 0
 #include <LoMem.h>
 #endif
 
 // THINK
-#if 1
+#if 0
 #include <THINK.h>
 #endif
 
