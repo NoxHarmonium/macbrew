@@ -1,4 +1,6 @@
 
+struct BrewSessionReference;
+
 WindowPtr SessionViewWindowSetUp(void);
 void SessionViewWindowDestroy(WindowPtr window);
-void SessionViewSetSessionId(WindowPtr window, StringHandle sessionId);
+void SessionViewSetSession(WindowPtr window, struct BrewSessionReference **brewSessionReferenceHandle);
