@@ -18,7 +18,7 @@ encoding = "0.2.33"
 tokio-util = { version = "0.3.1", features = ["codec"], default-features = false }
 futures = "0.3.14"
 bytes = "0.5"
-async-trait = "0.1.49"
+async-trait = "0.1.50"
 snafu = "0.6.10"
 quick-xml = { version = "0.22", features = [ "serialize" ] }
 hexplay = "0.2.1"
