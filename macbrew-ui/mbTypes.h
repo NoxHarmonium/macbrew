@@ -5,6 +5,8 @@ typedef struct BrewSessionReference
     StringHandle name;
 } BrewSessionReference;
 
+typedef BrewSessionReference **BrewSessionReferenceHandle;
+
 typedef struct Sequence
 {
     unsigned short size;

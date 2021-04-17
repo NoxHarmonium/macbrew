@@ -1,9 +1,10 @@
 #include "mbConstants.h"
 #include "mbWViewSession.h"
+#include "mbTypes.h"
 
 typedef struct ViewSessionWindowState
 {
-	StringHandle sessionId;
+	BrewSessionReferenceHandle brewSessionReferenceHandle;
 } ViewSessionWindowState;
 
 static void ViewSessionWindowInitState(WindowPtr theWindow);
@@ -12,14 +13,14 @@ static void *ViewSessionWindowUnlockState(WindowPtr theWindow);
 
 static void ViewSessionWindowInitState(WindowPtr theWindow)
 {
-	const Handle viewSessionWindowStateHandle = NewHandleClear(sizeof(ViewSessionWindowState));
+	Handle viewSessionWindowStateHandle = NewHandleClear(sizeof(ViewSessionWindowState));
 	SetWRefCon(theWindow, (long)viewSessionWindowStateHandle);
 	((WindowPeek)theWindow)->windowKind = kViewSessionWindowId;
 }
 
 static ViewSessionWindowState *ViewSessionWindowLockState(WindowPtr theWindow)
 {
-	const Handle viewSessionWindowStateHandle = (Handle)GetWRefCon(theWindow);
+	Handle viewSessionWindowStateHandle = (Handle)GetWRefCon(theWindow);
 
 	HLock(viewSessionWindowStateHandle);
 	return (ViewSessionWindowState *)*viewSessionWindowStateHandle;
@@ -27,7 +28,7 @@ static ViewSessionWindowState *ViewSessionWindowLockState(WindowPtr theWindow)
 
 static void *ViewSessionWindowUnlockState(WindowPtr theWindow)
 {
-	const Handle viewSessionWindowStateHandle = (Handle)GetWRefCon(theWindow);
+	Handle viewSessionWindowStateHandle = (Handle)GetWRefCon(theWindow);
 
 	HUnlock(viewSessionWindowStateHandle);
 }
@@ -53,14 +54,20 @@ void SessionViewWindowDestroy(WindowPtr window)
 	}
 }
 
-void SessionViewSetSessionId(WindowPtr window, StringHandle sessionId)
+void SessionViewSetSession(WindowPtr window, BrewSessionReferenceHandle brewSessionReferenceHandle)
 {
 	// Temporary function to test session select
 	ViewSessionWindowState *windowState = ViewSessionWindowLockState(window);
-	windowState->sessionId = sessionId;
+	BrewSessionReference *brewSessionReference = NULL;
+	windowState->brewSessionReferenceHandle = brewSessionReferenceHandle;
+	HLock((Handle)brewSessionReferenceHandle);
+	brewSessionReference = *brewSessionReferenceHandle;
+	HLock((Handle)brewSessionReference->name);
 
 	// Set title to demonstrate its working for now
-	SetWTitle(window, *sessionId);
+	SetWTitle(window, *(brewSessionReference->name));
 
+	HUnlock((Handle)brewSessionReference->name);
+	HUnlock((Handle)brewSessionReferenceHandle);
 	ViewSessionWindowUnlockState(window);
 }

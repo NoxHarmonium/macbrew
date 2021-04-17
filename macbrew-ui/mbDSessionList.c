@@ -26,9 +26,10 @@ static void SetUpSessionListControl(DialogPtr parentDialog);
 static void DestroySessionListControl(DialogPtr parentDialog);
 static ListRec *SessionListControlLock(const SessionListDialogState *dialogState);
 static void SessionListControlUnlock(const SessionListDialogState *dialogState);
+Cell SessionListGetSelectedCell(DialogPtr theDialog);
 static void SessionListControlHandleKeyboard(DialogPtr theDialog, char key);
 static void SessionListControlUpdate(DialogPtr theDialog);
-static void SessionListControlMouseDown(DialogPtr theDialog, EventRecord theEvent);
+static Boolean SessionListControlMouseDown(DialogPtr theDialog, EventRecord theEvent);
 
 static void SetUpButtons(DialogPtr parentDialog);
 static void DestroyButtons(DialogPtr parentDialog);
@@ -52,9 +53,10 @@ pascal Boolean SessionListEventFilterProc(DialogPtr theDialog, EventRecord *theE
 		{
 			windowKind = ((WindowPeek)theWindow)->windowKind;
 		}
-		if (windowCode == inContent && windowKind == kDialogWindowKind)
+		if (windowCode == inContent && windowKind == kDialogWindowKind && SessionListControlMouseDown(theDialog, *theEvent))
 		{
-			SessionListControlMouseDown(theDialog, *theEvent);
+			*itemHit = ok;
+			return TRUE;
 		}
 	}
 	else
@@ -126,7 +128,15 @@ static void SetUpSessionListControl(DialogPtr parentDialog)
 
 static void DestroySessionListControl(DialogPtr parentDialog)
 {
+	short i;
 	SessionListDialogState *dialogState = SessionListDialogLockState(parentDialog);
+
+	for (i = 0; i < dialogState->sessionListItemCount; i++)
+	{
+		ListItem *item = dialogState->sessionListItems[i];
+		DestroyListItem(item);
+	}
+	dialogState->sessionListItemCount = 0;
 
 	if (dialogState->listHandle != NULL)
 	{
@@ -222,9 +232,8 @@ void SessionListDialogSetSessions(DialogPtr theDialog, Sequence *sessionReferenc
 {
 	short i;
 	SessionListDialogState *dialogState = SessionListDialogLockState(theDialog);
-	const ListRec *sessionList = SessionListControlLock(dialogState);
 
-	if (sessionList->dataBounds.bottom > 0)
+	if (dialogState->sessionListItemCount > 0)
 	{
 		// TODO: Delete existing rows
 		Panic("\pCan only add rows to an empty list at this time");
@@ -254,20 +263,32 @@ void SessionListDialogSetSessions(DialogPtr theDialog, Sequence *sessionReferenc
 	SessionListDialogUnlockState(theDialog);
 }
 
-void SessionListDialogShow(DialogPtr theDialog)
+short SessionListDialogShow(DialogPtr theDialog)
 {
 	short itemHit;
 	ShowWindow(theDialog);
+
 	do
 	{
 		ModalDialog(&SessionListEventFilterProc, &itemHit);
 	} while (itemHit != ok && itemHit != cancel);
+
+	return SessionListGetSelectedCell(theDialog).v;
+}
+
+Cell SessionListGetSelectedCell(DialogPtr theDialog)
+{
+	const SessionListDialogState *dialogState = SessionListDialogLockState(theDialog);
+	Cell cell = {0, 0};
+	LGetSelect(TRUE, &cell, dialogState->listHandle);
+	SessionListDialogUnlockState(theDialog);
+	return cell;
 }
 
 void SessionListControlHandleKeyboard(DialogPtr theDialog, char key)
 {
 	const SessionListDialogState *dialogState = SessionListDialogLockState(theDialog);
-	Cell newCell = {0}, oldCell = {0};
+	Cell newCell = {0, 0}, oldCell = {0, 0};
 
 	if (dialogState->listHandle == NULL)
 	{
@@ -300,36 +321,23 @@ static void SessionListControlUpdate(DialogPtr theDialog)
 }
 
 // See: http://mirror.informatimago.com/next/developer.apple.com/documentation/mac/MoreToolbox/MoreToolbox-212.html#HEADING212-0
-static void SessionListControlMouseDown(DialogPtr theDialog, EventRecord theEvent)
+static Boolean SessionListControlMouseDown(DialogPtr theDialog, EventRecord theEvent)
 {
+	Boolean itemSelected = false;
 	const SessionListDialogState *dialogState = SessionListDialogLockState(theDialog);
 	const ListRec *sessionList = SessionListControlLock(dialogState);
 	ControlHandle selectedControl;
-	short selectedControlCode;
 
 	SetPort(sessionList->port);
 	GlobalToLocal(&theEvent.where);
 
-	selectedControlCode = FindControl(theEvent.where, theDialog, &selectedControl);
-
 	if (LClick(theEvent.where, theEvent.modifiers, dialogState->listHandle))
 	{
-		// Double click - Select session
-	}
-
-	switch (selectedControlCode)
-	{
-	case inButton:
-	{
-
-		if (TrackControl(selectedControl, theEvent.where, NULL))
-		{
-			// Single  click - Select session or go away
-		}
-		break;
-	}
+		// Double clicked
+		itemSelected = TRUE;
 	}
 
 	SessionListControlUnlock(dialogState);
 	SessionListDialogUnlockState(theDialog);
+	return itemSelected;
 }

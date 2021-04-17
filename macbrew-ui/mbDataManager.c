@@ -153,8 +153,6 @@ void FetchBrewSessionReferences(Sequence **outSessionReferences)
 
 	*outSessionReferences = sessionReference;
 
-	// TODO: Disposing!
-
-	//DisposeResponse(&responseData);
+	DisposeResponse(&responseData);
 }
 unsigned short red;

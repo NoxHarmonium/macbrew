@@ -4,6 +4,7 @@
 #include "mbTypes.h"
 #include "mbDSessionList.h"
 #include "mbUtil.h"
+#include "mbWViewSession.h"
 
 MenuHandle appleMenu, fileMenu;
 
@@ -59,12 +60,22 @@ void HandleMenu(long mSelect)
 		case listSessionsItem:
 		{
 			WindowPtr sessionListDialog = SessionListDialogSetUp();
+			short selectedItem;
+			BrewSessionReferenceHandle selectedSession;
+			WindowPtr viewSessionWindow;
 			MakeCursorBusy();
 			FetchBrewSessionReferences(&sessionReferences);
 			MakeCursorNormal();
 			SessionListDialogSetSessions(sessionListDialog, sessionReferences);
-			SessionListDialogShow(sessionListDialog);
+			selectedItem = SessionListDialogShow(sessionListDialog);
+			if (selectedItem < 0 || selectedItem > sessionReferences->size - 1)
+			{
+				Panic("\pSelected item out of range!");
+			}
 			SessionListDialogDestroy(sessionListDialog);
+			selectedSession = (BrewSessionReferenceHandle)sessionReferences->elements[selectedItem];
+			viewSessionWindow = SessionViewWindowSetUp();
+			SessionViewSetSession(viewSessionWindow, selectedSession);
 			break;
 		}
 		case quitItem:
