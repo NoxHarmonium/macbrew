@@ -62,6 +62,7 @@ void HandleMenu(long mSelect)
 			WindowPtr sessionListDialog = SessionListDialogSetUp();
 			short selectedItem;
 			BrewSessionReferenceHandle selectedSession;
+			BrewSessionHandle brewSession;
 			WindowPtr viewSessionWindow;
 			MakeCursorBusy();
 			FetchBrewSessionReferences(&sessionReferences);
@@ -74,8 +75,12 @@ void HandleMenu(long mSelect)
 			}
 			SessionListDialogDestroy(sessionListDialog);
 			selectedSession = (BrewSessionReferenceHandle)sessionReferences->elements[selectedItem];
+			HLock((Handle)selectedSession);
+			FetchBrewSession((*selectedSession)->id, brewSession);
+			HUnlock((Handle)selectedSession);
+
 			viewSessionWindow = SessionViewWindowSetUp();
-			SessionViewSetSession(viewSessionWindow, selectedSession);
+			SessionViewSetSession(viewSessionWindow, brewSession);
 			break;
 		}
 		case quitItem:
