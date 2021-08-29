@@ -32,7 +32,7 @@ struct Opts {
 }
 
 async fn handle_line(line: &str) -> Result<Vec<u8>> {
-    println!("Received command");
+    println!("Received command: [{}]", line);
     let components = line.split_terminator(' ').collect::<Vec<_>>();
     if let Some((request_id, rest)) = components.split_first() {
         let response = match rest {

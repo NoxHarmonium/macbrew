@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <string.h>
 
 #include "mbTypes.h"
@@ -18,6 +19,8 @@ static void ReadString(ResponseReader *reader, StringHandle *outString);
 static void ReadSequence(ResponseReader *reader, Sequence *outSequence);
 static void ReadBrewSessionReference(ResponseReader *reader, Handle *outHandle);
 static void ValidateResponse(ResponseReader *reader);
+static void AssertReaderEnd(const ResponseReader *reader, const SerialResponse *responseData);
+static char *BuildCommand(const char *formatString, const unsigned char *arg);
 
 // Response Structure
 // -----------------
@@ -116,6 +119,15 @@ static void ValidateResponse(ResponseReader *reader)
 	}
 }
 
+static void AssertReaderEnd(const ResponseReader *reader, const SerialResponse *responseData)
+{
+	Boolean success = reader->cursor == responseData->length;
+	if (!success)
+	{
+		Panic("\pCursor is not at the end of the response. There may be an issue with the deserializer.");
+	}
+}
+
 void Ping()
 {
 	SerialResponse *responseData;
@@ -151,8 +163,45 @@ void FetchBrewSessionReferences(Sequence **outSessionReferences)
 		ReadBrewSessionReference(&reader, &sessionReference->elements[i]);
 	}
 
+	AssertReaderEnd(&reader, responseData);
+
 	*outSessionReferences = sessionReference;
 
 	DisposeResponse(&responseData);
 }
-unsigned short red;
+
+void FetchBrewSession(StringHandle sessionId, BrewSession **outBrewSession)
+{
+	Str255 command;
+	Str255 cSessionId;
+	SerialResponse *responseData;
+	ResponseReader reader;
+	BrewSession *brewSession = (BrewSession *)NewPtr(sizeof(BrewSession));
+
+	HLock((Handle)sessionId);
+	PascalToCStringCopy(cSessionId, *sessionId);
+	HUnlock((Handle)sessionId);
+
+	sprintf((char *)command, "1 GET SESSION %s\r", cSessionId);
+
+	SetUpSerial();
+	SendCommand((char *)command);
+	ReadResponse(&responseData);
+	TearDownSerial();
+
+	InitReader(&reader, responseData);
+
+	ValidateResponse(&reader);
+
+	ReadString(&reader, &brewSession->id);
+	ReadString(&reader, &brewSession->phase);
+	ReadString(&reader, &brewSession->batch_code);
+	ReadString(&reader, &brewSession->recipe_title);
+	ReadString(&reader, &brewSession->recipe_id);
+
+	AssertReaderEnd(&reader, responseData);
+
+	*outBrewSession = brewSession;
+
+	DisposeResponse(&responseData);
+}

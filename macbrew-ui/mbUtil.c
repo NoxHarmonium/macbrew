@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <string.h>
 #include "mbUtil.h"
 #include "mbConstants.h"
@@ -46,6 +47,12 @@ void CShowAlert(char *message)
 	strcpy((char *)pString, message);
 	c2pstr((char *)pString);
 	ShowAlert(pString);
+}
+
+void PascalToCStringCopy(Str255 cStringOut, const Str255 pString)
+{
+	memcpy(cStringOut, (unsigned char *)pString, (char)pString[0] + 1);
+	p2cstr(cStringOut);
 }
 
 void MakeCursorBusy(void)

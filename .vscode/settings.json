@@ -28,7 +28,13 @@
         "cstring": "c",
         "mbdsessionlist.h": "c",
         "events.h": "c",
-        "string_view": "c"
+        "string_view": "c",
+        "mbwviewsession.h": "c",
+        "*.tcc": "c",
+        "cstdio": "c",
+        "string.h": "c",
+        "stdio.h": "c",
+        "textutils.h": "c"
     },
     "c-cpp-flylint.clang.enable": false,
     "c-cpp-flylint.flexelint.enable": false,
