@@ -63,19 +63,56 @@ void SessionViewSetSession(WindowPtr window, BrewSessionHandle brewSessionHandle
 	HLock((Handle)brewSessionHandle);
 	brewSession = *brewSessionHandle;
 	HLock((Handle)brewSession->recipe_title);
+	HLock((Handle)brewSession->created_at);
+	HLock((Handle)brewSession->batch_code);
 	HLock((Handle)brewSession->phase);
+	HLock((Handle)brewSession->style_name);
 
 	// Set title to demonstrate its working for now
 	SetWTitle(window, *(brewSession->recipe_title));
 
+	// Setup QuickDraw
 	SetPort(window);
 	TextFont(geneva);
 	TextSize(12);
 
-	MoveTo(10, 10);
+	// TODO: Extract label strings to resources
+	TextFace(bold);
+	MoveTo(10, 20);
+	DrawString("\pCreated at:");
+
+	TextFace(normal);
+	MoveTo(120, 20);
+	DrawString(*(brewSession->created_at));
+
+	TextFace(bold);
+	MoveTo(10, 40);
+	DrawString("\pBatch Code:");
+
+	TextFace(normal);
+	MoveTo(120, 40);
+	DrawString(*(brewSession->batch_code));
+
+	TextFace(bold);
+	MoveTo(10, 60);
+	DrawString("\pPhase:");
+
+	TextFace(normal);
+	MoveTo(120, 60);
 	DrawString(*(brewSession->phase));
 
+	TextFace(bold);
+	MoveTo(10, 80);
+	DrawString("\pStyle:");
+
+	TextFace(normal);
+	MoveTo(120, 80);
+	DrawString(*(brewSession->style_name));
+
+	HUnlock((Handle)brewSession->style_name);
 	HUnlock((Handle)brewSession->phase);
+	HUnlock((Handle)brewSession->batch_code);
+	HUnlock((Handle)brewSession->created_at);
 	HUnlock((Handle)brewSession->recipe_title);
 	HUnlock((Handle)brewSessionHandle);
 	ViewSessionWindowUnlockState(window);

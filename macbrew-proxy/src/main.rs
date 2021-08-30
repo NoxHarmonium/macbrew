@@ -51,6 +51,12 @@ async fn handle_line(line: &str) -> Result<Vec<u8>> {
                 )
                 .await
             }
+            ["GET", "FERMENTATION", args @ ..] => {
+                commands::get_fermentation::GetFermentationDataCommand::<BfApiDataManager>::handle(
+                    request_id, args,
+                )
+                .await
+            }
             ["GET", "RECIPE", args @ ..] => {
                 commands::get_recipes::GetRecipesCommand::<BfApiDataManager>::handle(
                     request_id, args,
@@ -219,6 +225,44 @@ mod tests {
         assert_checksum(&result);
         assert_request_id(&result, "33");
         insta::assert_debug_snapshot!("get_sessions", format_binary_for_snap(&result));
+    }
+
+    #[tokio::test]
+    async fn test_get_fermentation() {
+        let session_json = include_str!("../resources/sample_fermentation.json");
+        let _m = mock("GET", "/v1/fermentation/363597")
+            .with_status(200)
+            .with_header("content-type", "application/xml")
+            .with_header("x-api-key", "1234")
+            .with_body(session_json)
+            .create();
+
+        let result = handle_line("66 GET FERMENTATION 363597").await.unwrap();
+
+        assert_length(&result);
+        assert_checksum(&result);
+        assert_request_id(&result, "66");
+        insta::assert_debug_snapshot!("get_fermentation", format_binary_for_snap(&result));
+    }
+
+    #[tokio::test]
+    async fn test_get_fermentation_manual() {
+        // Readings were done manually without a device like a Tilt
+        // So there aren't many points
+        let session_json = include_str!("../resources/sample_fermentation_manual.json");
+        let _m = mock("GET", "/v1/fermentation/350900")
+            .with_status(200)
+            .with_header("content-type", "application/xml")
+            .with_header("x-api-key", "1234")
+            .with_body(session_json)
+            .create();
+
+        let result = handle_line("11 GET FERMENTATION 350900").await.unwrap();
+
+        assert_length(&result);
+        assert_checksum(&result);
+        assert_request_id(&result, "11");
+        insta::assert_debug_snapshot!("get_fermentation_manual", format_binary_for_snap(&result));
     }
 
     #[tokio::test]

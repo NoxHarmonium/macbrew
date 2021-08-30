@@ -1,6 +1,9 @@
 use crate::data::brewers_friend::bf_data_manager::BfDataManager;
+use crate::data::brewers_friend::fermentation::BfFermentationResponse;
 use crate::data::brewers_friend::recipes::BeerXml;
-use crate::data::brewers_friend::sessions::{BfBrewSession, BfBrewSessionsResponse};
+use crate::data::brewers_friend::sessions::{
+    BfBrewSession, BfBrewSessionFull, BfBrewSessionsFullResponse, BfBrewSessionsResponse,
+};
 use crate::error::{Error, Result};
 use async_trait::async_trait;
 use reqwest::header::HeaderMap;
@@ -59,7 +62,7 @@ impl BfDataManager for BfApiDataManager {
         Ok(response.brewsessions)
     }
 
-    async fn session(id: &str) -> Result<BfBrewSession> {
+    async fn session(id: &str) -> Result<BfBrewSessionFull> {
         println!("Fetching session with id [{}]...", id);
         let client = create_client()?;
 
@@ -69,7 +72,7 @@ impl BfDataManager for BfApiDataManager {
 
         let body = res.text().await?;
 
-        let response: BfBrewSessionsResponse = serde_json::from_str(&body)?;
+        let response: BfBrewSessionsFullResponse = serde_json::from_str(&body)?;
 
         let session = match response.brewsessions.as_slice() {
             [] => Err(Error::ApiResponseValidationError {
@@ -83,6 +86,29 @@ impl BfDataManager for BfApiDataManager {
         println!("Fetched session with id [{}]...", id);
 
         session
+    }
+
+    async fn fermentation(session_id: &str) -> Result<BfFermentationResponse> {
+        println!(
+            "Fetching fermentation data for session with id [{}]...",
+            session_id
+        );
+        let client = create_client()?;
+
+        let brew_session_url = format!("{}/v1/fermentation/{}", get_base_url(), session_id);
+
+        let res = client.get(&brew_session_url).send().await?;
+
+        let body = res.text().await?;
+
+        let response: BfFermentationResponse = serde_json::from_str(&body)?;
+
+        println!(
+            "Fetched fermentation data for session with id [{}]...",
+            session_id
+        );
+
+        Ok(response)
     }
 
     async fn recipe(recipe_id: &str) -> Result<BeerXml> {
