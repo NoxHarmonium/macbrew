@@ -1,3 +1,5 @@
+typedef unsigned long MacEpochTime;
+
 typedef struct Sequence
 {
     unsigned short size;
@@ -18,7 +20,22 @@ typedef struct BrewSession
     StringHandle batch_code;
     StringHandle recipe_title;
     StringHandle recipe_id;
+    StringHandle style_name;
+    StringHandle created_at;
 } BrewSession;
+
+typedef struct FermentationPoint
+{
+    char temp;
+    unsigned char gravity;
+} FermentationPoint;
+
+typedef struct FermentationData
+{
+    Sequence *graph;
+    MacEpochTime start_date;
+    MacEpochTime end_date;
+} FermentationData;
 
 typedef struct Fermentable
 {
@@ -51,3 +68,4 @@ typedef struct Recipe
 
 typedef BrewSessionReference **BrewSessionReferenceHandle;
 typedef BrewSession **BrewSessionHandle;
+typedef FermentationData **FermentationDataHandle;

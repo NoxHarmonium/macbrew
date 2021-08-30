@@ -12,8 +12,7 @@
                 "${myDefaultIncludePath}"
             ],
             "defines": [
-                "FOO",
-                "BAR=100"
+                "TARGET_OS_MAC"
             ],
             "forcedInclude": [
                 "${workspaceFolder}/include/MacIncludes.h"

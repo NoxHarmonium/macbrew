@@ -14,7 +14,10 @@ typedef struct ResponseReader
 
 static void InitReader(ResponseReader *reader, const SerialResponse *responseData);
 static void ReadBool(ResponseReader *reader, Boolean *outBoolean);
+static void ReadChar(ResponseReader *reader, char *outChar);
+static void ReadUnsignedChar(ResponseReader *reader, unsigned char *outChar);
 static void ReadUnsignedShort(ResponseReader *reader, unsigned short *outShort);
+static void ReadUnsignedLong(ResponseReader *reader, unsigned long *outUnsignedLong);
 static void ReadString(ResponseReader *reader, StringHandle *outString);
 static void ReadSequence(ResponseReader *reader, Sequence *outSequence);
 static void ReadBrewSessionReference(ResponseReader *reader, Handle *outHandle);
@@ -44,25 +47,64 @@ static void InitReader(ResponseReader *reader, const SerialResponse *responseDat
 
 static void ReadBool(ResponseReader *reader, Boolean *outBoolean)
 {
-	char value = GetCharFromBuffer(*reader->response->data, reader->cursor);
+	char value;
+	HLock(reader->response->data);
+	value = GetCharFromBuffer(*reader->response->data, reader->cursor);
 	reader->cursor += 1; //sizeof(Boolean);
 	*outBoolean = value;
+	HUnlock(reader->response->data);
+}
+
+static void ReadChar(ResponseReader *reader, char *outChar)
+{
+	char value;
+	HLock(reader->response->data);
+	value = GetCharFromBuffer(*reader->response->data, reader->cursor);
+	reader->cursor += sizeof(char);
+	*outChar = value;
+	HUnlock(reader->response->data);
+}
+
+static void ReadUnsignedChar(ResponseReader *reader, unsigned char *outChar)
+{
+	unsigned char value;
+	HLock(reader->response->data);
+	value = GetCharFromBuffer(*reader->response->data, reader->cursor);
+	reader->cursor += sizeof(unsigned char);
+	*outChar = value;
+	HUnlock(reader->response->data);
 }
 
 static void ReadUnsignedShort(ResponseReader *reader, unsigned short *outShort)
 {
-	unsigned short value = GetShortFromBuffer(*reader->response->data, reader->cursor);
+	unsigned short value;
+	HLock(reader->response->data);
+	value = GetShortFromBuffer(*reader->response->data, reader->cursor);
 	reader->cursor += sizeof(unsigned short);
 	*outShort = value;
+	HUnlock(reader->response->data);
+}
+
+static void ReadUnsignedLong(ResponseReader *reader, unsigned long *outUnsignedLong)
+{
+	unsigned long value;
+	HLock(reader->response->data);
+	value = GetLongFromBuffer(*reader->response->data, reader->cursor);
+	reader->cursor += sizeof(unsigned long);
+	*outUnsignedLong = value;
+	HUnlock(reader->response->data);
 }
 
 static void ReadString(ResponseReader *reader, StringHandle *outString)
 {
 	unsigned short length = 0;
-	char *buffer = *(reader->response->data);
+	char *buffer;
 	Str255 pString;
 
 	ReadUnsignedShort(reader, &length);
+
+	HLock(reader->response->data);
+	buffer = *(reader->response->data);
 
 	if (length > 254)
 	{
@@ -73,8 +115,9 @@ static void ReadString(ResponseReader *reader, StringHandle *outString)
 	memcpy(&pString[1], (char *)buffer + reader->cursor, length);
 
 	*outString = NewString(pString);
-
 	reader->cursor += length;
+
+	HUnlock(reader->response->data);
 }
 
 static void ReadSequence(ResponseReader *reader, Sequence *outSequence)
@@ -170,13 +213,18 @@ void FetchBrewSessionReferences(Sequence **outSessionReferences)
 	DisposeResponse(&responseData);
 }
 
-void FetchBrewSession(StringHandle sessionId, BrewSession **outBrewSession)
+void FetchBrewSession(StringHandle sessionId, BrewSessionHandle *outHandle)
 {
 	Str255 command;
 	Str255 cSessionId;
 	SerialResponse *responseData;
 	ResponseReader reader;
-	BrewSession *brewSession = (BrewSession *)NewPtr(sizeof(BrewSession));
+	Handle handle = NewHandle(sizeof(BrewSession));
+	BrewSession *brewSession;
+
+	HLock(handle);
+
+	brewSession = (BrewSession *)*handle;
 
 	HLock((Handle)sessionId);
 	PascalToCStringCopy(cSessionId, *sessionId);
@@ -198,10 +246,79 @@ void FetchBrewSession(StringHandle sessionId, BrewSession **outBrewSession)
 	ReadString(&reader, &brewSession->batch_code);
 	ReadString(&reader, &brewSession->recipe_title);
 	ReadString(&reader, &brewSession->recipe_id);
+	ReadString(&reader, &brewSession->style_name);
+	ReadString(&reader, &brewSession->created_at);
 
 	AssertReaderEnd(&reader, responseData);
 
-	*outBrewSession = brewSession;
+	DisposeResponse(&responseData);
+
+	HUnlock(handle);
+
+	*outHandle = (BrewSessionHandle)handle;
+}
+
+static void ReadFermentationPoint(ResponseReader *reader, Handle *outHandle)
+{
+	Handle handle = NewHandle(sizeof(FermentationPoint));
+	FermentationPoint *fermentationPointReference;
+
+	HLock(handle);
+
+	fermentationPointReference = (FermentationPoint *)*handle;
+
+	ReadChar(reader, &fermentationPointReference->temp);
+	ReadUnsignedChar(reader, &fermentationPointReference->gravity);
+
+	HUnlock(handle);
+
+	*outHandle = handle;
+}
+
+void FetchFermentationData(StringHandle sessionId, FermentationDataHandle *outHandle)
+{
+	Str255 command;
+	Str255 cSessionId;
+	SerialResponse *responseData;
+	ResponseReader reader;
+	Sequence *graph = (Sequence *)NewPtr(sizeof(Sequence));
+	short i;
+	Handle handle = NewHandle(sizeof(FermentationData));
+	FermentationData *fermentationData;
+
+	HLock(handle);
+
+	fermentationData = (FermentationData *)*handle;
+
+	HLock((Handle)sessionId);
+	PascalToCStringCopy(cSessionId, *sessionId);
+	HUnlock((Handle)sessionId);
+
+	sprintf((char *)command, "1 GET FERMENTATION %s\r", cSessionId);
+
+	SetUpSerial();
+	SendCommand((char *)command);
+	ReadResponse(&responseData);
+	TearDownSerial();
+
+	InitReader(&reader, responseData);
+
+	ValidateResponse(&reader);
+
+	ReadSequence(&reader, graph);
+	for (i = 0; i < graph->size; i++)
+	{
+		ReadFermentationPoint(&reader, &graph->elements[i]);
+	}
+	fermentationData->graph = graph;
+	ReadUnsignedLong(&reader, &fermentationData->start_date);
+	ReadUnsignedLong(&reader, &fermentationData->end_date);
+
+	AssertReaderEnd(&reader, responseData);
 
 	DisposeResponse(&responseData);
+
+	HUnlock(handle);
+
+	*outHandle = (FermentationDataHandle)handle;
 }

@@ -44,3 +44,7 @@
 #define kDialogWindowKind 2
 
 #define kSessionListUserItem 3
+
+// Fermentation Graph
+#define kGraphWidth 320
+#define kGraphHeight 180
