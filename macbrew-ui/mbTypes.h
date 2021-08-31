@@ -66,6 +66,23 @@ typedef struct Recipe
     Sequence *yeast;
 } Recipe;
 
+typedef enum
+{
+    PreparePhase = 16,
+    MashPhase = 18,
+    BoilPhase = 20,
+    ChillPhase = 22,
+    CleanupPhase = 24
+} BrewSessionStepPhase;
+
+typedef struct BrewSessionStep
+{
+    StringHandle description;
+    short time;
+    BrewSessionStepPhase phase;
+} BrewSessionStep;
+
 typedef BrewSessionReference **BrewSessionReferenceHandle;
 typedef BrewSession **BrewSessionHandle;
 typedef FermentationData **FermentationDataHandle;
+typedef BrewSessionStep **BrewSessionStepHandle;

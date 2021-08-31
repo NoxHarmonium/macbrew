@@ -57,6 +57,10 @@ async fn handle_line(line: &str) -> Result<Vec<u8>> {
                 )
                 .await
             }
+            ["LIST", "STEP", args @ ..] => {
+                commands::list_steps::ListStepsCommand::<BfApiDataManager>::handle(request_id, args)
+                    .await
+            }
             ["GET", "RECIPE", args @ ..] => {
                 commands::get_recipes::GetRecipesCommand::<BfApiDataManager>::handle(
                     request_id, args,
@@ -263,6 +267,31 @@ mod tests {
         assert_checksum(&result);
         assert_request_id(&result, "11");
         insta::assert_debug_snapshot!("get_fermentation_manual", format_binary_for_snap(&result));
+    }
+
+    #[tokio::test]
+    async fn test_list_steps() {
+        let session_json = include_str!("../resources/sample_session.json");
+        let _session_mock = mock("GET", "/v1/brewsessions/363597")
+            .with_status(200)
+            .with_header("content-type", "application/xml")
+            .with_header("x-api-key", "1234")
+            .with_body(session_json)
+            .create();
+        let recipe_xml = include_str!("../resources/sample_recipe.xml");
+        let _recipe_mock = mock("GET", "/v1/recipes/123456.xml")
+            .with_status(200)
+            .with_header("content-type", "application/xml")
+            .with_header("x-api-key", "1234")
+            .with_body(recipe_xml)
+            .create();
+
+        let result = handle_line("888 LIST STEP 363597").await.unwrap();
+
+        assert_length(&result);
+        assert_checksum(&result);
+        assert_request_id(&result, "888");
+        insta::assert_debug_snapshot!("list_steps", format_binary_for_snap(&result));
     }
 
     #[tokio::test]

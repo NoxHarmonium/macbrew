@@ -5,13 +5,18 @@
 #include "mbDSessionList.h"
 #include "mbUtil.h"
 #include "mbWViewSession.h"
+#include "mbWViewSteps.h"
 
-MenuHandle appleMenu, fileMenu;
+MenuHandle appleMenu, fileMenu, sessionMenu;
+// TODO: Support multiple sessions
+// TODO: Clear when closing session window
+BrewSessionReferenceHandle selectedSession = NULL;
 
 enum
 {
 	appleID = 1,
-	fileID
+	fileID,
+	sessionID
 };
 
 enum
@@ -21,15 +26,25 @@ enum
 	quitItem = 3
 };
 
+enum
+{
+	stepsItem = 1
+};
+
 void SetUpMenus(void)
 {
 	InsertMenu(appleMenu = NewMenu(appleID, "\p\024"), 0);
 	AddResMenu(appleMenu, 'DRVR');
+
 	InsertMenu(fileMenu = NewMenu(fileID, "\pFile"), 0);
-	DrawMenuBar();
-	AppendMenu(fileMenu, "\pPing/S");
+	AppendMenu(fileMenu, "\pPing/P");
 	AppendMenu(fileMenu, "\pOpen Session/O");
 	AppendMenu(fileMenu, "\pQuit/Q");
+
+	InsertMenu(sessionMenu = NewMenu(sessionID, "\pSession"), 0);
+	AppendMenu(sessionMenu, "\pSteps/S");
+
+	DrawMenuBar();
 }
 
 void HandleMenu(long mSelect)
@@ -61,7 +76,6 @@ void HandleMenu(long mSelect)
 		{
 			WindowPtr sessionListDialog = SessionListDialogSetUp();
 			short selectedItem;
-			BrewSessionReferenceHandle selectedSession;
 			FermentationDataHandle fermentationData;
 			BrewSessionHandle brewSession;
 			WindowPtr viewSessionWindow;
@@ -92,5 +106,26 @@ void HandleMenu(long mSelect)
 			break;
 		}
 		break;
+	case sessionID:
+		if (selectedSession == NULL)
+		{
+			// Can't open steps if no session selected
+			return;
+		}
+		switch (menuItem)
+		{
+		case stepsItem:
+		{
+			WindowPtr viewStepsWindow;
+			Sequence *sessionStepsHandle;
+
+			viewStepsWindow = StepsViewWindowSetUp();
+
+			FetchBrewSessionSteps((*selectedSession)->id, &sessionStepsHandle);
+			StepsViewSetSteps(viewStepsWindow, sessionStepsHandle);
+			break;
+		}
+		break;
+		}
 	}
 }

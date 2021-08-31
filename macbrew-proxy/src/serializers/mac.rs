@@ -162,11 +162,21 @@ impl<'a> ser::Serializer for &'a mut Serializer {
     }
 
     fn serialize_str(self, v: &str) -> Result<()> {
+        let bytes = v.as_bytes();
+        let truncated_bytes: &[u8] = if bytes.len() > 254 {
+            // TODO: Work out how to support longer strings in Mac land
+            //       in a generic way
+            println!("Warning: String greater than 254 characters, it will be truncated to 254 characters");
+            &bytes[0..254]
+        } else {
+            bytes
+        };
+
         self.output
-            .try_extend(&(v.len() as u16).to_be_bytes())
+            .try_extend(&(truncated_bytes.len() as u16).to_be_bytes())
             .map_err(|_| Error::SerializeBufferFull {})?;
         self.output
-            .try_extend(v.as_bytes())
+            .try_extend(truncated_bytes)
             .map_err(|_| Error::SerializeBufferFull {})?;
         Ok(())
     }

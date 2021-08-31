@@ -36,7 +36,9 @@
         "stdio.h": "c",
         "textutils.h": "c",
         "quickdraw.h": "c",
-        "mbserial.h": "c"
+        "mbserial.h": "c",
+        "controldefinitions.h": "c",
+        "mbutil.h": "c"
     },
     "c-cpp-flylint.clang.enable": false,
     "c-cpp-flylint.flexelint.enable": false,

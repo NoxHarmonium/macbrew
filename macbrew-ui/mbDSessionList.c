@@ -10,8 +10,6 @@
 typedef struct SessionListDialogState
 {
 	ListHandle listHandle;
-	ControlHandle cancelButton;
-	ControlHandle okButton;
 	ListItem **sessionListItems;
 	short sessionListItemCount;
 } SessionListDialogState;

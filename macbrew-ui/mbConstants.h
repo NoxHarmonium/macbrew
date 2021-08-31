@@ -5,6 +5,7 @@
 // WIND
 #define kSplashWindowId 128
 #define kViewSessionWindowId 129
+#define kViewStepsWindowId 130
 
 // PICT
 #define kSplashImageId 128
@@ -48,3 +49,19 @@
 // Fermentation Graph
 #define kGraphWidth 320
 #define kGraphHeight 180
+
+// Scrollbar Constants
+#define kScrollbarWidth 16					   // conventional width
+#define kScrollbarAdjust (kScrollbarWidth - 1) // to align with window frame
+#define kScrollTweek 2						   // to align scroll bars with size box
+
+// Brew Session Steps
+#define kBrewSessionStepHeight 20
+#define kBrewSessionWindowHPadding 10
+#define kBrewSessionWindowVPadding 0
+#define kBrewSessionScrollPageOverlap 20 // The amount of overlap of the previous page to show to provide context when paging
+
+// Window Constants
+#define kMinWindowSize 64
+// Docs say 65,535 can be used as max but it seems to overflow the short data type and break the resizing
+#define kMaxWindowSize 512

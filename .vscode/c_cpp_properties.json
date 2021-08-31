@@ -12,10 +12,12 @@
                 "${myDefaultIncludePath}"
             ],
             "defines": [
-                "TARGET_OS_MAC"
+                "TARGET_OS_MAC",
+                "OLDROUTINENAMES"
             ],
             "forcedInclude": [
-                "${workspaceFolder}/include/MacIncludes.h"
+                "${workspaceFolder}/include/MacIncludes.h",
+                "${workspaceFolder}/include/CIncludes/Carbon.h"
             ],
             "cStandard": "c89"
         }

@@ -16,6 +16,8 @@ static ViewSessionWindowState *ViewSessionWindowLockState(WindowPtr theWindow);
 static void *ViewSessionWindowUnlockState(WindowPtr theWindow);
 static void DrawRow(ConstStr255Param title, StringHandle value, short rowNum);
 static void SetupQuickDraw(WindowPtr window);
+static void DrawSessionInfo(WindowPtr window, BrewSessionHandle brewSessionHandle);
+static void DrawGraph(WindowPtr window, FermentationDataHandle fermentationDataHandle);
 
 // TODO: Maybe move to a utils file?
 static void DrawStringHandle(StringHandle stringHandle)
@@ -68,34 +70,10 @@ static void SetupQuickDraw(WindowPtr window)
 	PenNormal();
 }
 
-WindowPtr SessionViewWindowSetUp(void)
+static void DrawSessionInfo(WindowPtr window, BrewSessionHandle brewSessionHandle)
 {
-	WindowPtr viewSessionWindow = NULL;
-	viewSessionWindow = GetNewWindow(kViewSessionWindowId, viewSessionWindow, (WindowPtr)-1L);
-
-	ViewSessionWindowInitState(viewSessionWindow);
-
-	SetPort(viewSessionWindow);
-
-	return viewSessionWindow;
-}
-
-void SessionViewWindowDestroy(WindowPtr window)
-{
-	if (window != NULL)
-	{
-		DisposeWindow(window);
-		window = NULL;
-	}
-}
-
-void SessionViewSetSession(WindowPtr window, BrewSessionHandle brewSessionHandle)
-{
-
 	unsigned short rowNum = 1;
-	ViewSessionWindowState *windowState = ViewSessionWindowLockState(window);
 	BrewSession *brewSession = NULL;
-	windowState->brewSessionHandle = brewSessionHandle;
 
 	HLock((Handle)brewSessionHandle);
 	brewSession = *brewSessionHandle;
@@ -113,17 +91,13 @@ void SessionViewSetSession(WindowPtr window, BrewSessionHandle brewSessionHandle
 	DrawRow("\pStyle:", brewSession->style_name, rowNum++);
 
 	HUnlock((Handle)brewSessionHandle);
-	ViewSessionWindowUnlockState(window);
 }
 
-void SessionViewSetFermentationData(WindowPtr window, struct FermentationData **fermentationDataHandle)
+static void DrawGraph(WindowPtr window, FermentationDataHandle fermentationDataHandle)
 {
-	ViewSessionWindowState *windowState = ViewSessionWindowLockState(window);
 	FermentationData *fermentationData = NULL;
 	Rect graphFrame;
 	unsigned short i, pointSize, maxTemp = 0, maxGravity = 0;
-
-	windowState->fermentationDataHandle = fermentationDataHandle;
 
 	SetupQuickDraw(window);
 
@@ -162,6 +136,9 @@ void SessionViewSetFermentationData(WindowPtr window, struct FermentationData **
 		HUnlock(dataPointHandle);
 	}
 
+	// TODO: Labels for the graph
+	// TODO: Legend for the graph
+	// TODO: Extract things into functions for DRY
 	for (i = 0; i < fermentationData->graph->size - 1; i++)
 	{
 		// TODO: These points probably shouldn't be handles
@@ -191,5 +168,64 @@ void SessionViewSetFermentationData(WindowPtr window, struct FermentationData **
 	}
 
 	HUnlock((Handle)fermentationDataHandle);
+}
+
+WindowPtr SessionViewWindowSetUp(void)
+{
+	WindowPtr viewSessionWindow = NULL;
+	viewSessionWindow = GetNewWindow(kViewSessionWindowId, viewSessionWindow, (WindowPtr)-1L);
+
+	ViewSessionWindowInitState(viewSessionWindow);
+
+	SetPort(viewSessionWindow);
+
+	return viewSessionWindow;
+}
+
+void SessionViewWindowDestroy(WindowPtr window)
+{
+	if (window != NULL)
+	{
+		DisposeWindow(window);
+		window = NULL;
+	}
+}
+
+void SessionViewSetSession(WindowPtr window, BrewSessionHandle brewSessionHandle)
+{
+	ViewSessionWindowState *windowState = ViewSessionWindowLockState(window);
+	windowState->brewSessionHandle = brewSessionHandle;
+
+	DrawSessionInfo(window, brewSessionHandle);
+
+	ViewSessionWindowUnlockState(window);
+}
+
+void SessionViewSetFermentationData(WindowPtr window, struct FermentationData **fermentationDataHandle)
+{
+	ViewSessionWindowState *windowState = ViewSessionWindowLockState(window);
+	windowState->fermentationDataHandle = fermentationDataHandle;
+
+	DrawGraph(window, fermentationDataHandle);
+
+	ViewSessionWindowUnlockState(window);
+}
+
+void SessionViewUpdate(WindowPtr window)
+{
+	ViewSessionWindowState *windowState = ViewSessionWindowLockState(window);
+	BrewSessionHandle brewSessionHandle = windowState->brewSessionHandle;
+	FermentationDataHandle fermentationDataHandle = windowState->fermentationDataHandle;
+
+	if (brewSessionHandle != NULL)
+	{
+		DrawSessionInfo(window, windowState->brewSessionHandle);
+	}
+
+	if (fermentationDataHandle != NULL)
+	{
+		DrawGraph(window, windowState->fermentationDataHandle);
+	}
+
 	ViewSessionWindowUnlockState(window);
 }
