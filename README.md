@@ -10,6 +10,19 @@ how software was developed 30 years ago.
 
 Bonus points if it helps me brew better beer.
 
+## Status
+
+I'm working my way towards brewing a beer with
+just macbrew as an aid.
+
+Once I have a recipe view I should be able to do that.
+
+- [x] Load basic Brew Session data
+- [x] Generate brewing steps
+- [ ] Show recipe
+
+## Components
+
 ### macbrew-proxy
 A modern application written in Rust that
 will run on a Raspberry Pi
@@ -63,6 +76,8 @@ Some screenshots of the work in progress:
 
 ![Screenshot of the splash screen](./docs/splash.png "Screenshot of the splash screen")
 ![Screenshot of the session list](./docs/session-list.png "Screenshot of the session list")
+![Screenshot of the session view](./docs/session-view.png "Screenshot of the session view")
+![Screenshot of the steps list](./docs/step-list.png "Screenshot of the steps list")
 
 ## License
 
