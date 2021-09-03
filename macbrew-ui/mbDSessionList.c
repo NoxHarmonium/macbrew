@@ -324,7 +324,6 @@ static Boolean SessionListControlMouseDown(DialogPtr theDialog, EventRecord theE
 	Boolean itemSelected = false;
 	const SessionListDialogState *dialogState = SessionListDialogLockState(theDialog);
 	const ListRec *sessionList = SessionListControlLock(dialogState);
-	ControlHandle selectedControl;
 
 	SetPort(sessionList->port);
 	GlobalToLocal(&theEvent.where);

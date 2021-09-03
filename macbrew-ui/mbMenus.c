@@ -99,6 +99,10 @@ void HandleMenu(long mSelect)
 
 			FetchFermentationData((*selectedSession)->id, &fermentationData);
 			SessionViewSetFermentationData(viewSessionWindow, fermentationData);
+
+			// TODO: We own fermentationData and  brewSession so we should probably clean them up
+			// 		 but we don't know when the window is destroyed so should we get
+			//       transfer ownership to the window and let it clean it up?
 			break;
 		}
 		case quitItem:
@@ -123,6 +127,10 @@ void HandleMenu(long mSelect)
 
 			FetchBrewSessionSteps((*selectedSession)->id, &sessionStepsHandle);
 			StepsViewSetSteps(viewStepsWindow, sessionStepsHandle);
+
+			// TODO: We own sessionStepsHandle so we should probably clean it up
+			// 		 but we don't know when the window is destroyed so should we get
+			//       transfer ownership to the window and let it clean it up?
 			break;
 		}
 		break;

@@ -167,10 +167,6 @@ static void ReadBrewSessionStep(ResponseReader *reader, Handle *outHandle)
 
 	HLock(handle);
 
-	//  StringHandle description;
-	// short time;
-	// BrewSessionStepPhase phase;
-
 	brewSessionStep = (BrewSessionStep *)*handle;
 
 	ReadString(reader, &brewSessionStep->description);

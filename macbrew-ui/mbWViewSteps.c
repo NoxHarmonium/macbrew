@@ -3,12 +3,14 @@
 #include "mbConstants.h"
 #include "mbWViewSteps.h"
 #include "mbTypes.h"
+#include "mbUtil.h"
 
 typedef struct StepsViewWindowState
 {
 	Sequence *sessionSteps;
 	ControlHandle scrollBar;
 	ControlHandle *checkBoxControls;
+	GrafPtr previousPort;
 } StepsViewWindowState;
 
 static void StepsViewWindowInitState(WindowPtr theWindow);
@@ -19,28 +21,35 @@ static void AdjustScrollbar(WindowPtr theWindow, StepsViewWindowState *windowSta
 static Rect CalculateCheckboxRect(WindowPtr window, short index);
 static void OffsetControls(WindowPtr window, short offset);
 static void ScrollByOffset(WindowPtr window, ControlHandle targetControl, short previousScrollValue, short newScrollValue);
+static void SetupQuickDraw(WindowPtr window, StepsViewWindowState *windowState);
+static void CleanupQuickDraw(StepsViewWindowState *windowState);
 pascal void HandleScrollButtonClickedProc(ControlHandle controlHandle, short part);
 
 static void StepsViewWindowInitState(WindowPtr theWindow)
 {
-	Handle viewSessionWindowStateHandle = NewHandleClear(sizeof(StepsViewWindowState));
-	SetWRefCon(theWindow, (long)viewSessionWindowStateHandle);
+	Handle viewStepsWindowStateHandle = NewHandleClear(sizeof(StepsViewWindowState));
+	SetWRefCon(theWindow, (long)viewStepsWindowStateHandle);
 	((WindowPeek)theWindow)->windowKind = kViewStepsWindowId;
 }
 
 static StepsViewWindowState *StepsViewWindowLockState(WindowPtr theWindow)
 {
-	Handle viewSessionWindowStateHandle = (Handle)GetWRefCon(theWindow);
+	Handle viewStepsWindowStateHandle = (Handle)GetWRefCon(theWindow);
 
-	HLock(viewSessionWindowStateHandle);
-	return (StepsViewWindowState *)*viewSessionWindowStateHandle;
+	if (viewStepsWindowStateHandle == NULL)
+	{
+		Panic("\pCannot lock state before calling StepsViewWindowInitState!");
+	}
+
+	HLock(viewStepsWindowStateHandle);
+	return (StepsViewWindowState *)*viewStepsWindowStateHandle;
 }
 
 static void *StepsViewWindowUnlockState(WindowPtr theWindow)
 {
-	Handle viewSessionWindowStateHandle = (Handle)GetWRefCon(theWindow);
+	Handle viewStepsWindowStateHandle = (Handle)GetWRefCon(theWindow);
 
-	HUnlock(viewSessionWindowStateHandle);
+	HUnlock(viewStepsWindowStateHandle);
 }
 
 static void AdjustScrollbar(WindowPtr theWindow, StepsViewWindowState *windowState)
@@ -102,12 +111,17 @@ static void OffsetControls(WindowPtr window, short offset)
 		short i;
 		for (i = 0; i < windowState->sessionSteps->size; i++)
 		{
-			ControlPtr control;
 			Rect rect = CalculateCheckboxRect(window, i);
 			ControlHandle controlHandle = windowState->checkBoxControls[i];
 			HLock((Handle)controlHandle);
+
+			HideControl(controlHandle);
+
 			MoveControl(controlHandle, rect.left, rect.top + offset);
 			SizeControl(controlHandle, rect.right - rect.left, rect.bottom - rect.top);
+
+			ShowControl(controlHandle);
+
 			HUnlock((Handle)controlHandle);
 		}
 	}
@@ -129,9 +143,27 @@ static void ScrollByOffset(WindowPtr window, ControlHandle targetControl, short 
 	DisposeRgn(newRgn);
 }
 
+static void SetupQuickDraw(WindowPtr window, StepsViewWindowState *windowState)
+{
+	if (windowState->previousPort != NULL)
+	{
+		Panic("\pSetupQuickDraw called twice without a call to CleanupQuickDraw");
+	}
+
+	GetPort(&windowState->previousPort);
+	SetPort(window);
+}
+
+static void CleanupQuickDraw(StepsViewWindowState *windowState)
+{
+	// Restore the port that was set before QuickDraw was set up for this window
+	// This function should always be called after SetupQuickDraw or it will panic
+	SetPort(windowState->previousPort);
+	windowState->previousPort = NULL;
+}
+
 pascal void HandleScrollButtonClickedProc(ControlHandle controlHandle, short part)
 {
-	ControlPtr control;
 	StepsViewWindowState *windowState;
 	short scrollDistance = 0, minScrollValue = GetCtlMin(controlHandle),
 		  maxScrollValue = GetCtlMax(controlHandle), oldScrollValue = GetCtlValue(controlHandle), newScrollValue;
@@ -181,14 +213,19 @@ pascal void HandleScrollButtonClickedProc(ControlHandle controlHandle, short par
 WindowPtr StepsViewWindowSetUp(void)
 {
 	WindowPtr viewSessionWindow = NULL;
+	StepsViewWindowState *windowState;
 	viewSessionWindow = GetNewWindow(kViewStepsWindowId, viewSessionWindow, (WindowPtr)-1L);
 
 	StepsViewWindowInitState(viewSessionWindow);
 
-	SetPort(viewSessionWindow);
+	windowState = StepsViewWindowLockState(viewSessionWindow);
 
+	SetupQuickDraw(viewSessionWindow, windowState);
 	SetWTitle(viewSessionWindow, "\pBrew Session Steps");
 	SetupScrollbar(viewSessionWindow);
+	CleanupQuickDraw(windowState);
+
+	StepsViewWindowUnlockState(viewSessionWindow);
 
 	return viewSessionWindow;
 }
@@ -197,6 +234,29 @@ void StepsViewWindowDestroy(WindowPtr window)
 {
 	if (window != NULL)
 	{
+		StepsViewWindowState *windowState = StepsViewWindowLockState(window);
+		Handle viewStepsWindowStateHandle = (Handle)GetWRefCon(window);
+
+		// DisposeWindow automatically cleans up all the controls by calling DisposeControl for us
+		// so we just need to clean up the containers
+		DisposePtr((Ptr)windowState->checkBoxControls);
+
+		// We don't really need to null out these values but it can help when debugging
+		windowState->scrollBar = NULL;
+		windowState->checkBoxControls = NULL;
+		// Note: Don't destroy the session steps list because the windows doesn't own them (yet)
+		windowState->sessionSteps = NULL;
+
+		StepsViewWindowUnlockState(window);
+
+		// Clean up the state record
+		if (viewStepsWindowStateHandle != NULL)
+		{
+			DisposeHandle(viewStepsWindowStateHandle);
+			SetWRefCon(window, (long)NULL);
+		}
+
+		// DisposeWindow automatically cleans up all the controls by calling DisposeControl for us
 		DisposeWindow(window);
 		window = NULL;
 	}
@@ -208,6 +268,8 @@ void StepsViewSetSteps(WindowPtr window, Sequence *sessionSteps)
 	StepsViewWindowState *windowState = StepsViewWindowLockState(window);
 	windowState->sessionSteps = sessionSteps;
 	windowState->checkBoxControls = (ControlHandle *)NewPtr(sizeof(ControlHandle) * sessionSteps->size);
+
+	SetupQuickDraw(window, windowState);
 
 	for (i = 0; i < sessionSteps->size; i++)
 	{
@@ -227,6 +289,8 @@ void StepsViewSetSteps(WindowPtr window, Sequence *sessionSteps)
 
 	AdjustScrollbar(window, windowState);
 
+	CleanupQuickDraw(windowState);
+
 	StepsViewWindowUnlockState(window);
 }
 
@@ -237,6 +301,8 @@ void StepsViewHandleMouseDown(EventRecord *theEvent, WindowPtr window)
 	short part;
 	StepsViewWindowState *windowState = StepsViewWindowLockState(window);
 
+	SetupQuickDraw(window, windowState);
+
 	GlobalToLocal(&mouse);
 	part = FindControl(mouse, window, &targetControl);
 	switch (part)
@@ -244,8 +310,6 @@ void StepsViewHandleMouseDown(EventRecord *theEvent, WindowPtr window)
 	// For some reason the Mac developers didn't call this 'inScroll'
 	case inThumb:
 	{
-		RgnHandle newRgn;
-		Rect newScrollRect;
 		short oldScrollValue = GetCtlValue(targetControl);
 
 		part = TrackControl(targetControl, mouse, NULL);
@@ -280,12 +344,16 @@ void StepsViewHandleMouseDown(EventRecord *theEvent, WindowPtr window)
 	}
 	}
 
+	CleanupQuickDraw(windowState);
+
 	StepsViewWindowUnlockState(window);
 }
 
 void StepsViewHandleGrow(EventRecord *theEvent, WindowPtr window)
 {
 	StepsViewWindowState *windowState = StepsViewWindowLockState(window);
+
+	SetupQuickDraw(window, windowState);
 
 	// Redraw the scrollbar in the right place
 	AdjustScrollbar(window, windowState);
@@ -294,6 +362,8 @@ void StepsViewHandleGrow(EventRecord *theEvent, WindowPtr window)
 	// Make the window render everything again
 	// TODO: Partial updates
 	InvalRect(&window->portRect);
+
+	CleanupQuickDraw(windowState);
 
 	StepsViewWindowUnlockState(window);
 }

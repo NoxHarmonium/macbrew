@@ -42,7 +42,7 @@ static void HandleZoomWindow(WindowPtr thisWindow, EventRecord *event, short zoo
 
 static void HandleGrowWindow(WindowPtr thisWindow, EventRecord *event, short windowKind)
 {
-	Rect oldViewRect = thisWindow->portRect, limitRect;
+	Rect limitRect;
 	long growSize;
 
 	SetRect(&limitRect, kMinWindowSize, kMinWindowSize, kMaxWindowSize, kMaxWindowSize);
@@ -52,7 +52,6 @@ static void HandleGrowWindow(WindowPtr thisWindow, EventRecord *event, short win
 
 	if (growSize != 0)
 	{
-		Rect newViewRect;
 		// Do the actual resize
 		SizeWindow(thisWindow, LoWord(growSize), HiWord(growSize), TRUE);
 
@@ -115,7 +114,18 @@ static void HandleMouseDown(EventRecord *theEvent)
 		if (
 			TrackGoAway(theWindow, theEvent->where))
 		{
-			HideWindow(theWindow);
+			if (windowKind == kViewSessionWindowId)
+			{
+				SessionViewWindowDestroy(theWindow);
+			}
+			else if (windowKind == kViewStepsWindowId)
+			{
+				StepsViewWindowDestroy(theWindow);
+			}
+			else
+			{
+				HideWindow(theWindow);
+			}
 		}
 		break;
 
@@ -139,6 +149,7 @@ static void HandleEvent(void)
 	int ok;
 	EventRecord theEvent;
 	WindowPtr theWindow;
+	GrafPtr savePort;
 
 	HiliteMenu(0);
 	SystemTask(); /* Handle desk accessories */
@@ -150,6 +161,9 @@ static void HandleEvent(void)
 		short windowKind;
 		theWindow = FrontWindow();
 		windowKind = ((WindowPeek)theWindow)->windowKind;
+
+		GetPort(&savePort);
+		SetPort(theWindow);
 
 		switch (theEvent.what)
 		{
@@ -203,6 +217,7 @@ static void HandleEvent(void)
 			}
 			break;
 		}
+		SetPort(savePort);
 	}
 }
 
