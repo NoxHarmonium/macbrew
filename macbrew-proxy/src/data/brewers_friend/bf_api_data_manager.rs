@@ -75,11 +75,11 @@ impl BfDataManager for BfApiDataManager {
         let response: BfBrewSessionsFullResponse = serde_json::from_str(&body)?;
 
         let session = match response.brewsessions.as_slice() {
-            [] => Err(Error::ApiResponseValidationError {
+            [] => Err(Error::ApiResponseValidation {
                 message: String::from("No session with ID found"),
             }),
             [session] => Ok(session.to_owned()),
-            [_args @ ..] => Err(Error::ApiResponseValidationError {
+            [_args @ ..] => Err(Error::ApiResponseValidation {
                 message: String::from("Multiple sessions for ID found. This should not happen"),
             }),
         };

@@ -10,37 +10,37 @@ pub enum Error {
     SerializationFailure {},
 
     #[snafu(display("Error calling API: {}", inner_error))]
-    ApiError {
+    Api {
         #[serde(skip_serializing)]
         inner_error: ReqwestError,
     },
 
     #[snafu(display("Error derserializing XML: {}", inner_error))]
-    XmlError {
+    Xml {
         #[serde(skip_serializing)]
         inner_error: DeError,
     },
 
     #[snafu(display("Error derserializing JSON: {}", inner_error))]
-    JsonError {
+    Json {
         #[serde(skip_serializing)]
         inner_error: serde_json::Error,
     },
 
     #[snafu(display("API response failed validation: {}", message))]
-    ApiResponseValidationError { message: String },
+    ApiResponseValidation { message: String },
 
     #[snafu(display("Invalid command input: {}", message))]
     InvalidCommandInput { message: String },
 
     #[snafu(display("Serial IO error: {}", inner_error))]
-    SerialIoError {
+    SerialIo {
         #[serde(skip_serializing)]
         inner_error: std::io::Error,
     },
 
     #[snafu(display("Unknown error: {}", message))]
-    UnknownError { message: String },
+    Unknown { message: String },
 
     #[snafu(display("Could not allocate serialization buffer. (Not enough RAM?)"))]
     SerializeBufferFull {},
@@ -53,25 +53,25 @@ pub type Result<T, E = Error> = std::result::Result<T, E>;
 
 impl From<ReqwestError> for Error {
     fn from(inner_error: ReqwestError) -> Self {
-        Error::ApiError { inner_error }
+        Error::Api { inner_error }
     }
 }
 
 impl From<std::io::Error> for Error {
     fn from(inner_error: std::io::Error) -> Self {
-        Error::SerialIoError { inner_error }
+        Error::SerialIo { inner_error }
     }
 }
 
 impl From<quick_xml::de::DeError> for Error {
     fn from(inner_error: DeError) -> Self {
-        Error::XmlError { inner_error }
+        Error::Xml { inner_error }
     }
 }
 
 impl From<serde_json::Error> for Error {
     fn from(inner_error: serde_json::Error) -> Self {
-        Error::JsonError { inner_error }
+        Error::Json { inner_error }
     }
 }
 
@@ -80,7 +80,7 @@ impl ser::Error for Error {
     fn custom<T: std::fmt::Display>(msg: T) -> Error {
         // TODO: What should this actually be doing?
         // Hint: https://github.com/serde-rs/json/blob/master/src/error.rs#L373
-        Error::UnknownError {
+        Error::Unknown {
             message: msg.to_string(),
         }
     }
