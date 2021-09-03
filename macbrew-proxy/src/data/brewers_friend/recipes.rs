@@ -93,6 +93,29 @@ pub struct BeerXmlYeasts {
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[allow(non_snake_case)]
+pub struct BeerXmlMashStep {
+    pub NAME: String,
+    pub TYPE: String,
+    pub STEP_TIME: Option<String>,
+    pub INFUSE_AMOUNT: Option<String>,
+    pub STEP_TEMP: Option<String>,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[allow(non_snake_case)]
+pub struct BeerXmlMashSteps {
+    pub MASH_STEP: Vec<BeerXmlMashStep>,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[allow(non_snake_case)]
+pub struct BeerXmlMash {
+    pub GRAIN_TEMP: String,
+    pub MASH_STEPS: BeerXmlMashSteps,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[allow(non_snake_case)]
 pub struct BeerXmlRecipe {
     pub NAME: String,
     pub VERSION: String,
@@ -110,7 +133,7 @@ pub struct BeerXmlRecipe {
     //pub MISCS: TODO
     pub YEASTS: BeerXmlYeasts,
     //pub WATERS: TODO
-    //pub MASH: TODO
+    pub MASH: BeerXmlMash,
     pub NOTES: Option<String>,
     pub TASTE_NOTES: Option<String>,
     pub TASTE_RATING: Option<String>,

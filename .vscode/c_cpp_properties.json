@@ -2,8 +2,7 @@
     "env": {
         "myDefaultIncludePath": [
             "${workspaceFolder}",
-            "${workspaceFolder}/include/CIncludes",
-            "${workspaceFolder}/include/ThinkCIncludes"
+            "${workspaceFolder}/include/CIncludes"
         ]
     },
     "configurations": [
@@ -13,11 +12,12 @@
                 "${myDefaultIncludePath}"
             ],
             "defines": [
-                "FOO",
-                "BAR=100"
+                "TARGET_OS_MAC",
+                "OLDROUTINENAMES"
             ],
             "forcedInclude": [
-                "${workspaceFolder}/include/MacIncludes.h"
+                "${workspaceFolder}/include/MacIncludes.h",
+                "${workspaceFolder}/include/CIncludes/Carbon.h"
             ],
             "cStandard": "c89"
         }

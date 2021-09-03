@@ -116,6 +116,16 @@ Also trying some Mandarina Bravaria this time and Eclipse (HPA-016) which appare
     <FORM>Pellet</FORM>
    </HOP>
    <HOP>
+    <NAME>Warrior</NAME>
+    <VERSION>1</VERSION>
+    <ALPHA>11.75</ALPHA>
+    <AMOUNT>0.001</AMOUNT>
+    <USE>Boil</USE>
+    <USER_HOP_USE>Boil</USER_HOP_USE>
+    <TIME>10</TIME>
+    <FORM>Pellet</FORM>
+   </HOP>
+   <HOP>
     <NAME>Amarillo (8.6 AA)</NAME>
     <VERSION>1</VERSION>
     <ALPHA>8.6</ALPHA>

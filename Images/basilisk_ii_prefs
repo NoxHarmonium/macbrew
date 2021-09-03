@@ -2,7 +2,7 @@ displaycolordepth 0
 disk ./system710-macbrew-dev-with-code.image
 extfs /
 screen win/512/384
-seriala /dev/pts/1
+seriala /dev/pts/4
 serialb /dev/ttyS1
 udptunnel false
 udpport 6066

@@ -1,6 +1,11 @@
 #include "mbConstants.h"
 #include "mbWSplash.h"
 
+typedef struct SplashWindowState
+{
+	PicHandle picHandle;
+} SplashWindowState;
+
 void SetUpSplashPic(WindowPtr parentWindow);
 void DestroySplachPic(WindowPtr parentWindow);
 

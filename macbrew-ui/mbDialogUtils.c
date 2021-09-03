@@ -1,5 +1,7 @@
 #include "mbDialogUtils.h"
 
+#include <Dialogs.h>
+
 pascal void ButtonOutlineDrawProc(DialogPtr theDialog, short theItem);
 
 pascal void ButtonOutlineDrawProc(DialogPtr theDialog, short theItem)

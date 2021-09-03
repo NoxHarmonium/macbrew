@@ -1,3 +1,4 @@
+#include <string.h>
 #include <Events.h>
 #include "mbConstants.h"
 #include "mbUtil.h"
@@ -9,8 +10,8 @@
 typedef struct SessionListDialogState
 {
 	ListHandle listHandle;
-	ControlHandle cancelButton;
-	ControlHandle okButton;
+	ListItem **sessionListItems;
+	short sessionListItemCount;
 } SessionListDialogState;
 
 pascal Boolean SessionListEventFilterProc(DialogPtr theDialog, EventRecord *theEvent, short *itemHit);
@@ -23,9 +24,10 @@ static void SetUpSessionListControl(DialogPtr parentDialog);
 static void DestroySessionListControl(DialogPtr parentDialog);
 static ListRec *SessionListControlLock(const SessionListDialogState *dialogState);
 static void SessionListControlUnlock(const SessionListDialogState *dialogState);
+Cell SessionListGetSelectedCell(DialogPtr theDialog);
 static void SessionListControlHandleKeyboard(DialogPtr theDialog, char key);
 static void SessionListControlUpdate(DialogPtr theDialog);
-static void SessionListControlMouseDown(DialogPtr theDialog, EventRecord theEvent);
+static Boolean SessionListControlMouseDown(DialogPtr theDialog, EventRecord theEvent);
 
 static void SetUpButtons(DialogPtr parentDialog);
 static void DestroyButtons(DialogPtr parentDialog);
@@ -49,9 +51,10 @@ pascal Boolean SessionListEventFilterProc(DialogPtr theDialog, EventRecord *theE
 		{
 			windowKind = ((WindowPeek)theWindow)->windowKind;
 		}
-		if (windowCode == inContent && windowKind == kDialogWindowKind)
+		if (windowCode == inContent && windowKind == kDialogWindowKind && SessionListControlMouseDown(theDialog, *theEvent))
 		{
-			SessionListControlMouseDown(theDialog, *theEvent);
+			*itemHit = ok;
+			return TRUE;
 		}
 	}
 	else
@@ -116,13 +119,22 @@ static void SetUpSessionListControl(DialogPtr parentDialog)
 
 	// Create the list
 	dialogState->listHandle = LNew(&visibleRect, &dataBounds, cellSize, 0, parentDialog, doDraw, noGrow, !includeScrollBar, includeScrollBar);
+	dialogState->sessionListItemCount = 0;
 
 	SessionListDialogUnlockState(parentDialog);
 }
 
 static void DestroySessionListControl(DialogPtr parentDialog)
 {
+	short i;
 	SessionListDialogState *dialogState = SessionListDialogLockState(parentDialog);
+
+	for (i = 0; i < dialogState->sessionListItemCount; i++)
+	{
+		ListItem *item = dialogState->sessionListItems[i];
+		DestroyListItem(item);
+	}
+	dialogState->sessionListItemCount = 0;
 
 	if (dialogState->listHandle != NULL)
 	{
@@ -193,6 +205,17 @@ DialogPtr SessionListDialogSetUp(void)
 
 void SessionListDialogDestroy(DialogPtr theDialog)
 {
+	// Clean up item data
+	short i;
+	SessionListDialogState *dialogState = SessionListDialogLockState(theDialog);
+
+	for (i = 0; i < dialogState->sessionListItemCount; i++)
+	{
+		DisposePtr((Ptr)dialogState->sessionListItems[i]);
+	}
+
+	SessionListDialogUnlockState(theDialog);
+
 	// Controls
 	DestroySessionListControl(theDialog);
 
@@ -206,36 +229,39 @@ void SessionListDialogDestroy(DialogPtr theDialog)
 void SessionListDialogSetSessions(DialogPtr theDialog, Sequence *sessionReferences)
 {
 	short i;
-	Cell cell = {0};
-	const SessionListDialogState *dialogState = SessionListDialogLockState(theDialog);
-	const ListRec *sessionList = SessionListControlLock(dialogState);
+	SessionListDialogState *dialogState = SessionListDialogLockState(theDialog);
 
-	if (sessionList->dataBounds.bottom > 0)
+	if (dialogState->sessionListItemCount > 0)
 	{
 		// TODO: Delete existing rows
 		Panic("\pCan only add rows to an empty list at this time");
 	}
 
+	dialogState->sessionListItems = (ListItem **)NewPtr(sessionReferences->size * sizeof(ListItem *));
+	dialogState->sessionListItemCount = sessionReferences->size;
+
 	for (i = 0; i < sessionReferences->size; i++)
 	{
 		Handle sessionHandle = sessionReferences->elements[i];
-		BrewSessionReference *brewSession = (BrewSessionReference *)*sessionHandle;
+		BrewSessionReference *brewSession;
+		ListItem *item;
+		Cell cell;
 
-		LAddRow(1, i, dialogState->listHandle);
 		SetPt(&cell, 0, i);
+		HLock(sessionHandle);
+		brewSession = (BrewSessionReference *)*sessionHandle;
+		item = NewListItem(brewSession->name, cell);
+		HUnlock(sessionHandle);
 
-		LSetCell((unsigned char *)brewSession->name + 1, (char)*brewSession->name, cell, dialogState->listHandle);
-		if (i == 0)
-		{
-			LSetSelect(TRUE, cell, dialogState->listHandle);
-		}
+		AddListItem(dialogState->listHandle, item);
+		dialogState->sessionListItems[i] = item;
 	}
 
 	SessionListControlUnlock(dialogState);
 	SessionListDialogUnlockState(theDialog);
 }
 
-void SessionListDialogShow(DialogPtr theDialog)
+short SessionListDialogShow(DialogPtr theDialog)
 {
 	short itemHit;
 	ShowWindow(theDialog);
@@ -245,13 +271,22 @@ void SessionListDialogShow(DialogPtr theDialog)
 		ModalDialog(&SessionListEventFilterProc, &itemHit);
 	} while (itemHit != ok && itemHit != cancel);
 
-	SessionListDialogDestroy(theDialog);
+	return SessionListGetSelectedCell(theDialog).v;
+}
+
+Cell SessionListGetSelectedCell(DialogPtr theDialog)
+{
+	const SessionListDialogState *dialogState = SessionListDialogLockState(theDialog);
+	Cell cell = {0, 0};
+	LGetSelect(TRUE, &cell, dialogState->listHandle);
+	SessionListDialogUnlockState(theDialog);
+	return cell;
 }
 
 void SessionListControlHandleKeyboard(DialogPtr theDialog, char key)
 {
 	const SessionListDialogState *dialogState = SessionListDialogLockState(theDialog);
-	Cell newCell = {0}, oldCell = {0};
+	Cell newCell = {0, 0}, oldCell = {0, 0};
 
 	if (dialogState->listHandle == NULL)
 	{
@@ -284,36 +319,22 @@ static void SessionListControlUpdate(DialogPtr theDialog)
 }
 
 // See: http://mirror.informatimago.com/next/developer.apple.com/documentation/mac/MoreToolbox/MoreToolbox-212.html#HEADING212-0
-static void SessionListControlMouseDown(DialogPtr theDialog, EventRecord theEvent)
+static Boolean SessionListControlMouseDown(DialogPtr theDialog, EventRecord theEvent)
 {
+	Boolean itemSelected = false;
 	const SessionListDialogState *dialogState = SessionListDialogLockState(theDialog);
 	const ListRec *sessionList = SessionListControlLock(dialogState);
-	ControlHandle selectedControl;
-	short selectedControlCode;
 
 	SetPort(sessionList->port);
 	GlobalToLocal(&theEvent.where);
 
-	selectedControlCode = FindControl(theEvent.where, theDialog, &selectedControl);
-
 	if (LClick(theEvent.where, theEvent.modifiers, dialogState->listHandle))
 	{
-		// Double click - Select session
-	}
-
-	switch (selectedControlCode)
-	{
-	case inButton:
-	{
-
-		if (TrackControl(selectedControl, theEvent.where, NULL))
-		{
-			// Single  click - Select session or go away
-		}
-		break;
-	}
+		// Double clicked
+		itemSelected = TRUE;
 	}
 
 	SessionListControlUnlock(dialogState);
 	SessionListDialogUnlockState(theDialog);
+	return itemSelected;
 }

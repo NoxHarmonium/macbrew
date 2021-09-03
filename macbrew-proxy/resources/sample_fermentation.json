@@ -1,0 +1,5321 @@
+{
+    "message": "success",
+    "readings": [
+        {
+            "id": "1102274",
+            "gravity": "1.042",
+            "gravity_unit": "G",
+            "temp": "",
+            "temp_unit": "C",
+            "ph": "",
+            "comment": "",
+            "eventtype": "Brew Day Complete",
+            "created_at": "2021-08-26T06:15:00+00:00",
+            "tank_id": null,
+            "source": "BrewLog",
+            "name": "",
+            "annotation": "0"
+        },
+        {
+            "_id": {
+                "$oid": "6127343aebbf5f32ea101ae8"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0420000000000011",
+            "gravity_unit": "G",
+            "temp": "69.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.68548212962",
+            "created_at": "2021-08-26T06:27:06+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612737bf5381293065126a76"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0420000000000011",
+            "gravity_unit": "G",
+            "temp": "69.9",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.69590467592",
+            "created_at": "2021-08-26T06:42:07+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61273b431e9e4766e8724661"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.041900000000001",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.70632376157",
+            "created_at": "2021-08-26T06:57:07+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61273ec7549a1762482927c4"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0419666666666678",
+            "gravity_unit": "G",
+            "temp": "72.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.71674523148",
+            "created_at": "2021-08-26T07:12:07+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127424d3d2ad168c2641c43"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0418166666666673",
+            "gravity_unit": "G",
+            "temp": "73.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.72717793981",
+            "created_at": "2021-08-26T07:27:09+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612745d1e737c6324174d9c9"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0417500000000006",
+            "gravity_unit": "G",
+            "temp": "73.9",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.73759927083",
+            "created_at": "2021-08-26T07:42:09+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127495a0f221547c721a04e"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.041783333333334",
+            "gravity_unit": "G",
+            "temp": "73.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.748077743054",
+            "created_at": "2021-08-26T07:57:14+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61274cdf438b917d1c2bce74"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0418000000000007",
+            "gravity_unit": "G",
+            "temp": "72.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.75850050926",
+            "created_at": "2021-08-26T08:12:15+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61275063f532e169492191af"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0411833333333322",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.76892033565",
+            "created_at": "2021-08-26T08:27:15+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612753e9d2c6c5604e058e8a"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0412666666666657",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.77935422453",
+            "created_at": "2021-08-26T08:42:17+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127576d85d238173e4b4f0d"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0414999999999996",
+            "gravity_unit": "G",
+            "temp": "71.7",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.78977436343",
+            "created_at": "2021-08-26T08:57:17+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61275af1e737c6324174d9cc"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0412333333333323",
+            "gravity_unit": "G",
+            "temp": "71.9",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.80019584491",
+            "created_at": "2021-08-26T09:12:17+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61275e76d26b1a07857154b2"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0413333333333328",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.81061664352",
+            "created_at": "2021-08-26T09:27:18+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612761fa3e8759277a154daa"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0411499999999991",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.8210377662",
+            "created_at": "2021-08-26T09:42:18+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127657f89a53226345fd7c0"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0412833333333327",
+            "gravity_unit": "G",
+            "temp": "71.4",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.83147133102",
+            "created_at": "2021-08-26T09:57:19+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127690531e5fd52157c7346"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0412833333333327",
+            "gravity_unit": "G",
+            "temp": "73.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.84190331019",
+            "created_at": "2021-08-26T10:12:21+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61276c89b008b013d97efdcd"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0410999999999986",
+            "gravity_unit": "G",
+            "temp": "72.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.85232518518",
+            "created_at": "2021-08-26T10:27:21+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127700e3d52ca706102843e"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.041033333333332",
+            "gravity_unit": "G",
+            "temp": "72.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.8627453125",
+            "created_at": "2021-08-26T10:42:22+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127739291beee490e56270c"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0409999999999986",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.873167488426",
+            "created_at": "2021-08-26T10:57:22+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61277716fd88ab1b533124e7"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0409999999999986",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.88358765046",
+            "created_at": "2021-08-26T11:12:22+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61277a9cef42c3307245817a"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0409999999999986",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.89401935185",
+            "created_at": "2021-08-26T11:27:24+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61277e20b9db3952b01f6804"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0409999999999986",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.904438715275",
+            "created_at": "2021-08-26T11:42:24+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612781a54ba4200f635b5292"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0409999999999986",
+            "gravity_unit": "G",
+            "temp": "72.1",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.914859606484",
+            "created_at": "2021-08-26T11:57:25+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127852a7562482ba81b7c77"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0409999999999986",
+            "gravity_unit": "G",
+            "temp": "72.3",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.925290891195",
+            "created_at": "2021-08-26T12:12:26+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612788aed2c6c5604e058e9d"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0409999999999986",
+            "gravity_unit": "G",
+            "temp": "72.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.93571400463",
+            "created_at": "2021-08-26T12:27:26+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61278c32f4053156bd0cc8c3"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0409999999999986",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.94613512731",
+            "created_at": "2021-08-26T12:42:26+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61278fb7dc18c66a2e7f39d5"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0409999999999986",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.95655762731",
+            "created_at": "2021-08-26T12:57:27+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127933ce5a7b641ec6d22f5"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0409999999999986",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.966979212964",
+            "created_at": "2021-08-26T13:12:28+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612796c107df26083e491add"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0409999999999986",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.97740181712",
+            "created_at": "2021-08-26T13:27:29+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61279a4538135e024c57d5ec"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0409999999999986",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.98782215278",
+            "created_at": "2021-08-26T13:42:29+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61279dc94d6b3754762ae206"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0409999999999986",
+            "gravity_unit": "G",
+            "temp": "72.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44434.99824365741",
+            "created_at": "2021-08-26T13:57:29+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127a14e6289965f681a186b"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0409999999999986",
+            "gravity_unit": "G",
+            "temp": "72.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.008666655085",
+            "created_at": "2021-08-26T14:12:30+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127a4d3c860374b6e4dfce6"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0409999999999986",
+            "gravity_unit": "G",
+            "temp": "71.4",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.01909913194",
+            "created_at": "2021-08-26T14:27:31+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127a858fcf9a47ad36a1256"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.040599999999999",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.029521111115",
+            "created_at": "2021-08-26T14:42:32+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127abdce99eaa7d3c1806ac"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.040016666666666",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.0399434838",
+            "created_at": "2021-08-26T14:57:32+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127af60c1c4914397530b36"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.03975",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.05036319444",
+            "created_at": "2021-08-26T15:12:32+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127b2e5d6876430db2f5a7d"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0388333333333335",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.06078447916",
+            "created_at": "2021-08-26T15:27:33+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127b66bc69cbc0b31098727"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.037616666666666",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.071228900466",
+            "created_at": "2021-08-26T15:42:35+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127b9ef2e0e027b6d46a770"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0366666666666666",
+            "gravity_unit": "G",
+            "temp": "71.4",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.0816496875",
+            "created_at": "2021-08-26T15:57:35+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127bd73fc5fc97b966c23a5"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.036000000000001",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.09206944444",
+            "created_at": "2021-08-26T16:12:35+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127c0f831f5be0f0202854d"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.036000000000001",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.10249111111",
+            "created_at": "2021-08-26T16:27:36+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127c47d71ec1816ec41936b"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.035066666666665",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.1129119676",
+            "created_at": "2021-08-26T16:42:37+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127c80197ca814a0410e48d"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.035683333333334",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.12333331018",
+            "created_at": "2021-08-26T16:57:37+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127cb870b185e2e236b279f"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0364666666666666",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.13376643518",
+            "created_at": "2021-08-26T17:12:39+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127cf0bb535583a883b4ed4"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0371666666666655",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.144186701385",
+            "created_at": "2021-08-26T17:27:39+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127d28f37334b55cc11739f"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0378999999999992",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.15460856481",
+            "created_at": "2021-08-26T17:42:39+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127d61312990d38541d1b73"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0383833333333328",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.165029212956",
+            "created_at": "2021-08-26T17:57:39+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127d998e9956f2a9d580255"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0381999999999993",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.175450937495",
+            "created_at": "2021-08-26T18:12:40+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127dd1dd6d71e6fd04f5a93"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0389333333333337",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.18588496527",
+            "created_at": "2021-08-26T18:27:41+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127e0a1d2c6c5604e058ed5"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0389166666666667",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.19630534722",
+            "created_at": "2021-08-26T18:42:41+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127e426b535583a883b4ee9"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.038833333333333",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.20672766203",
+            "created_at": "2021-08-26T18:57:42+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127e7ac2b7831120270cd53"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.038466666666666",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.217160231485",
+            "created_at": "2021-08-26T19:12:44+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127eb3018931c2bfc579e91"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0379833333333324",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.22758168981",
+            "created_at": "2021-08-26T19:27:44+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127eeb406685609e75fc84b"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0376666666666656",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.238002465274",
+            "created_at": "2021-08-26T19:42:44+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127f239fe84413ed9041fd5"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.036833333333333",
+            "gravity_unit": "G",
+            "temp": "71.2",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.248423506935",
+            "created_at": "2021-08-26T19:57:45+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127f5bf8157dc0c8c10b94b"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0364666666666666",
+            "gravity_unit": "G",
+            "temp": "71.6",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.25886902777",
+            "created_at": "2021-08-26T20:12:47+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127f9444a1bfa181f4b2a6b"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0360666666666667",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.269291168974",
+            "created_at": "2021-08-26T20:27:48+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6127fcc83b5f0477264b4959"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0357333333333332",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.27971189815",
+            "created_at": "2021-08-26T20:42:48+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128004cafb91b06c5564cfd"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0358833333333335",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.290133414346",
+            "created_at": "2021-08-26T20:57:48+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612803d17b5b84561200e9ce"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0360833333333335",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.3005655324",
+            "created_at": "2021-08-26T21:12:49+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61280758b67ad026f56041ba"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0360833333333335",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.31100971065",
+            "created_at": "2021-08-26T21:27:52+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61280adc9d170b08e1581e33"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.035833333333333",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.32142916666",
+            "created_at": "2021-08-26T21:42:52+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61280e62a4eb5832ed56ea82"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0352666666666663",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.33186298611",
+            "created_at": "2021-08-26T21:57:54+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612811e650da66725509df92"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0348999999999993",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.342284374994",
+            "created_at": "2021-08-26T22:12:54+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128156c3d52ca706102848d"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0344999999999993",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.352717974536",
+            "created_at": "2021-08-26T22:27:56+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612818f018d67546734617df"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0336",
+            "gravity_unit": "G",
+            "temp": "71.2",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.36313925926",
+            "created_at": "2021-08-26T22:42:56+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61281c7450da66725509df9a"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0335499999999995",
+            "gravity_unit": "G",
+            "temp": "72.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.373561238426",
+            "created_at": "2021-08-26T22:57:56+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61281ff9faf07d418e452275"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0335499999999997",
+            "gravity_unit": "G",
+            "temp": "72.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.383981782405",
+            "created_at": "2021-08-26T23:12:57+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128237d9c9efe7ea760e8a3"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.034299999999999",
+            "gravity_unit": "G",
+            "temp": "71.9",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.39440194444",
+            "created_at": "2021-08-26T23:27:57+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61282701dfd7f67b866ba13c"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0342166666666657",
+            "gravity_unit": "G",
+            "temp": "71.3",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.40482070602",
+            "created_at": "2021-08-26T23:42:57+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61282a867f7fbd22f52cf50e"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0336999999999996",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.415241874995",
+            "created_at": "2021-08-26T23:57:58+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61282e0ac651ad1b12328b95"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0341333333333327",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.42566298611",
+            "created_at": "2021-08-27T00:12:58+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61283190d33a92450757fda2"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0333166666666667",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.43609689814",
+            "created_at": "2021-08-27T00:28:00+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612835149e215a0bf8042b09"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0319999999999998",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.44651754629",
+            "created_at": "2021-08-27T00:43:00+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61283899ca831668a8234d74"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0303166666666665",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.456938379626",
+            "created_at": "2021-08-27T00:58:01+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61283c1c5381293065126adc"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0302499999999997",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.46736135416",
+            "created_at": "2021-08-27T01:13:00+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61283fa2d9925d06f12a6270"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0302166666666663",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.477795555555",
+            "created_at": "2021-08-27T01:28:02+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612843269a20eb2f677534d7"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0298666666666665",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.48821719907",
+            "created_at": "2021-08-27T01:43:02+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612846ac2f1e154c81058cd3"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.028733333333333",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.49865164352",
+            "created_at": "2021-08-27T01:58:04+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61284a30b231f37ba6543d96"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0291833333333333",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.50907118055",
+            "created_at": "2021-08-27T02:13:04+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61284db46705403fe83ea85f"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0289333333333328",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.51949168981",
+            "created_at": "2021-08-27T02:28:04+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61285139a2c8e5745b3896b6"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0285666666666662",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.529913032406",
+            "created_at": "2021-08-27T02:43:05+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612854bdde768a52c60885da"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0286500000000005",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.54033236111",
+            "created_at": "2021-08-27T02:58:05+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128584266ac8f07c8115cc9"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0289499999999994",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.55075592592",
+            "created_at": "2021-08-27T03:13:06+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61285bc69c2edb656a310fd9"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0286333333333328",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.561177592586",
+            "created_at": "2021-08-27T03:28:06+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61285f4badb52d072f7197e3"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0280833333333328",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.571601400465",
+            "created_at": "2021-08-27T03:43:07+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612862d1e91f20675413945b"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0275666666666667",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.58203515046",
+            "created_at": "2021-08-27T03:58:09+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61286655889337317b6df9f9"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.027016666666667",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.592455115744",
+            "created_at": "2021-08-27T04:13:09+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612869d98b41fa34e2415748"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0264500000000005",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.602877210644",
+            "created_at": "2021-08-27T04:28:09+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61286d5d7b35ad3d9753afba"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.02645",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.6132984838",
+            "created_at": "2021-08-27T04:43:09+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612870e20179a13ad51bccbd"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0263333333333333",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.62372030093",
+            "created_at": "2021-08-27T04:58:10+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612874670cd79231b7035c74"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0253166666666667",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.634139814814",
+            "created_at": "2021-08-27T05:13:11+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612877eb6705403fe83ea86f"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.025483333333334",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.64456212962",
+            "created_at": "2021-08-27T05:28:11+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61287b708f800b5184587bea"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.025783333333334",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.65498393519",
+            "created_at": "2021-08-27T05:43:12+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61287ef3cae05c09d22adedd"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0254000000000005",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.665405162035",
+            "created_at": "2021-08-27T05:58:11+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612882782946f9064b3658ea"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0248500000000005",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.67582657407",
+            "created_at": "2021-08-27T06:13:12+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612885ff98f43c1f3606e02d"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0234500000000002",
+            "gravity_unit": "G",
+            "temp": "71.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.686282511575",
+            "created_at": "2021-08-27T06:28:15+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128898523a2c34aea42f26c"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.023416666666667",
+            "gravity_unit": "G",
+            "temp": "72.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.69670381944",
+            "created_at": "2021-08-27T06:43:17+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61288d0a4d6b3754762ae265"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0225833333333336",
+            "gravity_unit": "G",
+            "temp": "72.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.70713771991",
+            "created_at": "2021-08-27T06:58:18+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128908d945e1f123f6b5eeb"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0226500000000003",
+            "gravity_unit": "G",
+            "temp": "72.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.7175584375",
+            "created_at": "2021-08-27T07:13:17+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61289412455c3b7b01622ee4"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.022316666666667",
+            "gravity_unit": "G",
+            "temp": "72.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.72798164351",
+            "created_at": "2021-08-27T07:28:18+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612897971ebaa45cbe442761"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0213666666666668",
+            "gravity_unit": "G",
+            "temp": "72.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.73840127314",
+            "created_at": "2021-08-27T07:43:19+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61289b1dac4b3c34881b5784"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0213833333333335",
+            "gravity_unit": "G",
+            "temp": "72.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.748845381946",
+            "created_at": "2021-08-27T07:58:21+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61289ea265c5dd035d10fd30"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.020633333333334",
+            "gravity_unit": "G",
+            "temp": "72.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.75926645833",
+            "created_at": "2021-08-27T08:13:22+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128a2251ebaa45cbe442764"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0206000000000006",
+            "gravity_unit": "G",
+            "temp": "72.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.76968903935",
+            "created_at": "2021-08-27T08:28:21+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128a5ab18d6754673461800"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0201500000000001",
+            "gravity_unit": "G",
+            "temp": "72.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.78010832176",
+            "created_at": "2021-08-27T08:43:23+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128a9303d2ad168c2641ca3"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0201000000000007",
+            "gravity_unit": "G",
+            "temp": "72.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.79054123842",
+            "created_at": "2021-08-27T08:58:24+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128acb576df1f51072f1b18"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.019366666666667",
+            "gravity_unit": "G",
+            "temp": "72.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.800973287034",
+            "created_at": "2021-08-27T09:13:25+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128b03a3a02061edf3fb1ec"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0192500000000004",
+            "gravity_unit": "G",
+            "temp": "72.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.811404733795",
+            "created_at": "2021-08-27T09:28:26+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128b3be0cd79231b7035c80"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0188333333333333",
+            "gravity_unit": "G",
+            "temp": "73.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.82182571759",
+            "created_at": "2021-08-27T09:43:26+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128b746e6abce0b0370062e"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0191500000000002",
+            "gravity_unit": "G",
+            "temp": "73.7",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.832280324066",
+            "created_at": "2021-08-27T09:58:30+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128baca7b5b84561200ea03"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0183166666666665",
+            "gravity_unit": "G",
+            "temp": "74.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.84270123843",
+            "created_at": "2021-08-27T10:13:30+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128be4e65c5dd035d10fd3f"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0180333333333331",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.853122581015",
+            "created_at": "2021-08-27T10:28:30+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128c1d37562482ba81b7cf9"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0177333333333334",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.8635450463",
+            "created_at": "2021-08-27T10:43:31+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128c557d3b19b124256cf05"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0176833333333335",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.87396871528",
+            "created_at": "2021-08-27T10:58:31+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128c8ddbf6b9467eb501f74"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0177833333333335",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.884400682866",
+            "created_at": "2021-08-27T11:13:33+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128cc637cecc33a632d46b2"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0178999999999998",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.89483413194",
+            "created_at": "2021-08-27T11:28:35+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128cfe8549a176248292848"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0168500000000003",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.905268344904",
+            "created_at": "2021-08-27T11:43:36+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128d36dcc91dd27a75a64a0"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0164833333333332",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.91570173611",
+            "created_at": "2021-08-27T11:58:37+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128d6f4678a2053546e7244"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0154166666666673",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.9261480787",
+            "created_at": "2021-08-27T12:13:40+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128da7876288419ef19787a"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0162166666666668",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.93656847222",
+            "created_at": "2021-08-27T12:28:40+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128ddffb538b978b227d080"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0145833333333334",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.94702356481",
+            "created_at": "2021-08-27T12:43:43+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128e185fcf9a47ad36a12c8"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0144333333333333",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.95745679398",
+            "created_at": "2021-08-27T12:58:45+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128e5097f3f64563b1a2c65"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0172333333333332",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.967878460644",
+            "created_at": "2021-08-27T13:13:45+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128e88d6d460572934d4211"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0156500000000006",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.97829905093",
+            "created_at": "2021-08-27T13:28:45+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128ec14a4eb5832ed56eade"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0148000000000004",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.98873291666",
+            "created_at": "2021-08-27T13:43:48+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128ef97c651ad1b12328bc7"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0143000000000004",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44435.99915469907",
+            "created_at": "2021-08-27T13:58:47+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128f31c3cfff134c618f1ab"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0156833333333333",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.009575509255",
+            "created_at": "2021-08-27T14:13:48+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128f6a03e932c350f4538a6"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0129833333333336",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.01999716435",
+            "created_at": "2021-08-27T14:28:48+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128fa257cecc33a632d46bb"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0130500000000005",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.03041912037",
+            "created_at": "2021-08-27T14:43:49+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6128fda92195ee558d584153"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0130500000000002",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.04084086806",
+            "created_at": "2021-08-27T14:58:49+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129012e81f08576755960b3"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0117",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.05126226851",
+            "created_at": "2021-08-27T15:13:50+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612904b3d4936e121d435d8e"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0116166666666666",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.061685671295",
+            "created_at": "2021-08-27T15:28:51+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129083c884a617c8c5a15be"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0115500000000002",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.07216403935",
+            "created_at": "2021-08-27T15:43:56+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61290bc10517d7605c4a085e"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0104333333333337",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.0825976736",
+            "created_at": "2021-08-27T15:58:57+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61290f46e6abce0b03700658"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0109833333333333",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.093018449064",
+            "created_at": "2021-08-27T16:13:58+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612912ca23674b4c3763deeb"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.010383333333333",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.10343834491",
+            "created_at": "2021-08-27T16:28:58+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61291652aad21f032e34dd35"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0103333333333333",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.11390537037",
+            "created_at": "2021-08-27T16:44:02+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612919d7bcef0f5bae046604"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0106833333333334",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.12433818287",
+            "created_at": "2021-08-27T16:59:03+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61291d636f079a2d93343c80"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0113500000000004",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.13484068287",
+            "created_at": "2021-08-27T17:14:11+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612920e883e7141c042c7baa"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0103666666666673",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.14526320602",
+            "created_at": "2021-08-27T17:29:12+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129246c67e2ba095315de82"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0105666666666668",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.15568634259",
+            "created_at": "2021-08-27T17:44:12+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612927f05895a931902a8501"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0105666666666668",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.16610737268",
+            "created_at": "2021-08-27T17:59:12+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61292b75aad21f032e34dd47"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0098833333333337",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.17652989583",
+            "created_at": "2021-08-27T18:14:13+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61292efbe7119d55dd2d585e"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0106000000000004",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.18697474537",
+            "created_at": "2021-08-27T18:29:15+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61293282c651ad1b12328be3"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0106000000000006",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.19742071759",
+            "created_at": "2021-08-27T18:44:18+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612936070618715ab679a6cf"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0101499999999999",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.20785486111",
+            "created_at": "2021-08-27T18:59:19+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129398de7119d55dd2d5861"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0098999999999996",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.218286875",
+            "created_at": "2021-08-27T19:14:21+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61293d1167264707f840da61"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0096666666666665",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.2287078125",
+            "created_at": "2021-08-27T19:29:21+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129409681f08576755960dd"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0092166666666667",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.23912927083",
+            "created_at": "2021-08-27T19:44:22+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129441d24975c1586744fda"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.009633333333333",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.24958561343",
+            "created_at": "2021-08-27T19:59:25+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612947a4bcb2bb44e71f97ae"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0094999999999998",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.260031597216",
+            "created_at": "2021-08-27T20:14:28+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61294b2b1671ce21b027e960"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.009633333333333",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.27048756944",
+            "created_at": "2021-08-27T20:29:31+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61294eb4280aa061ec242c04"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0096999999999996",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.28096545139",
+            "created_at": "2021-08-27T20:44:36+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612952381ebaa45cbe4427a8"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0095",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.291384976845",
+            "created_at": "2021-08-27T20:59:37+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612955c144d254464b35d7c3"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.00935",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.301853206016",
+            "created_at": "2021-08-27T21:14:41+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129594b57c77e20bd3e8865"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0094166666666666",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.31234629629",
+            "created_at": "2021-08-27T21:29:47+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61295cd12475b60ba05e9c01"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0094",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.322778773145",
+            "created_at": "2021-08-27T21:44:49+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61296055d3b19b124256cf55"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0091000000000003",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.33320248842",
+            "created_at": "2021-08-27T21:59:49+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612963db5e130c20582be5ca"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.009016666666667",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.34363630787",
+            "created_at": "2021-08-27T22:14:51+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61296760a2c8e5745b389741"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0090000000000001",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.35405619213",
+            "created_at": "2021-08-27T22:29:52+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61296ae381f08576755960f8"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0090000000000001",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.364477129624",
+            "created_at": "2021-08-27T22:44:51+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61296e695e130c20582be5cf"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0089500000000002",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.37491052083",
+            "created_at": "2021-08-27T22:59:53+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612971f2f23b4b77406448d7"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0089333333333337",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.3853884375",
+            "created_at": "2021-08-27T23:14:58+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612975771da319096b3f694b"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0089666666666668",
+            "gravity_unit": "G",
+            "temp": "75.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.395810069436",
+            "created_at": "2021-08-27T23:29:59+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612978fb5e130c20582be5d3"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0089166666666671",
+            "gravity_unit": "G",
+            "temp": "75.7",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.40623108796",
+            "created_at": "2021-08-27T23:44:59+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61297c7fb94e0c4b3e2a1543"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0089833333333336",
+            "gravity_unit": "G",
+            "temp": "76.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.416653402775",
+            "created_at": "2021-08-27T23:59:59+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612980041da319096b3f694d"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.008966666666667",
+            "gravity_unit": "G",
+            "temp": "76.9",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.427072650455",
+            "created_at": "2021-08-28T00:15:00+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612983887aec685f8968e5ea"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0089166666666671",
+            "gravity_unit": "G",
+            "temp": "77.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.437493900456",
+            "created_at": "2021-08-28T00:30:00+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129870c6b46b55ed64fbd72"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.008866666666667",
+            "gravity_unit": "G",
+            "temp": "77.9",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.44791658565",
+            "created_at": "2021-08-28T00:45:00+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61298a93549a17624829289a"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.008716666666667",
+            "gravity_unit": "G",
+            "temp": "78.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.45834966435",
+            "created_at": "2021-08-28T01:00:03+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61298e17f7e97020971ee648"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0084666666666677",
+            "gravity_unit": "G",
+            "temp": "78.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.468771608794",
+            "created_at": "2021-08-28T01:15:03+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129919c0d33cc2069293c68"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0081666666666675",
+            "gravity_unit": "G",
+            "temp": "78.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.479206446755",
+            "created_at": "2021-08-28T01:30:04+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61299524889337317b6dfa5b"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0081166666666674",
+            "gravity_unit": "G",
+            "temp": "78.5",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.48966072917",
+            "created_at": "2021-08-28T01:45:08+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612998a9f7e97020971ee64c"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0080166666666677",
+            "gravity_unit": "G",
+            "temp": "78.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.50009459491",
+            "created_at": "2021-08-28T02:00:09+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61299c2dc955b16a8708c728"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0080166666666674",
+            "gravity_unit": "G",
+            "temp": "78.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.51051555556",
+            "created_at": "2021-08-28T02:15:09+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "61299fb144d254464b35d7e6"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0084666666666675",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.52093508101",
+            "created_at": "2021-08-28T02:30:09+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129a336c4c9f46111249f3d"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.008000000000001",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.531356423606",
+            "created_at": "2021-08-28T02:45:10+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129a6ba678a2053546e7298"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.008000000000001",
+            "gravity_unit": "G",
+            "temp": "78.2",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.54177635416",
+            "created_at": "2021-08-28T03:00:10+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129aa3fcb0bfa087e5687ab"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.008000000000001",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.55220907408",
+            "created_at": "2021-08-28T03:15:11+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129adc4cb2d74554d3edda5"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.008000000000001",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.56263133101",
+            "created_at": "2021-08-28T03:30:12+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129b148533f7e31081f7ad8"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.008000000000001",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.5730533912",
+            "created_at": "2021-08-28T03:45:12+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129b4cf3996185cb35b4159"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.008000000000001",
+            "gravity_unit": "G",
+            "temp": "78.1",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.58349857639",
+            "created_at": "2021-08-28T04:00:15+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129b854e40ccf54571d7d8f"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.008000000000001",
+            "gravity_unit": "G",
+            "temp": "78.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.593920590276",
+            "created_at": "2021-08-28T04:15:16+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129bbd85c89e15c43356451"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.008000000000001",
+            "gravity_unit": "G",
+            "temp": "78.4",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.604340474536",
+            "created_at": "2021-08-28T04:30:16+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129bf5e34a7f72df8504509"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.008000000000001",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.614783923615",
+            "created_at": "2021-08-28T04:45:18+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129c2e372ff7e47821d9e72"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.008000000000001",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.625216458335",
+            "created_at": "2021-08-28T05:00:19+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129c6690b185e2e236b284e"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.008000000000001",
+            "gravity_unit": "G",
+            "temp": "78.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.63564850694",
+            "created_at": "2021-08-28T05:15:21+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129c9ed31e5fd52157c744a"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.008000000000001",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.64607163194",
+            "created_at": "2021-08-28T05:30:21+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129cd723d52ca7061028535"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.008000000000001",
+            "gravity_unit": "G",
+            "temp": "79.2",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.65649278935",
+            "created_at": "2021-08-28T05:45:22+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129d0f76705403fe83ea8e4"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0078833333333344",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.66692515046",
+            "created_at": "2021-08-28T06:00:23+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129d47c3a65af1d992941c4"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0079500000000008",
+            "gravity_unit": "G",
+            "temp": "78.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.677347997684",
+            "created_at": "2021-08-28T06:15:24+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129d8006838e0678929e8e2"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0079833333333343",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.68777106482",
+            "created_at": "2021-08-28T06:30:24+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129db85b7b47334e15fb2f1"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.008000000000001",
+            "gravity_unit": "G",
+            "temp": "80.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.698190613424",
+            "created_at": "2021-08-28T06:45:25+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129df09e8d73933903c2af8"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0079833333333341",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.708611574075",
+            "created_at": "2021-08-28T07:00:25+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129e28ed593bd580039a94a"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0079333333333342",
+            "gravity_unit": "G",
+            "temp": "78.2",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.719031678236",
+            "created_at": "2021-08-28T07:15:26+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129e61167264707f840daa6"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.007933333333334",
+            "gravity_unit": "G",
+            "temp": "78.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.72945100694",
+            "created_at": "2021-08-28T07:30:25+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129e9963a65af1d992941c9"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0079666666666676",
+            "gravity_unit": "G",
+            "temp": "79.1",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.73988320601",
+            "created_at": "2021-08-28T07:45:26+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129ed1b0618715ab679a6f6"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0079333333333342",
+            "gravity_unit": "G",
+            "temp": "79.2",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.7503067361",
+            "created_at": "2021-08-28T08:00:27+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129f09f57669b5fd1585bf3"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0078000000000005",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.76072687499",
+            "created_at": "2021-08-28T08:15:27+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129f425e068540ebf55e532"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.007516666666667",
+            "gravity_unit": "G",
+            "temp": "78.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.771158055555",
+            "created_at": "2021-08-28T08:30:29+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129f7a9e0c81176a9357ed9"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0079166666666675",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.781579641196",
+            "created_at": "2021-08-28T08:45:29+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129fb2e9c72b72dc074ee48"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0079166666666675",
+            "gravity_unit": "G",
+            "temp": "79.8",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.79200152777",
+            "created_at": "2021-08-28T09:00:30+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "6129feb2bd62c41db33f0072"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0078166666666675",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.80242398148",
+            "created_at": "2021-08-28T09:15:30+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a02376f787305e1734436"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.007666666666667",
+            "gravity_unit": "G",
+            "temp": "78.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.812845208326",
+            "created_at": "2021-08-28T09:30:31+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a05bf87b01829ad1eabb8"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0075333333333334",
+            "gravity_unit": "G",
+            "temp": "78.7",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.823323819444",
+            "created_at": "2021-08-28T09:45:35+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a0945f7e97020971ee68d"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0075500000000004",
+            "gravity_unit": "G",
+            "temp": "79.8",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.83374652778",
+            "created_at": "2021-08-28T10:00:37+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a0ccaaf094224634d46ee"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0075666666666667",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.84417940972",
+            "created_at": "2021-08-28T10:15:38+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a104e87b01829ad1eabbf"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.00755",
+            "gravity_unit": "G",
+            "temp": "78.9",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.85460046296",
+            "created_at": "2021-08-28T10:30:38+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a13d2cb4e290936384458"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.007383333333333",
+            "gravity_unit": "G",
+            "temp": "78.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.86502234953",
+            "created_at": "2021-08-28T10:45:38+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a1757e40ccf54571d7da6"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0076333333333334",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.87544353009",
+            "created_at": "2021-08-28T11:00:39+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a1adb7b35ad3d9753b026"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0074833333333333",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.88586606482",
+            "created_at": "2021-08-28T11:15:39+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a1e6044d254464b35d815"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0074166666666666",
+            "gravity_unit": "G",
+            "temp": "78.2",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.896287986114",
+            "created_at": "2021-08-28T11:30:40+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a21e4c955b16a8708c75b"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0074333333333334",
+            "gravity_unit": "G",
+            "temp": "79.4",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.906707951384",
+            "created_at": "2021-08-28T11:45:40+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a25699a20eb2f6775357f"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0074166666666666",
+            "gravity_unit": "G",
+            "temp": "79.2",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.91713026621",
+            "created_at": "2021-08-28T12:00:41+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a28ed0aab7309fa14e9b6"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0072833333333333",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.92755025463",
+            "created_at": "2021-08-28T12:15:41+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a2c73e120e350944f9025"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0071666666666663",
+            "gravity_unit": "G",
+            "temp": "78.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.937985624994",
+            "created_at": "2021-08-28T12:30:43+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a2ff75659635a763adb12"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0072499999999995",
+            "gravity_unit": "G",
+            "temp": "79.1",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.948405393516",
+            "created_at": "2021-08-28T12:45:43+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a337b0aab7309fa14e9b8"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0071999999999997",
+            "gravity_unit": "G",
+            "temp": "79.4",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.95882444444",
+            "created_at": "2021-08-28T13:00:43+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a3701194cdf247b174406"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0071333333333328",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.96925699074",
+            "created_at": "2021-08-28T13:15:45+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a3a85678a2053546e72d8"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0070666666666659",
+            "gravity_unit": "G",
+            "temp": "78.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.979677523144",
+            "created_at": "2021-08-28T13:30:45+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a3e0a8c72054ba32b1fd4"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0071666666666663",
+            "gravity_unit": "G",
+            "temp": "79.1",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44436.99009782407",
+            "created_at": "2021-08-28T13:45:46+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a418d9828a64bc712f793"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0072666666666665",
+            "gravity_unit": "G",
+            "temp": "80.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.00052023148",
+            "created_at": "2021-08-28T14:00:45+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a451208f5033f76524e43"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0070999999999994",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.01094137731",
+            "created_at": "2021-08-28T14:15:46+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a489887b01829ad1eabd4"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0070833333333329",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.021383831016",
+            "created_at": "2021-08-28T14:30:48+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a4c1e5e28d15b371de40c"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "78.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.031817592586",
+            "created_at": "2021-08-28T14:45:50+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a4fa4894f830aad25757c"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.007016666666666",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.04225965277",
+            "created_at": "2021-08-28T15:00:52+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a5329b42e260f5a30dde7"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.007016666666666",
+            "gravity_unit": "G",
+            "temp": "80.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.05268137731",
+            "created_at": "2021-08-28T15:15:53+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a56aecad2281e15243d2c"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0070333333333328",
+            "gravity_unit": "G",
+            "temp": "79.2",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.06311618056",
+            "created_at": "2021-08-28T15:30:54+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a5a329fe47d09fa2b1f88"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.07353695602",
+            "created_at": "2021-08-28T15:45:54+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a5db6f2e3185509489e02"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "78.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.083958379626",
+            "created_at": "2021-08-28T16:00:54+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a613bcb0bfa087e5687e2"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.007016666666666",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.09438034722",
+            "created_at": "2021-08-28T16:15:55+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a64bf9fe47d09fa2b1f92"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.007016666666666",
+            "gravity_unit": "G",
+            "temp": "80.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.10479900463",
+            "created_at": "2021-08-28T16:30:55+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a68435659635a763adb2f"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "79.5",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.11522005787",
+            "created_at": "2021-08-28T16:45:55+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a6bc8d3b19b124256cfa4"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.007016666666666",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.12564239583",
+            "created_at": "2021-08-28T17:00:56+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a6f4de068540ebf55e556"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "78.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.136063148144",
+            "created_at": "2021-08-28T17:15:57+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a72d19bdce31ff57a7bc8"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.14648412036",
+            "created_at": "2021-08-28T17:30:57+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a76556705403fe83ea925"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "80.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.15690663194",
+            "created_at": "2021-08-28T17:45:57+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a79da80d3aa12d67526ec"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "79.9",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.16732825231",
+            "created_at": "2021-08-28T18:00:58+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a7d5e0a2a7902ef47aab5"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.17774951389",
+            "created_at": "2021-08-28T18:15:58+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a80e5d568027bab2ea083"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "78.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.18819491898",
+            "created_at": "2021-08-28T18:31:01+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a84693a65af1d99294216"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.19861554397",
+            "created_at": "2021-08-28T18:46:01+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a87ede802bc1ae1326c10"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "80.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.209037280096",
+            "created_at": "2021-08-28T19:01:01+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a8b72e99eaa7d3c1807ba"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "80.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.21945703704",
+            "created_at": "2021-08-28T19:16:02+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a8ef6287235470866d926"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.22987875",
+            "created_at": "2021-08-28T19:31:02+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a927dcf58c6565940911d"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "78.4",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.24032239583",
+            "created_at": "2021-08-28T19:46:05+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a96015c89e15c43356493"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "79.3",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.25074247685",
+            "created_at": "2021-08-28T20:01:05+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a9986cad2281e15243d54"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "80.2",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.26116386574",
+            "created_at": "2021-08-28T20:16:06+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612a9d0a148d032650779de6"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "80.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.27158545139",
+            "created_at": "2021-08-28T20:31:06+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612aa08e1fdd856ac939ff5f"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.282005381945",
+            "created_at": "2021-08-28T20:46:06+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612aa41221daab1c704ff72e"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "78.4",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.29242586805",
+            "created_at": "2021-08-28T21:01:06+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612aa797f59d8031eb04179b"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "78.5",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.302846932864",
+            "created_at": "2021-08-28T21:16:07+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612aab1bcce46578a435b489"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "80.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.31326768519",
+            "created_at": "2021-08-28T21:31:07+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612aae9f4d897f65c469d393"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "80.5",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.32368780093",
+            "created_at": "2021-08-28T21:46:07+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612ab2243d58b16f4a3d8af2"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "79.9",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.33410943287",
+            "created_at": "2021-08-28T22:01:08+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612ab5a81cba3b7b1c3125d5"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.34452968749",
+            "created_at": "2021-08-28T22:16:08+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612ab92d10498a4d0b513b9e"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "78.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.35495047454",
+            "created_at": "2021-08-28T22:31:09+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612abcb1e1b73d27cd516e86"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.36538274305",
+            "created_at": "2021-08-28T22:46:09+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612ac0365f789a1d9125313b"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.37580523147",
+            "created_at": "2021-08-28T23:01:10+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612ac3bbbd62c41db33f00b0"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "78.8",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.386228055555",
+            "created_at": "2021-08-28T23:16:11+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612ac73f569dd226d030a278"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "80.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.396649201386",
+            "created_at": "2021-08-28T23:31:11+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612acac35f789a1d91253143"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "80.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.407070775465",
+            "created_at": "2021-08-28T23:46:11+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612ace49bd62c41db33f00b2"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "79.3",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.417504895835",
+            "created_at": "2021-08-29T00:01:13+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612ad1cd25fe6809ab250540"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.42792568287",
+            "created_at": "2021-08-29T00:16:13+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612ad552c50ae955461fd3d3"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "78.4",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.438347164345",
+            "created_at": "2021-08-29T00:31:14+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612ad8d8b7b47334e15fb349"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "80.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.44878119213",
+            "created_at": "2021-08-29T00:46:16+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612adc5e6642f41f5f2c554a"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "80.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.45922625",
+            "created_at": "2021-08-29T01:01:18+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612adfe3678a2053546e731d"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069666666666661",
+            "gravity_unit": "G",
+            "temp": "79.2",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.46964679398",
+            "created_at": "2021-08-29T01:16:19+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612ae3679828a64bc712f7d7"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069666666666661",
+            "gravity_unit": "G",
+            "temp": "79.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.480080717585",
+            "created_at": "2021-08-29T01:31:19+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612ae6ec5349396ca8133a78"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069833333333327",
+            "gravity_unit": "G",
+            "temp": "78.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.4905015162",
+            "created_at": "2021-08-29T01:46:20+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612aea719db48d6c982c8a75"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "78.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.50093311343",
+            "created_at": "2021-08-29T02:01:21+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612aedf687b01829ad1eac12"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069999999999992",
+            "gravity_unit": "G",
+            "temp": "77.5",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.51135474537",
+            "created_at": "2021-08-29T02:16:22+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612af17a8cbb2d14ba57cc6a"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069666666666661",
+            "gravity_unit": "G",
+            "temp": "77.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.521777326394",
+            "created_at": "2021-08-29T02:31:22+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612af4fe0d33cc2069293cf9"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069666666666661",
+            "gravity_unit": "G",
+            "temp": "77.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.532198912035",
+            "created_at": "2021-08-29T02:46:22+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612af88310498a4d0b513bbc"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069666666666661",
+            "gravity_unit": "G",
+            "temp": "76.8",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.5426192824",
+            "created_at": "2021-08-29T03:01:23+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612afc088cbb2d14ba57cc6b"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069499999999993",
+            "gravity_unit": "G",
+            "temp": "76.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.553052337964",
+            "created_at": "2021-08-29T03:16:24+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612aff8d7d0473456017f72c"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069166666666662",
+            "gravity_unit": "G",
+            "temp": "76.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.56347371528",
+            "created_at": "2021-08-29T03:31:25+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612b031142210a300d61dff1"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0068666666666661",
+            "gravity_unit": "G",
+            "temp": "76.0",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.573894733796",
+            "created_at": "2021-08-29T03:46:25+00:00",
+            "source": "tilt"
+        },
+        {
+            "_id": {
+                "$oid": "612b0695d560fa611b2bdcb4"
+            },
+            "login_id": 217955,
+            "brewevent_id": 400923,
+            "recipe_id": 1188403,
+            "ip": "159.196.171.56",
+            "name": "BLUE",
+            "gravity": "1.0069499999999993",
+            "gravity_unit": "G",
+            "temp": "75.1",
+            "temp_unit": "F",
+            "comment": "",
+            "beer": "Fermenter 1",
+            "interval": "44437.58431697917",
+            "created_at": "2021-08-29T04:01:25+00:00",
+            "source": "tilt"
+        }
+    ]
+}
