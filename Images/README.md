@@ -87,3 +87,12 @@ $ ./start.sh
 Not sure if this is a bug with Think C or Basilisk but it seems like the debugger freezes during serial IO/
 The "solution" is to not use the debugger.
 It doesn't seem to be as much of an issue on the real Mac
+
+### SCSI2SD Notes
+
+- I was getting protocol errors writing config. It would get to 3% and stop working. It seemed to be because the scsi2sd-util version from the MacOS app store is out of date. I got a new version from http://www.codesrc.com/files/scsi2sd/latest/mac/ and it started working.
+- http://www.savagetaylor.com/2018/01/05/setting-up-your-vintage-classic-68k-macintosh-using-a-scsi2sd-adapter/ is a wealth of knowledge about setting up scsi2sd
+- Since the image is also from a zip disk you might need to set the following scsi2sd settings:
+  - Vendor: IOMEGA
+  - Product ID: ZIP 100
+  - Revision: D.09
