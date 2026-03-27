@@ -21,7 +21,7 @@ bytes = "0.5"
 async-trait = "0.1.50"
 snafu = "0.6.10"
 quick-xml = { version = "0.22", features = [ "serialize" ] }
-hexplay = "0.2.1"
+hexplay = "0.3.0"
 chrono = "0.4"
 
 [dev-dependencies]
