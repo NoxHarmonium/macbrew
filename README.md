@@ -1,4 +1,7 @@
 # macbrew
+
+*Note: I'm archiving this repo because I no longer own a Mac Plus. Hopefully it is still a good example of writing a c application for the Mac so I'll leave it around*
+
 A project to use a m86k based Macs to help with homebrewing.
 
 It combines my love of brewing beer with
